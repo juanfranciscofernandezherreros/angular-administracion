@@ -1,3 +1,6 @@
 <form (ngSubmit)="create()">
+  <input type="text" class="form-control" [(ngModel)]="countries.alpha2Code" name="alpha2Code">
+  <input type="text" class="form-control" [(ngModel)]="countries.alpha3Code" name="alpha3Code">
+  <input type="text" class="form-control" [(ngModel)]="countries.numericCode" name="numericCode">
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
