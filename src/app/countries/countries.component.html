@@ -1,24 +1,29 @@
-<div class="card border-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Countries</div>
-  <div class="card-body text-primary">
-    <h5 class="card-title">Listado de países</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+<a routerLink="/countries/form">Crear country</a>
     <table>
         <thead>
           <tr>
             <th>id</th>
             <th>name</th>
             <th>capital</th>
+            <th>alpha2Code</th>
+            <th>alpha3Code</th>
+            <th>numericCode</th>
+            <th>region</th>
+            <th>subregion</th>
+            <th>flag</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let country of countries">
-            <td>{{country.sportId}}</td>
+            <td>{{country.id}}</td>
             <td>{{country.name}}</td>
             <td>{{country.capital}}</td>
+            <td>{{country.alpha2Code}}</td>
+            <td>{{country.alpha3Code}}</td>
+            <td>{{country.numericCode}}</td>
+            <td>{{country.region}}</td>
+            <td>{{country.subregion}}</td>
+            <td>{{country.flag}}</td>
           </tr>
         </tbody>
     </table>
-  </div>
-</div>

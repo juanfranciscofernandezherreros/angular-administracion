@@ -1,6 +1,6 @@
 export class Countries {
   id:number;
-  name:string;
+  nombre:string;
   capital:string;
-  
+
 }
