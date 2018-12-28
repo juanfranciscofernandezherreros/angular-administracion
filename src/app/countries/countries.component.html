@@ -1,4 +1,4 @@
-<a routerLink="/countries/form">Crear country</a>
+  <a routerLink="/countries/form">Countries</a>
     <table>
         <thead>
           <tr>
@@ -11,11 +11,12 @@
             <th>region</th>
             <th>subregion</th>
             <th>flag</th>
+            <th>Operaciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let country of countries">
-            <td>{{country.id}}</td>
+            <td><a [routerLink]="['/countries', country.id]">{{country.id}}</a></td>
             <td>{{country.name}}</td>
             <td>{{country.capital}}</td>
             <td>{{country.alpha2Code}}</td>
@@ -24,6 +25,7 @@
             <td>{{country.region}}</td>
             <td>{{country.subregion}}</td>
             <td>{{country.flag}}</td>
+            <td> <a (click)='deleteCountry(country.id)'>Delete</a> <a [routerLink]="['/countries/form', country.id]">Editar</a></td>
           </tr>
         </tbody>
     </table>
