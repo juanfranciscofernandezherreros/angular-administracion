@@ -10,32 +10,41 @@ import { Router , ActivatedRoute} from '@angular/router';
 
 export class FormComponent implements OnInit {
 
-  private countries: Countries = new Countries();
+  private countries: Countries = new Countries()
+  private titulo:string = "Crear Cliente"
 
-  constructor(private countriesService:CountriesService , private router:Router , private activatedRoute:ActivatedRoute) { }
+  constructor(private countriesService: CountriesService,
+  private router: Router,
+  private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.cargarCountry();
+    this.cargarCliente()
   }
 
-  cargarCountry():void{
-      this.activatedRoute.params.subscribe(params => {
-          let id = +params['id'];
-          if(id){
-            this.countriesService.getCountry(id).subscribe((countries)=> this.countries = countries)
-          }
-          console.log(id);
-       });
-   }
+  cargarCliente(): void{
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id']
+      if(id){
+        this.countriesService.getCountry(id).subscribe( (countries) => this.countries = countries)
+      }
+    })
+  }
 
-  public create():void{
-    console.log(this.countries);
-    this.countriesService.createCountry(this.countries).subscribe(
-      response => this.router.navigate(['countries'])
-  );
+  create(): void {
+    this.countriesService.createCountry(this.countries)
+      .subscribe(countries => {
+        this.router.navigate(['/countries'])
+      }
+      );
+  }
 
-}
+  update(countries:Countries):void{
+    this.countriesService.update(this.countries)
+    .subscribe( countries => {
+      this.router.navigate(['/countries'])
+    }
 
-
+    )
+  }
 
 }

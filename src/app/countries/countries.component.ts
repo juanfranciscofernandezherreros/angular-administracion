@@ -24,7 +24,7 @@ export class CountriesComponent implements OnInit {
   public deleteCountry(id:number):void{
       console.log("ID" + id);
       this.countriesService.delete(id).subscribe(
-      response => this.router.navigate(['countries'])
+        response => this.router.navigate(['countries'])
     );
   }
 }

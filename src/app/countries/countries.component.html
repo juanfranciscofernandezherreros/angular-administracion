@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let country of countries">
-            <td><a [routerLink]="['/countries', country.id]">{{country.id}}</a></td>
+            <td><a [routerLink]="['/countries/form', country.id]">{{country.id}}</a></td>
             <td>{{country.name}}</td>
             <td>{{country.capital}}</td>
             <td>{{country.alpha2Code}}</td>
