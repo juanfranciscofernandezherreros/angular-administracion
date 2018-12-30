@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RolesComponent } from './roles/roles.component';
 import { FormComponent } from './countries/form.component';
 import { FormsModule } from '@angular/forms';
+import { DetailsComponent } from './countries/details.component';
 
 const routes:Routes = [
   {path:'',redirectTo:'/main', pathMatch:'full'},
@@ -17,7 +18,9 @@ const routes:Routes = [
   {path:'main',component:MainComponent},
   {path:'countries',component:CountriesComponent},
   {path:'countries/form',component:FormComponent},
-  {path:'countries/form/:id',component:FormComponent}
+  {path:'countries/form/:id',component:FormComponent},
+  {path:'countries/see/:id',component:DetailsComponent},
+  {path:'login',component:LoginComponent}
 ];
 
 @NgModule({
@@ -27,7 +30,8 @@ const routes:Routes = [
     CountriesComponent,
     MainComponent,
     RolesComponent,
-    FormComponent
+    FormComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
