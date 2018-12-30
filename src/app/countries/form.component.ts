@@ -1,7 +1,7 @@
-import {Component, OnInit } from '@angular/core';
-import {Countries} from './countries';
-import {CountriesService} from './countries.service';
-import { Router , ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Countries } from './countries';
+import { CountriesService } from './countries.service';
+import { Router , ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -11,7 +11,6 @@ import { Router , ActivatedRoute} from '@angular/router';
 export class FormComponent implements OnInit {
 
   private countries: Countries = new Countries()
-  private titulo:string = "Crear Cliente"
 
   constructor(private countriesService: CountriesService,
   private router: Router,

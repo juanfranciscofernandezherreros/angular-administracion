@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './usuarios/login/login.component';
 import { CountriesComponent } from './countries/countries.component';
 import { CountriesService } from './countries/countries.service';
 import { RouterModule , Routes } from '@angular/router';
@@ -11,6 +10,7 @@ import { RolesComponent } from './roles/roles.component';
 import { FormComponent } from './countries/form.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './countries/details.component';
+import { SignUpComponent } from './usuarios/signup/signup.component';
 
 const routes:Routes = [
   {path:'',redirectTo:'/main', pathMatch:'full'},
@@ -20,18 +20,18 @@ const routes:Routes = [
   {path:'countries/form',component:FormComponent},
   {path:'countries/form/:id',component:FormComponent},
   {path:'countries/see/:id',component:DetailsComponent},
-  {path:'login',component:LoginComponent}
+  {path:'users/signup',component:SignUpComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     CountriesComponent,
     MainComponent,
     RolesComponent,
     FormComponent,
-    DetailsComponent
+    DetailsComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
