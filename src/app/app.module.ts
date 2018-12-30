@@ -11,6 +11,7 @@ import { FormComponent } from './countries/form.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './countries/details.component';
 import { SignUpComponent } from './usuarios/signup/signup.component';
+import { LoginComponent } from './usuarios/login/login.component';
 
 const routes:Routes = [
   {path:'',redirectTo:'/main', pathMatch:'full'},
@@ -20,7 +21,8 @@ const routes:Routes = [
   {path:'countries/form',component:FormComponent},
   {path:'countries/form/:id',component:FormComponent},
   {path:'countries/see/:id',component:DetailsComponent},
-  {path:'users/signup',component:SignUpComponent}
+  {path:'users/signup',component:SignUpComponent},
+  {path:'users/login',component:LoginComponent}
 ];
 
 @NgModule({
@@ -31,7 +33,8 @@ const routes:Routes = [
     RolesComponent,
     FormComponent,
     DetailsComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

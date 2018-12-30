@@ -18,9 +18,9 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  userRegistration(user:User):void{
+  userRegistration():void{
     this.signUpService.userRegistration(this.usuario)
-    .subscribe( countries => {
+    .subscribe( usuario => {
       this.router.navigate(['/main'])
     }
 
