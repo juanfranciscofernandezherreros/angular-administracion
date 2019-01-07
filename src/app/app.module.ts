@@ -12,11 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './countries/details.component';
 import { SignUpComponent } from './usuarios/signup/signup.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes:Routes = [
-  {path:'',redirectTo:'/main', pathMatch:'full'},
-  {path:'roles',component:RolesComponent},
+  {path:'',redirectTo:'main', pathMatch:'full'},
   {path:'main',component:MainComponent},
+  {path:'roles',component:RolesComponent},
   {path:'countries',component:CountriesComponent},
   {path:'countries/form',component:FormComponent},
   {path:'countries/form/:id',component:FormComponent},
@@ -34,7 +36,9 @@ const routes:Routes = [
     FormComponent,
     DetailsComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

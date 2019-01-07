@@ -1,8 +1,8 @@
-  <a routerLink="/countries/form">Countries</a>
-    <table>
+   <table>
+
         <thead>
           <tr>
-            <th>id</th>
+			<th scope="col">id</th>
             <th>name</th>
             <th>capital</th>
             <th>alpha2Code</th>
@@ -11,21 +11,21 @@
             <th>region</th>
             <th>subregion</th>
             <th>flag</th>
-            <th>Operaciones</th> 
+            <th>Operaciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let country of countries">
-            <td><a [routerLink]="['/countries/see', country.id]">{{country.id}}</a></td>
-            <td>{{country.name}}</td>
-            <td>{{country.capital}}</td>
-            <td>{{country.alpha2Code}}</td>
-            <td>{{country.alpha3Code}}</td>
-            <td>{{country.numericCode}}</td>
-            <td>{{country.region}}</td>
-            <td>{{country.subregion}}</td>
-            <td>{{country.flag}}</td>
-            <td> <a (click)='deleteCountry(country.id)'>Delete</a> <a [routerLink]="['/countries/form', country.id]">Editar</a></td>
+            <td data-label="id"><a [routerLink]="['/countries/see', country.id]">{{country.id}}</a></td>
+            <td data-label="name">{{country.name}}</td>
+            <td data-label="capital">{{country.capital}}</td>
+            <td data-label="alpha2Code">{{country.alpha2Code}}</td>
+            <td data-label="alpha3Code">{{country.alpha3Code}}</td>
+            <td data-label="numericCode">{{country.numericCode}}</td>
+            <td data-label="region">REGION</td>
+            <td data-label="subregion">SUBREGION</td>
+            <td data-label="flag">FLAG</td>
+            <td data-label="id"><button type="button" class="btn btn-danger">Eliminar</button> <button  [routerLink]="['/countries/form', country.id]" type="button" class="btn btn-primary">Editar</button></td>
           </tr>
         </tbody>
     </table>

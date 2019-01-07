@@ -5,7 +5,7 @@ import { SignUpService } from '../../usuarios/signup/signup.service';
 
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-signup',
   templateUrl: './signup.component.html'
 })
 

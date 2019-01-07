@@ -1,29 +1,23 @@
-<div class="card bg-dark text-white">
-  <div class="card-header">User registration</div>
-  <div class="card-body">
-
-    <form>
-
-      <div class="form-group row">
-        <label for="email" class="col-form-label col-sm-2">Email</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="usuario.usernameOrEmail" name="usernameOrEmail">
+<div class="loginmodal modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="sportsmagazine-login-box">
+            <a href="#" data-dismiss="modal" class="sportsmagazine-login-close sportsmagazine-color"><i class="icon-uniF106"></i></a>
+            <h4>Login To Your Account</h4>
+            <form>
+                <input type="text" value="Enter username*" onblur="if(this.value == '') { this.value ='Enter username*'; }" onfocus="if(this.value =='Enter username*') { this.value = ''; }">
+                <input type="password" value="Password*" onblur="if(this.value == '') { this.value ='Password*'; }" onfocus="if(this.value =='Password*') { this.value = ''; }">
+                <a href="#" class="sportsmagazine-colorhover">Forget Password?</a>
+                <div class="clearfix"></div>
+                <label><input type="submit" value="Sign In" class="sportsmagazine-bordercolor sportsmagazine-color"></label>
+            </form>
+            <h4>Try Our Socials Also</h4>
+            <ul class="login-network">
+                <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                <li class="sportsmagazine-twitter"><a href="#"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+                <li class="sportsmagazine-google-plus"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+            </ul>
+            <p>Not A Member Yet ? <a href="#" class="sportsmagazine-color">Sign - Up Now !</a></p>
         </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="password" class="col-form-label col-sm-2">Password</label>
-        <div class="col-sm-6">
-          <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)='userLogin()'>Login</button>
-        </div>
-      </div>
-    </form>
-
-  </div>
+    <div class="clearfix"></div>
+    </div>
 </div>
