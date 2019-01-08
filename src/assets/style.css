@@ -4439,7 +4439,6 @@ blockquote span:before {
     float: left;
     width: 100%;
     background-color: #f5f5f5;
-    position: relative;
     margin: 0px 0px 20px;
     text-align: center;
 }
