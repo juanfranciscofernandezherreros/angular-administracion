@@ -1132,7 +1132,7 @@ address { font-style: italic; }
 .sportsmagazine-fancy-title {
     float: left;
     width: 100%;
-    background: url(assets/images/fancytitle-pattren.png);
+    background: url(images/fancytitle-pattren.png);
     border-bottom: 2px solid;
     padding: 17px 29px;
     position: relative;

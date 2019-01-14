@@ -15,7 +15,6 @@ export class CountriesComponent implements OnInit {
   constructor(private countriesService:CountriesService,private router:Router , private activatedRoute:ActivatedRoute) {}
 
   ngOnInit(){
-
     this.countriesService.getCountries().subscribe(
       countries => this.countries = countries
     );

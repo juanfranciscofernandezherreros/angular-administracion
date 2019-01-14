@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
     // Sticky Header Function
     //***************************
 	  jQuery(window).scroll(function() {
-	      if (jQuery(this).scrollTop() > 170){  
+	      if (jQuery(this).scrollTop() > 170){
 	          jQuery('body').addClass("sportsmagazine-sticky");
 	      }
 	      else{
@@ -450,7 +450,7 @@ jQuery(document).ready(function($) {
       end:300,
       duration: 5000
     });
-    
+
     // Masonry Functions
     jQuery('.grid').isotope({
       itemSelector: '.grid-item',
@@ -490,7 +490,7 @@ jQuery(document).ready(function($) {
         });
         jQuery('#year').text(austDay.getFullYear());
     });
-    
+
 
 });
 
@@ -512,12 +512,12 @@ function init() {
         // The latitude and longitude to center the map (always required)
         center: new google.maps.LatLng(40.6700, -73.9400), // New York
 
-        // How you would like to style the map. 
+        // How you would like to style the map.
         // This is where you would paste any style found on Snazzy Maps.
         styles: [{"featureType":"road.highway","elementType":"labels","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"all","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"hue":"#ffe94f"},{"saturation":100},{"lightness":4},{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#ffe94f"},{"saturation":100},{"lightness":4},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#333333"},{"saturation":-100},{"lightness":-74},{"visibility":"off"}]}]
     };
 
-    // Get the HTML DOM element that will contain your map 
+    // Get the HTML DOM element that will contain your map
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map');
 

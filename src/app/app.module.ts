@@ -14,6 +14,8 @@ import { SignUpComponent } from './usuarios/signup/signup.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CompetitionsComponent } from './competitions/competitions.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes:Routes = [
   {path:'',redirectTo:'main', pathMatch:'full'},
@@ -38,7 +40,9 @@ const routes:Routes = [
     SignUpComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CompetitionsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
