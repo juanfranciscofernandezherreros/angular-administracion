@@ -18,6 +18,8 @@ export class MenuComponent implements OnInit {
     this.menuService.getMenuItems().subscribe(
       menus => this.menus = menus
     );
+
   }
+
 
 }
