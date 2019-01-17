@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Info } from '../info/info';
+import { InfoService } from '../info/info.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  info : Info[];
+
+  constructor(private infoService:InfoService) {}
 
   ngOnInit() {
+    this.infoService.getInfo().subscribe(
+      info => this.info = info
+    );
   }
 
 }

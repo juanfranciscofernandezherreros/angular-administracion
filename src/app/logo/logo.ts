@@ -1,4 +1,4 @@
 export class Logo {
   id:number;
-  key:string;
+  logo:string;
 }

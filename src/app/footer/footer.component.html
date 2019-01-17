@@ -9,7 +9,6 @@
                         <!--// Widget Contact Info \\-->
                         <aside class="col-md-4 widget widget_contact_info">
                             <a href="index.html" class="footer-logo"><app-logo></app-logo></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elUt ac malesuada ante.Sed gravida, ur quis tempus sollicitudin, tellus urna</p>
                             <ul class="sportsmagazine-social-network">
                                 <li><a href="https://www.facebook.com/" class="sportsmagazine-colorhover fa fa-facebook-official"></a></li>
                                 <li><a href="https://twitter.com/login" class="sportsmagazine-colorhover fa fa-twitter-square"></a></li>
@@ -17,13 +16,13 @@
                                 <li><a href="https://plus.google.com/" class="sportsmagazine-colorhover fa fa-google-plus-square"></a></li>
                             </ul>
                             <ul class="sportsmagazine-info-list">
-                                <li><i class="fa fa-envelope"></i> <span><a href="mailto:name@email.com">info@example.com</a></span></li>
+                                <li><i class="fa fa-envelope"></i> <span><a href="mailto:name@email.com">{{info?.contacto}}</a></span></li>
                             </ul>
                         </aside>
                         <!--// Widget Contact Info \\-->
                         <!--// Widget Twitter \\-->
                         <aside class="col-md-4 widget widget_twitter">
-                            <div class="footer-widget-title"><h2>Twitter Feeds</h2></div>
+                            <div class="footer-widget-title"><h2>{{info?.twitterfeeds}}</h2></div>
                             <ul>
                                 <li>
                                     <i class="fa fa-twitter"></i> <span>@basketball</span>
@@ -40,7 +39,7 @@
                         <!--// Widget Twitter \\-->
                         <!--// Widget Gallery \\-->
                         <aside class="col-md-4 widget widget_gallery">
-                            <div class="footer-widget-title"><h2>Flicker Photos</h2></div>
+                            <div class="footer-widget-title"><h2>{{info?.flickerPhotos}}</h2></div>
                             <ul>
                                 <li><a data-fancybox-group="group" href="assets/extra-images/widget-gallery-1.jpg" class="fancybox"><img src="assets/extra-images/widget-gallery-1.jpg" alt=""></a></li>
                                 <li><a data-fancybox-group="group" href="assets/extra-images/widget-gallery-2.jpg" class="fancybox"><img src="assets/extra-images/widget-gallery-2.jpg" alt=""></a></li>
@@ -66,12 +65,12 @@
                     <div class="row">
                         <aside class="col-md-6 sportsmagazine-copyright-left">
                           <ul class="sportsmagazine-copyright-link">
-                            <li><a href="404.html" class="sportsmagazine-colorhover">Terms And Condition</a></li>
+                            <li><a href="404.html" class="sportsmagazine-colorhover">{{info?.termsAndCondition}}</a></li>
                           </ul>
                         </aside>
                         <aside class="col-md-6 sportsmagazine-copyright-right">
                             <ul class="sportsmagazine-copyright-link">
-                                <li><a href="404.html" class="sportsmagazine-colorhover">Privacy Policy</a></li>
+                                <li><a href="404.html" class="sportsmagazine-colorhover">{{info?.privacyPolicy}}</a></li>
                             </ul>
                         </aside>
                     </div>

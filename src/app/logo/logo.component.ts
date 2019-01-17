@@ -12,7 +12,7 @@ export class LogoComponent implements OnInit {
 
   logo : Logo[];
 
-  constructor(private logoService:LogoService,private router:Router , private activatedRoute:ActivatedRoute) {}
+  constructor(private logoService:LogoService) {}
 
   ngOnInit() {
     this.logoService.getLogo().subscribe(
