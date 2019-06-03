@@ -19,6 +19,9 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoComponent } from './logo/logo.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AlertComponent } from './alert/alert.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -68,7 +71,10 @@ const routes: Routes = [
     CalendarComponent,
     MenuComponent,
     LogoComponent,
-    ProfileComponent
+    ProfileComponent,
+    AlertComponent,
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
