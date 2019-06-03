@@ -18,8 +18,29 @@ import { CompetitionsComponent } from './competitions/competitions.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoComponent } from './logo/logo.component';
+import { ProfileComponent } from './profile/profile.component';
 
-const routes:Routes = [
+
+const routes: Routes = [
+	{
+	   path: 'main',
+	   component: MainComponent
+	},
+	{
+	   path: 'login',
+	   component: LoginComponent
+	},
+	{
+	   path: 'signup',
+	   component: SignUpComponent
+  },
+  {
+     path: 'profile',
+     component: ProfileComponent
+  }
+];
+
+/*const routes:Routes = [
   {path:'',redirectTo:'main', pathMatch:'full'},
   {path:'main',component:MainComponent},
   {path:'roles',component:RolesComponent},
@@ -29,7 +50,7 @@ const routes:Routes = [
   {path:'countries/see/:id',component:DetailsComponent},
   {path:'users/signup',component:SignUpComponent},
   {path:'users/login',component:LoginComponent}
-];
+];*/
 
 @NgModule({
   declarations: [
@@ -46,7 +67,8 @@ const routes:Routes = [
     CompetitionsComponent,
     CalendarComponent,
     MenuComponent,
-    LogoComponent
+    LogoComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
