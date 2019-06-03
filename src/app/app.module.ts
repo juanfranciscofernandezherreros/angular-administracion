@@ -10,8 +10,7 @@ import { RolesComponent } from './roles/roles.component';
 import { FormComponent } from './countries/form.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './countries/details.component';
-import { SignUpComponent } from './usuarios/signup/signup.component';
-import { LoginComponent } from './usuarios/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompetitionsComponent } from './competitions/competitions.component';
@@ -35,25 +34,13 @@ const routes: Routes = [
 	},
 	{
 	   path: 'signup',
-	   component: SignUpComponent
+	   component: RegisterComponent
   },
   {
      path: 'profile',
      component: ProfileComponent
   }
 ];
-
-/*const routes:Routes = [
-  {path:'',redirectTo:'main', pathMatch:'full'},
-  {path:'main',component:MainComponent},
-  {path:'roles',component:RolesComponent},
-  {path:'countries',component:CountriesComponent},
-  {path:'countries/form',component:FormComponent},
-  {path:'countries/form/:id',component:FormComponent},
-  {path:'countries/see/:id',component:DetailsComponent},
-  {path:'users/signup',component:SignUpComponent},
-  {path:'users/login',component:LoginComponent}
-];*/
 
 @NgModule({
   declarations: [
@@ -63,7 +50,6 @@ const routes: Routes = [
     RolesComponent,
     FormComponent,
     DetailsComponent,
-    SignUpComponent,
     LoginComponent,
     HeaderComponent,
     FooterComponent,
