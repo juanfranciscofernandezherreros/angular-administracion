@@ -4,7 +4,8 @@ import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './alert/alert.component';
-import { AuthGuard } from './_guards/index';
+import { AuthGuard} from './_guards/index';
+import { AdminGuard} from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { MainComponent } from './main/main.component';
@@ -24,6 +25,8 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule , Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { routing }        from './app.routing';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
 		imports: [
@@ -49,10 +52,13 @@ import { routing }        from './app.routing';
 			ProfileComponent,
 			AlertComponent,
 			HomeComponent,
-			RegisterComponent
+			RegisterComponent,
+			AdministradorComponent,
+			AdminComponent
     ],
     providers: [
         AuthGuard,
+				AdminGuard,
         AlertService,
         AuthenticationService,
         UserService ,

@@ -3,17 +3,17 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-administrador',
+  templateUrl: './administrador.component.html',
+  styleUrls: ['./administrador.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class AdministradorComponent implements OnInit {
 
    constructor() {
-
    }
 
    ngOnInit() {
+
    }
 
 }

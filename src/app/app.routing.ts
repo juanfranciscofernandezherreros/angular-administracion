@@ -1,7 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CountriesComponent } from './countries/countries.component';
-import { CountriesService } from './countries/countries.service';
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RolesComponent } from './roles/roles.component';
@@ -19,7 +18,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { AlertComponent } from './alert/alert.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { AdministradorComponent } from './administrador/administrador.component';
 import { AuthGuard } from './_guards/index';
+import { AdminGuard } from './_guards/index';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
 	{
@@ -31,6 +33,10 @@ const routes: Routes = [
 	   component: LoginComponent
 	},
 	{
+	   path: 'admin',
+	   component: AdminComponent
+	},
+	{
 	   path: 'signup',
 	   component: RegisterComponent
   },
@@ -38,6 +44,11 @@ const routes: Routes = [
      path: 'profile',
      component: ProfileComponent,
      canActivate: [AuthGuard]
+  },
+  {
+     path: 'dashboard',
+     component: AdministradorComponent,
+     canActivate: [AdminGuard]
   },
   {
      path: '**',
