@@ -9,11 +9,9 @@ export class AdminGuard implements CanActivate {
 
     constructor(private router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
-
-        if (sessionStorage.getItem('currentUser')) {
-          let user: User = JSON.parse(sessionStorage.getItem('currentUser')) || [];
+    canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot) {
+        if (localStorage.getItem('currentUser')) {
+          let user: User = JSON.parse(localStorage.getItem('currentUser')) || [];
           for (let i = 0; i < user.roles.length; i++) {
                       let role = user.roles[i];
                       if (role === "ROLE_ADMIN") {
