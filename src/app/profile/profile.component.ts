@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { User } from '../_models/index';
+import { UserService } from '../_services/index';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+   users: User[] = [];
 
-  ngOnInit() {
-  }
+   constructor(private userService: UserService) {
+       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+   }
+
+   ngOnInit() {
+   }
+
+
+   /*private loadAllUsers() {
+       this.userService.getAll().subscribe(users => { this.users = users; });
+   }*/
 
 }
