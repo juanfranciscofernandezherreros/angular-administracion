@@ -25,6 +25,11 @@ import { RouterModule , Routes } from '@angular/router';
 import { routing }        from './app.routing';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { AdminComponent } from './admin/admin.component';
+import { SidebarswapperComponent } from './sidebarswapper/sidebarswapper.component';
+import { TopbarheaderComponent } from './topbarheader/topbarheader.component';
+import { ProfileMainComponent } from './profile-main/profile-main.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ArticlesComponent } from './articles/articles.component';
 
 @NgModule({
 		imports: [
@@ -50,7 +55,12 @@ import { AdminComponent } from './admin/admin.component';
 			AlertComponent,
 			HomeComponent,
 			AdministradorComponent,
-			AdminComponent
+			AdminComponent,
+			SidebarswapperComponent,
+			TopbarheaderComponent,
+			ProfileMainComponent,
+			CategoriesComponent,
+			ArticlesComponent
     ],
     providers: [
         AuthGuard,
