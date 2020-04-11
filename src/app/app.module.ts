@@ -30,6 +30,8 @@ import { TopbarheaderComponent } from './topbarheader/topbarheader.component';
 import { ProfileMainComponent } from './profile-main/profile-main.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
 
 @NgModule({
 		imports: [
@@ -60,7 +62,9 @@ import { ArticlesComponent } from './articles/articles.component';
 			TopbarheaderComponent,
 			ProfileMainComponent,
 			CategoriesComponent,
-			ArticlesComponent
+			ArticlesComponent,
+			CategoriesListComponent,
+			ArticlesListComponent
     ],
     providers: [
         AuthGuard,

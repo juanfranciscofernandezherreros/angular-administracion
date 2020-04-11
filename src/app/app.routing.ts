@@ -20,6 +20,10 @@ import { AdministradorComponent } from './administrador/administrador.component'
 import { AuthGuard } from './_guards/index';
 import { AdminGuard } from './_guards/index';
 import { AdminComponent } from './admin/admin.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
 
 const routes: Routes = [
 	{
@@ -27,10 +31,20 @@ const routes: Routes = [
 	   component: AdminComponent
 	},
   {
-     path: 'dashboard',
-     component: AdministradorComponent,
-     canActivate: [AdminGuard]
-		 
+     path: 'dashboard/categories',
+     component: CategoriesComponent,
+     canActivate: [AdminGuard],
+     children: [
+      { path: '', component: CategoriesListComponent }
+    ]	 
+  },
+  {
+     path: 'dashboard/articles',
+     component: ArticlesComponent,
+     canActivate: [AdminGuard],
+     children: [
+      { path: '', component: ArticlesListComponent }
+    ]	 
   },
   {
      path: '**',
