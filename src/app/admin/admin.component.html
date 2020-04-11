@@ -1,19 +1,82 @@
-<div class="col-md-6 col-md-offset-3">
-    <h2>Admin Login</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+<!-- start loader -->
+<div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner" ><div class="loader"></div></div></div></div>
+<!-- end loader -->
+<!-- Start wrapper-->
+<div id="wrapper">
+
+    <div class="loader-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+       <div class="card card-authentication1 mx-auto my-5">
+           <div class="card-body">
+            <div class="card-content p-2">
+                <div class="text-center">
+                    <img src="assets/images/logo-icon.png" alt="logo icon">
+                </div>
+             <div class="card-title text-uppercase text-center py-3">Sign In</div>
+               <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                 <div class="form-group">
+                 <label for="exampleInputUsername" class="sr-only">Username</label>
+                  <div class="position-relative has-icon-right">
+                     <input name="username" [(ngModel)]="model.username" #username="ngModel" required class="form-control input-shadow" placeholder="Enter Username">
+                     <div class="form-control-position">
+                         <i class="icon-user"></i>
+                     </div>
+                  </div>
+                 </div>
+                 <div class="form-group">
+                    <label for="exampleInputPassword" class="sr-only">Password</label>
+                     <div class="position-relative has-icon-right">
+                        <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required class="form-control input-shadow" placeholder="Enter Username">
+                        <div class="form-control-position">
+                            <i class="icon-lock"></i>
+                        </div>
+                     </div>
+                    </div>               
+               <button [disabled]="loading" class="btn btn-light btn-block">Login</button>                                                 
+                </form>
+              </div>
+             </div>
+            </div>
+       
+        <!--Start Back To Top Button-->
+       <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+       <!--End Back To Top Button-->
+       
+       <!--start color switcher-->
+      <div class="right-sidebar">
+       <div class="switcher-icon">
+         <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+       </div>
+       <div class="right-sidebar-content">
+   
+         <p class="mb-0">Gaussion Texture</p>
+         <hr>
+         
+         <ul class="switcher">
+           <li id="theme1"></li>
+           <li id="theme2"></li>
+           <li id="theme3"></li>
+           <li id="theme4"></li>
+           <li id="theme5"></li>
+           <li id="theme6"></li>
+         </ul>
+   
+         <p class="mb-0">Gradient Background</p>
+         <hr>
+         
+         <ul class="switcher">
+           <li id="theme7"></li>
+           <li id="theme8"></li>
+           <li id="theme9"></li>
+           <li id="theme10"></li>
+           <li id="theme11"></li>
+           <li id="theme12"></li>
+           <li id="theme13"></li>
+           <li id="theme14"></li>
+           <li id="theme15"></li>
+         </ul>
+         
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Login</button>
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        </div>
-    </form>
-</div>
+      </div>
+     <!--end color switcher-->
+       
+       </div><!--wrapper-->
