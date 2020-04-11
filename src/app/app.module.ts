@@ -8,7 +8,6 @@ import { AuthGuard} from './_guards/index';
 import { AdminGuard} from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
-import { MainComponent } from './main/main.component';
 import { RolesComponent } from './roles/roles.component';
 import { FormComponent } from './countries/form.component';
 import { DetailsComponent } from './countries/details.component';
@@ -23,7 +22,6 @@ import { LogoComponent } from './logo/logo.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule , Routes } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
 import { routing }        from './app.routing';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { AdminComponent } from './admin/admin.component';
@@ -38,7 +36,6 @@ import { AdminComponent } from './admin/admin.component';
     declarations: [
 			AppComponent,
 			CountriesComponent,
-			MainComponent,
 			RolesComponent,
 			FormComponent,
 			DetailsComponent,
@@ -52,7 +49,6 @@ import { AdminComponent } from './admin/admin.component';
 			ProfileComponent,
 			AlertComponent,
 			HomeComponent,
-			RegisterComponent,
 			AdministradorComponent,
 			AdminComponent
     ],
