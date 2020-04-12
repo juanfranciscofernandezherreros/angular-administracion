@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoriesListService} from '../_services/categories-list.service';
 
 @Component({
   selector: 'app-articles-create',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesCreateComponent implements OnInit {
 
-  constructor() { }
+  marked = false;
+  theCheckbox = false;
+  model: any = {};
+
+  constructor(private categories:CategoriesListService) {}
 
   ngOnInit() {
+  }
+
+  create(){
+    console.log("Title" + this.model.title + "Descripcion1" + this.model);
+
   }
 
 }

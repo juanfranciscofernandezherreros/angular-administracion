@@ -24,6 +24,8 @@ export class CategoriesListService {
     return this.http.get(this.categories+"?page="+page+"&size=2",{headers});
   }
 
+  
+
 
 
 }
