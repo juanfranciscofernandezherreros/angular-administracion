@@ -19,9 +19,9 @@ import {CategoriesListService} from '../_services/categories-list.service';
 })
 export class CategoriesListComponent implements OnInit {
 
-  private page:number=0;
+  private page : number = 0;
   private categories:Array<any>;
-  private pages:Array<Number>;
+  private pages:Array<number>;
 
   constructor(private _myService:CategoriesListService) {}
 
@@ -29,16 +29,26 @@ export class CategoriesListComponent implements OnInit {
     this.getCategories();
   };
 
+  setPage(i,event:any){
+    event.preventDefault();
+    this.page=i;
+    this.getCategories();
+  }
+
   getCategories(){
     this._myService.getCategories(this.page).subscribe(
-      data=>{
-        console.log(this.categories=data['content']);
+      data=>{        
+        console.log(data);
         this.categories=data['content'];
-        this.pages= new Array(data['totalPages']);
+        this.pages = new Array(data['totalPages']);
+
       },
+
       (error)=>{
         console.log("Error");
       }
     );
   }
+
+  
 }

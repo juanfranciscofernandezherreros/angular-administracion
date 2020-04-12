@@ -4,17 +4,20 @@ Categories list
       <tr>
         <th scope="col">#</th>
         <th scope="col">First</th>
-        <th scope="col">First</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let category of categories">
         <td>{{category.id}}</td>
-        <td>{{category.nameCategory}}</td>
-        <td>{{category.total}}</td>
+        <td>{{category.nameCategoryTranslated}}</td>
       </tr>      
     </tbody>
   </table>
+  <ul class="nav nav-pills">
+    <li class="nav-item" *ngFor="let page of pages;let i=index">
+      <a class="nav-link" href="" (click)="setPage(i,$event)">{{i}}</a>
+    </li>
+  </ul>
 <ul>
 
 </ul>
