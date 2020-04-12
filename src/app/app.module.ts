@@ -28,6 +28,7 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
+import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -54,7 +55,8 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortMo
 			CategoriesComponent,
 			CategoriesListComponent,
 			ArticlesComponent,
-			ArticlesListComponent
+			ArticlesListComponent,
+			ArticlesCreateComponent
     ],
     providers: [
         AuthGuard,
