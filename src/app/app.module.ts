@@ -7,7 +7,7 @@ import { AlertComponent } from './alert/alert.component';
 import { AuthGuard} from './_guards/index';
 import { AdminGuard} from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService,CategoriesListService } from './_services/index';
 import { RolesComponent } from './roles/roles.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -24,15 +24,15 @@ import { SidebarswapperComponent } from './sidebarswapper/sidebarswapper.compone
 import { TopbarheaderComponent } from './topbarheader/topbarheader.component';
 import { ProfileMainComponent } from './profile-main/profile-main.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { ArticlesComponent } from './articles/articles.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
-
+import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
 @NgModule({
 		imports: [
 			BrowserModule,
 	    FormsModule,
-	    HttpClientModule,
+		HttpClientModule,
 	    routing
 	 ],
     declarations: [
@@ -52,15 +52,16 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 			TopbarheaderComponent,
 			ProfileMainComponent,
 			CategoriesComponent,
-			ArticlesComponent,
 			CategoriesListComponent,
+			ArticlesComponent,
 			ArticlesListComponent
     ],
     providers: [
         AuthGuard,
-				AdminGuard,
+		AdminGuard,
         AlertService,
-        AuthenticationService,
+		AuthenticationService,
+		CategoriesListService,
         UserService ,
         {
             provide: HTTP_INTERCEPTORS,
