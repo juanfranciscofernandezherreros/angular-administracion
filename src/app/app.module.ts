@@ -9,14 +9,9 @@ import { AdminGuard} from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { RolesComponent } from './roles/roles.component';
-import { FormComponent } from './countries/form.component';
-import { DetailsComponent } from './countries/details.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { CompetitionsComponent } from './competitions/competitions.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { CountriesComponent } from './countries/countries.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoComponent } from './logo/logo.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -42,15 +37,10 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 	 ],
     declarations: [
 			AppComponent,
-			CountriesComponent,
-			RolesComponent,
-			FormComponent,
-			DetailsComponent,
+			RolesComponent,			
 			LoginComponent,
 			HeaderComponent,
 			FooterComponent,
-			CompetitionsComponent,
-			CalendarComponent,
 			MenuComponent,
 			LogoComponent,
 			ProfileComponent,
