@@ -24,6 +24,17 @@ export class CategoriesListService {
     return this.http.get(this.categories+"?page="+page+"&size=2",{headers});
   }
 
+  getCategoriesList(){
+
+    console.log("Categories List");
+
+    const headers = {
+      'accept-language': 'es-ES',
+      'Content-type': 'application/json'
+    }
+
+    return this.http.get(this.categories,{headers});
+  }
   
 
 
