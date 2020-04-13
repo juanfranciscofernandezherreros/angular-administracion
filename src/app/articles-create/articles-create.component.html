@@ -18,11 +18,11 @@
        <div class="form-group">
       <div *ngFor="let data of categories let i=index">
         <label>
-          <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event,data.id)" />
+          <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event,data.categoryId)" />
           {{data.nameCategoryTranslated}}
         </label>
       </div>
-      </div> 
+      </div> n  
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Descripcion</label>
       <textarea name="descripcion1" [(ngModel)]="model.descripcion1" #descripcion1="ngModel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

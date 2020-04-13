@@ -30,6 +30,7 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -58,7 +59,8 @@ import { CKEditorModule } from 'ckeditor4-angular';
 			CategoriesListComponent,
 			ArticlesComponent,
 			ArticlesListComponent,
-			ArticlesCreateComponent
+			ArticlesCreateComponent,
+			ArticlesEditComponent
     ],
     providers: [
         AuthGuard,

@@ -20,6 +20,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
+import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 
 const routes: Routes = [
 	{
@@ -40,7 +41,8 @@ const routes: Routes = [
      canActivate: [AdminGuard],
      children: [
       { path: '', component: ArticlesListComponent },
-      { path: 'create', component: ArticlesCreateComponent }
+      { path: 'create', component: ArticlesCreateComponent },
+      { path: 'edit', component: ArticlesCreateComponent }
     ]	 
   },
   {
