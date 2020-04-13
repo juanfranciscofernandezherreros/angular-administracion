@@ -4,6 +4,7 @@ import { ArticlesCreateService } from '../_services/articles-create.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
 import { Article } from '../_models/article';
+import { Categories } from '../_models/categories';
 
 @Component({
   selector: 'app-articles-create',
@@ -15,10 +16,13 @@ export class ArticlesCreateComponent implements OnInit {
   model: any = {};
   log = '';
   loading = false;
-  categories: any = {};
   returnUrl: string;
   article: Article = new Article()
   images: any = {};
+  checkbox: boolean;
+  categoriesList: any = {};
+  interests = []; bChecked; wChecked; oChecked;
+
 
   constructor( 
     private route: ActivatedRoute,
@@ -26,8 +30,10 @@ export class ArticlesCreateComponent implements OnInit {
     private _myService:CategoriesListService,
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService) {}
+    private categories:Array<any>;
 
   ngOnInit() {
+      this.getCategories();
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -39,6 +45,7 @@ export class ArticlesCreateComponent implements OnInit {
     this.loading = true;
     
     this.model.images = this.images;
+    this.model.categorias = this.interests;
 
     this.articlesCreateService.userRegistration(this.model)
         .subscribe(
@@ -52,6 +59,18 @@ export class ArticlesCreateComponent implements OnInit {
             });
   }
 
+  getCategories(){
+    this._myService.getCategoriesList().subscribe(
+      data=>{        
+        console.log(data);
+        this.categories=data['content'];
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
 handleUpload(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -60,6 +79,21 @@ handleUpload(event) {
         var targ = event.target || event.srcElement;
         this.images = reader.result;
     };
+}
+
+onCheckboxChange(evt,value) {
+  this.checkbox = evt.target.checked;
+  if(evt.target.checked){
+    this.interests.push(value);
+    alert(this.checkbox);
+  }else{
+    let index = this.interests.indexOf(value);
+    if (index > -1) {
+      this.interests.splice(index, 1);
+    }
+  }
+  
+  
 }
 
 }

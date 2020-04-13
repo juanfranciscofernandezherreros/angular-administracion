@@ -30,7 +30,6 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { CKEditorModule } from 'ckeditor4-angular';
-
 @NgModule({
 		imports: [
 			BrowserModule,

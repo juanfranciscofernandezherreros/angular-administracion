@@ -10,7 +10,7 @@ import {ResDataCategories} from '../_models/restDataCategories';
 })
 export class CategoriesListService {
 
-  private categories:string = 'http://localhost:8090/api/categories/v2';
+  private categories:string = 'http://localhost:8090/api/categories/';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class CategoriesListService {
       'Content-type': 'application/json'
     }
 
-    return this.http.get(this.categories+"?page="+page+"&size=2",{headers});
+    return this.http.get(this.categories+"v2?page="+page+"&size=2",{headers});
   }
 
   getCategoriesList(){
@@ -33,7 +33,7 @@ export class CategoriesListService {
       'Content-type': 'application/json'
     }
 
-    return this.http.get(this.categories,{headers});
+    return this.http.get(this.categories+"v2",{headers});
   }
   
 

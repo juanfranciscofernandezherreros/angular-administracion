@@ -7,4 +7,5 @@ export class Article {
     imageName:string;
     urlSeo:string;
     images:string;
+    categorias:[];
 }
