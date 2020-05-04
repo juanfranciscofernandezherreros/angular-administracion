@@ -4,8 +4,8 @@ export class Article {
     titulo:string;
     descripcion1:string;
     content:string; 
-    imageName:string;
     urlSeo:string;
     images:string;
-    categorias:[];
+    categoriesListDTO:[];
+    userId:number;
 }

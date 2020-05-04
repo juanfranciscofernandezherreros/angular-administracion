@@ -18,11 +18,9 @@ export class ArticlesCreateComponent implements OnInit {
   loading = false;
   returnUrl: string;
   article: Article = new Article()
-  images: any = {};
   checkbox: boolean;
   categoriesList: any = {};
-  interests = []; bChecked; wChecked; oChecked;
-
+  interests = [];
 
   constructor( 
     private route: ActivatedRoute,
@@ -33,6 +31,7 @@ export class ArticlesCreateComponent implements OnInit {
     private categories:Array<any>;
 
   ngOnInit() {
+
       this.getCategories();
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
@@ -42,9 +41,9 @@ export class ArticlesCreateComponent implements OnInit {
   }
 
   register() {
-    this.loading = true;
     
-    this.model.images = this.images;
+    this.loading = true;    
+    this.model.images = this.model.images;
     this.model.categorias = this.interests;
 
     this.articlesCreateService.userRegistration(this.model)
@@ -62,7 +61,6 @@ export class ArticlesCreateComponent implements OnInit {
   getCategories(){
     this._myService.getCategoriesList().subscribe(
       data=>{        
-        console.log(data);
         this.categories=data['content'];
       },
       (error)=>{
@@ -77,7 +75,7 @@ handleUpload(event) {
     reader.readAsDataURL(file);
     reader.onload = () => {
         var targ = event.target || event.srcElement;
-        this.images = reader.result;
+        this.model.images = reader.result;
     };
 }
 

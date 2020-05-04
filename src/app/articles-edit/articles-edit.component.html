@@ -1,3 +1,57 @@
-<p>
-  articles-edit works!
-</p>
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-body">
+    <div class="card-title">Editar artículo</div>
+    <hr>
+    <form name="form" (ngSubmit)="f.form.valid && editar()" #f="ngForm" novalidate>           
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Titulo</label>
+        <input type="text" name="titulo" [(ngModel)]="model.titulo" #titulo="ngModel" class="form-control" id="titulo">
+      </div>    
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Clave</label>
+        <input type="text" name="clave" [(ngModel)]="model.clave" #clave="ngModel" class="form-control" id="clave" disabled>
+      </div> 
+      <div class="form-group">
+        <label for="input-1">URL SEO</label>
+        <input type="text" name="urlSeo" [(ngModel)]="model.urlSeo" #urlSeo="ngModel" class="form-control" id="input-1" placeholder="Enter Your Name">
+       </div> 
+       <div class="form-group">
+        <label for="input-1">Username</label>
+        <input type="text" name="userId" [(ngModel)]="model.userId" #userId="ngModel" class="form-control" id="input-1" disabled>
+       </div> 
+       <div class="form-group">  
+        <div *ngFor="let data1 of model.categoriesListDTO let i=index">
+          <label>
+            {{data1.id}}
+          </label>
+        </div>     
+        <div *ngFor="let data of categories let i=index">
+          <label>
+            <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event,data.categoryId)" />
+            {{data.nameCategoryTranslated}}
+          </label>
+        </div>
+        </div>  
+       <div class="form-group">
+        <label for="input-1">ID Username</label>
+        <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1" placeholder="Enter Your username" disabled>
+       </div> 
+       <div class="form-group">
+        <label for="input-1">Image</label>
+        <input type="file" (change)="showPreview($event)">
+        <img [src]="model.imageName" *ngIf="model.imageName">
+      </div>        
+       <div class="form-group">
+        <label for="exampleFormControlTextarea1">Descripcion</label>
+        <textarea name="descripcion1" [(ngModel)]="model.descripcion1" #descripcion1="ngModel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Descripcion</label>
+        <ckeditor name="content" [(ngModel)]="model.content" #content="ngModel"></ckeditor>
+      </div>
+    <button [disabled]="loading" class="btn btn-primary">Editar</button>                                                 
+   </form>
+  </div>
+  </div>
+</div>

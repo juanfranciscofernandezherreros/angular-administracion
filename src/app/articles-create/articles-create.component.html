@@ -7,11 +7,19 @@
       <div class="form-group">
         <label for="exampleFormControlFile1">Titulo</label>
         <input type="text" name="titulo" [(ngModel)]="model.titulo" #titulo="ngModel" class="form-control" id="titulo">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Clave</label>
+        <input type="text" name="clave" [(ngModel)]="model.clave" #clave="ngModel" class="form-control" id="clave">
       </div> 
     <div class="form-group">
       <label for="input-1">URL SEO</label>
       <input type="text" name="urlSeo" [(ngModel)]="model.urlSeo" #urlSeo="ngModel" class="form-control" id="input-1" placeholder="Enter Your Name">
-     </div>  
+     </div> 
+     <div class="form-group">
+      <label for="input-1">Username</label>
+      <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1" placeholder="Enter Your username">
+     </div>   
      <div class="form-group">
       <input type="file" (change)="handleUpload($event)">
       </div> 
@@ -22,7 +30,7 @@
           {{data.nameCategoryTranslated}}
         </label>
       </div>
-      </div> n  
+      </div>  
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Descripcion</label>
       <textarea name="descripcion1" [(ngModel)]="model.descripcion1" #descripcion1="ngModel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

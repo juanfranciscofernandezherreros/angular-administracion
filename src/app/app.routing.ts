@@ -21,6 +21,7 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
+import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 
 const routes: Routes = [
 	{
@@ -42,7 +43,9 @@ const routes: Routes = [
      children: [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
-      { path: 'edit', component: ArticlesCreateComponent }
+      { path: 'edit/:id', component: ArticlesEditComponent },
+      { path: 'translate/:id', component: ArticleTranslateComponent }
+
     ]	 
   },
   {

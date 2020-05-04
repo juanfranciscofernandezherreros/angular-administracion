@@ -6,6 +6,7 @@ import {ArticlesListService} from '../_services/articles-list.service';
   templateUrl: './articles-list.component.html',
   styleUrls: ['./articles-list.component.css']
 })
+
 export class ArticlesListComponent implements OnInit {
 
   private page : number = 0;

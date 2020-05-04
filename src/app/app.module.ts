@@ -31,6 +31,7 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortMo
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
+import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -60,7 +61,8 @@ import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 			ArticlesComponent,
 			ArticlesListComponent,
 			ArticlesCreateComponent,
-			ArticlesEditComponent
+			ArticlesEditComponent,
+			ArticleTranslateComponent
     ],
     providers: [
         AuthGuard,
