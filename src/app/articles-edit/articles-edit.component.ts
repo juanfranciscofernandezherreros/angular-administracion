@@ -7,6 +7,11 @@ import {CategoriesListService} from '../_services/categories-list.service';
 import { AlertService } from '../_services/index';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { OnChanges, Input } from '@angular/core';
+import {ObtenerCategoriasArticuloService} from '../_services/obtener-categorias-articulo.service';
+
+
+declare function myMehtod(model): any;
 @Component({
   selector: 'app-articles-edit',
   templateUrl: './articles-edit.component.html',
@@ -29,34 +34,43 @@ export class ArticlesEditComponent implements OnInit {
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
   //HTML
-  private categories:Array<any>;
+   categories:Array<any>;
   arrayToIterate:number =0;
   interests = [];
+  interests1 = [];
+  list: any = {};
+  @Input() name: string;
 
   constructor(private activeAouter: ActivatedRoute, 
     private router: Router,private api: ArticleEditService , 
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,  
-    private _myService:CategoriesListService) { }
+    private _myService:CategoriesListService,
+    private obtenerArticulo:ObtenerCategoriasArticuloService) { }
 
   ngOnInit() {
+
+
     this.getDetail(this.activeAouter.snapshot.params['id']);
-    this.getCategories();
+    this.getCategoriasByArticle(this.activeAouter.snapshot.params['id']);
   }
 
   getDetail(id) {
     this.api.getArticle(id).subscribe(data => {
         this.model = data;
     });
-    
+  }
 
+  getCategoriasByArticle(id) {
+    this.obtenerArticulo.getCategoriesPorArticulo(id).subscribe(data => {
+        this.list = data;
+    });
   }
 
   getCategories(){
     this._myService.getCategoriesList().subscribe(
       data=>{        
-        this.categories=data['content'];     
-
+        this.categories=data['content'];   
       },
       (error)=>{
         console.log("Error");
@@ -69,6 +83,8 @@ export class ArticlesEditComponent implements OnInit {
     this.loading = true;
     
     this.model.imageName = this.images;
+    this.model.categorias = this.interests;
+    this.model.categoriesToDelete = this.interests1;
 
     this.api.updateTodo(this.activeAouter.snapshot.params['id'] ,this.model)
         .subscribe(
@@ -87,27 +103,29 @@ export class ArticlesEditComponent implements OnInit {
   showPreview(event) {
     var reader = new FileReader();
     const file = (event.target as HTMLInputElement).files[0];
-    this.model.imageName="";
+    this.model.images="";
     reader.readAsDataURL(file);
     reader.onload = () => {
         var targ = event.target || event.srcElement;
-        this.model.imageName = reader.result;
+        this.model.images = reader.result;
     };
   }
 
-  onCheckboxChange(evt,value) {
+  onCheckboxChange(evt,id:number) {
     this.checkbox = evt.target.checked;
     if(evt.target.checked){
-      this.interests.push(value);
-      alert(this.checkbox);
-    }else{
-      let index = this.interests.indexOf(value);
-      if (index > -1) {
-        this.interests.splice(index, 1);
-      }
-    }    
+      this.interests.push(id);
+    }else{      
+      this.interests1.push(id);
+
+    }
+  }    
     
   }
 
   
-}
+
+  
+  
+  
+

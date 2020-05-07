@@ -4,5 +4,5 @@ export class Categories {
     nameCategory:string;
     total:number;
     categoryId:number;
-
+    clave:string;
 }

@@ -41,7 +41,6 @@ export class ArticlesCreateComponent implements OnInit {
   }
 
   register() {
-    
     this.loading = true;    
     this.model.images = this.model.images;
     this.model.categorias = this.interests;

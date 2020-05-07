@@ -6,6 +6,6 @@ export class Article {
     content:string; 
     urlSeo:string;
     images:string;
-    categoriesListDTO:[];
+    categorias:[];
     userId:number;
 }

@@ -14,33 +14,29 @@
       </div> 
       <div class="form-group">
         <label for="input-1">URL SEO</label>
-        <input type="text" name="urlSeo" [(ngModel)]="model.urlSeo" #urlSeo="ngModel" class="form-control" id="input-1" placeholder="Enter Your Name">
+        <input type="text" value="model.id" name="urlSeo" [(ngModel)]="model.urlSeo" #urlSeo="ngModel" class="form-control" id="input-1" placeholder="Enter Your Name">
        </div> 
-       <div class="form-group">
-        <label for="input-1">Username</label>
-        <input type="text" name="userId" [(ngModel)]="model.userId" #userId="ngModel" class="form-control" id="input-1" disabled>
-       </div> 
-       <div class="form-group">  
-        <div *ngFor="let data1 of model.categoriesListDTO let i=index">
-          <label>
-            {{data1.id}}
-          </label>
-        </div>     
-        <div *ngFor="let data of categories let i=index">
-          <label>
-            <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event,data.categoryId)" />
-            {{data.nameCategoryTranslated}}
-          </label>
-        </div>
-        </div>  
        <div class="form-group">
         <label for="input-1">ID Username</label>
         <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1" placeholder="Enter Your username" disabled>
        </div> 
        <div class="form-group">
+        <label for="input-1">Categorias</label>
+       <div *ngFor="let category of list; let num = index">
+        <div *ngIf="category.hasCategory === true">
+          <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)" checked/>{{category.nameCategory}}
+        </div>
+        <div *ngIf="category.hasCategory === false">
+          <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)"/>{{category.nameCategory}}
+        </div>                    
+      </div>
+       </div>
+
+        
+       <div class="form-group">
         <label for="input-1">Image</label>
         <input type="file" (change)="showPreview($event)">
-        <img [src]="model.imageName" *ngIf="model.imageName">
+        <img [src]="model.images" *ngIf="model.images">
       </div>        
        <div class="form-group">
         <label for="exampleFormControlTextarea1">Descripcion</label>

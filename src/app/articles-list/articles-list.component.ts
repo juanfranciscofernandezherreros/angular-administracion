@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticlesListService} from '../_services/articles-list.service';
+import {BorrarArticuloService} from '../_services/borrar-articulo.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-articles-list',
@@ -13,7 +15,11 @@ export class ArticlesListComponent implements OnInit {
   private articles:Array<any>;
   private pages:Array<number>;
 
-  constructor(private _myService:ArticlesListService) {}
+  constructor(
+    private _myService:ArticlesListService , 
+    private _borrarArticuloService:BorrarArticuloService,
+    private route: ActivatedRoute,
+    private router: Router,) {}
 
   ngOnInit() {
     this.getArticles();
@@ -40,5 +46,16 @@ export class ArticlesListComponent implements OnInit {
     );
   }
 
+  deleteArticle(idArticle:number){
+    this._borrarArticuloService.borrarArticuloPorIdentificador(idArticle).subscribe(
+      data=>{        
+        this.router.navigate(['/dashboard/articles']);
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
 
 }

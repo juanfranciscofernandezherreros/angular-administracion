@@ -19,7 +19,7 @@
                 <tr *ngFor="let article of articles">
                   <td>{{article.id}}</td>
                   <td>{{article.title}}</td>   
-                  <td><a class="btn btn-warning" href="dashboard/articles/edit/{{article.id}}">Editar artículo</a> <a class="btn btn-danger" href="dashboard/articles/edit/{{article.id}}">Borrar artículo</a> <a class="btn btn-light" href="dashboard/articles/translate/{{article.id}}">Traducir artículo</a></td>             
+                  <td><a class="btn btn-warning" href="dashboard/articles/edit/{{article.id}}">Editar artículo</a> <a class="btn btn-danger" (click)="deleteArticle(article.id)">Borrar artículo</a> <a class="btn btn-light" href="dashboard/articles/translate/{{article.id}}">Traducir artículo</a></td>             
                 </tr>  
               </tbody>
             </table>
