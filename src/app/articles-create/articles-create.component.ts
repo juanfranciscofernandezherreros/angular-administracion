@@ -3,6 +3,7 @@ import {CategoriesListService} from '../_services/categories-list.service';
 import { ArticlesCreateService } from '../_services/articles-create.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
+import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
 import { Article } from '../_models/article';
 import { Categories } from '../_models/categories';
 
@@ -14,6 +15,8 @@ import { Categories } from '../_models/categories';
 export class ArticlesCreateComponent implements OnInit {
 
   model: any = {};
+  model2:any={};
+  selectedDay: string = '';
   log = '';
   loading = false;
   returnUrl: string;
@@ -21,19 +24,25 @@ export class ArticlesCreateComponent implements OnInit {
   checkbox: boolean;
   categoriesList: any = {};
   interests = [];
+  private categories:Array<any>;
+  languageId:number;
 
   constructor( 
     private route: ActivatedRoute,
     private router: Router,
     private _myService:CategoriesListService,
     private articlesCreateService: ArticlesCreateService,
-    private alertService: AlertService) {}
-    private categories:Array<any>;
+    private alertService: AlertService,
+    private obtenerTodosLosIdiomasService:ObtenerIdiomasService
+    ) {}
+    
 
   ngOnInit() {
 
-      this.getCategories();
+      this.getLanguages();
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+
   }
 
   logCheckbox(element: HTMLInputElement): void {
@@ -44,7 +53,6 @@ export class ArticlesCreateComponent implements OnInit {
     this.loading = true;    
     this.model.images = this.model.images;
     this.model.categorias = this.interests;
-
     this.articlesCreateService.userRegistration(this.model)
         .subscribe(
             data => {
@@ -55,12 +63,12 @@ export class ArticlesCreateComponent implements OnInit {
                 this.alertService.error(error);
                 this.loading = false;
             });
-  }
+  }  
 
-  getCategories(){
-    this._myService.getCategoriesList().subscribe(
+  getLanguages(){
+    this.obtenerTodosLosIdiomasService.getObtenerIdiomas().subscribe(
       data=>{        
-        this.categories=data['content'];
+        this.model.languages=data["_embedded"];
       },
       (error)=>{
         console.log("Error");
@@ -78,21 +86,35 @@ handleUpload(event) {
     };
 }
 
+
 onCheckboxChange(evt,value) {
   this.checkbox = evt.target.checked;
+  console.log();
   if(evt.target.checked){
     this.interests.push(value);
-    alert(this.checkbox);
   }else{
     let index = this.interests.indexOf(value);
     if (index > -1) {
       this.interests.splice(index, 1);
     }
   }
-  
-  
+   
+}
+
+//event handler for the select element's change event
+
+changedata(evt) {
+  this.model.languageId = evt.target.value;
+    this.categories=null;
+    this._myService.getCategoriesList(this.model.languageId).subscribe(
+      data=>{        
+        this.categories=data['content'];
+        console.log(this.categories);
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
 }
 
 }
-
-

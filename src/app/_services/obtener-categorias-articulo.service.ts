@@ -11,13 +11,7 @@ export class ObtenerCategoriasArticuloService {
   constructor(private http: HttpClient) { }
 
   getCategoriesPorArticulo(article:number){
-    
-    const headers = {
-      'accept-language': 'es-ES',
-      'Content-type': 'application/json'
-    }
-
-    return this.http.get(this.categories+"/"+article+"/articles",{headers});
+    return this.http.get(this.categories+"/"+article+"/articles");
   }
 
 }

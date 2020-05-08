@@ -1,6 +1,10 @@
 
+    
+    <a  (click)="getArticlesTranslated('es-ES')"><i class="flag-icon flag-icon-es mr-2"></i></a>
+    <a  (click)="getArticlesTranslated('es-ES')"><i class="flag-icon flag-icon-fr mr-2"></i></a>
+
     <a class="btn btn-success" href="dashboard/articles/create">Crear artículo</a>
-    <p></p>
+
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
@@ -19,7 +23,7 @@
                 <tr *ngFor="let article of articles">
                   <td>{{article.id}}</td>
                   <td>{{article.title}}</td>   
-                  <td><a class="btn btn-warning" href="dashboard/articles/edit/{{article.id}}">Editar artículo</a> <a class="btn btn-danger" (click)="deleteArticle(article.id)">Borrar artículo</a> <a class="btn btn-light" href="dashboard/articles/translate/{{article.id}}">Traducir artículo</a></td>             
+                  <td><a class="btn btn-warning" href="dashboard/articles/edit/{{article.id}}">Editar artículo</a> <a class="btn btn-danger" (click)="deleteArticle(article.id)">Borrar artículo</a> <a class="btn btn-light" href="dashboard/articles/translate/{{article.id}}">Traducir artículo</a><a class="btn btn-info" href="dashboard/articles/translate/{{article.id}}">Ver artículo</a></td>             
                 </tr>  
               </tbody>
             </table>

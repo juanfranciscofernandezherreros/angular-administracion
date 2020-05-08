@@ -31,6 +31,10 @@ export class ArticlesListComponent implements OnInit {
     this.getArticles();
   }
 
+  getArticlesTranslated(language:string){
+    console.log(language);
+  }
+
   getArticles(){
     this._myService.getArticles(this.page).subscribe(
       data=>{        

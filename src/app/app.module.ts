@@ -32,7 +32,6 @@ import { ArticlesCreateComponent } from './articles-create/articles-create.compo
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 import { ArticleTranslateComponent } from './article-translate/article-translate.component';
-import { ArticleDeleteComponent } from './article-delete/article-delete.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -63,8 +62,7 @@ import { ArticleDeleteComponent } from './article-delete/article-delete.componen
 			ArticlesListComponent,
 			ArticlesCreateComponent,
 			ArticlesEditComponent,
-			ArticleTranslateComponent,
-			ArticleDeleteComponent,
+			ArticleTranslateComponent
 			
     ],
     providers: [

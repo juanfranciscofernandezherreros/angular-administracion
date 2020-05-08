@@ -21,7 +21,6 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
-import { ArticleDeleteComponent } from './article-delete/article-delete.component';
 import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 
 const routes: Routes = [
@@ -45,7 +44,6 @@ const routes: Routes = [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
       { path: 'edit/:id', component: ArticlesEditComponent },
-      { path: 'delete/:id', component: ArticleDeleteComponent },
       { path: 'translate/:id', component: ArticleTranslateComponent }
 
     ]	 

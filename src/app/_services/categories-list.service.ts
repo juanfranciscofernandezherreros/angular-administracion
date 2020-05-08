@@ -27,22 +27,16 @@ export class CategoriesListService {
     return this.http.get(this.categories+"v2?page="+page+"&size=2",{headers});
   }
 
-  getCategoriesList(){
-
-    console.log("Categories List");
+  getCategoriesList(iso2:string){
 
     const headers = {
-      'accept-language': 'es-ES',
+      'accept-language': iso2,
       'Content-type': 'application/json'
     }
 
     return this.http.get(this.categories+"v2",{headers});
   }
   
-  compareTwoArrays(){
-
-  
-  }
 
 
 

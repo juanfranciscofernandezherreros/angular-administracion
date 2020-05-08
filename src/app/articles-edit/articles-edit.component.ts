@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OnChanges, Input } from '@angular/core';
 import {ObtenerCategoriasArticuloService} from '../_services/obtener-categorias-articulo.service';
+import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
 
 
 declare function myMehtod(model): any;
@@ -19,13 +20,15 @@ declare function myMehtod(model): any;
 })
 export class ArticlesEditComponent implements OnInit {
   model: any = {};
+  model1: any = {};
+  list: any = {};
+  list1: any = {};
   log = '';
   loading = false;
   returnUrl: string;
   article: Article = new Article()
   images: any = {};
   checkbox: boolean;
-  categoriesList: any = {};
   public imagePath;
   imgURL: any;
   public message: string;
@@ -38,48 +41,28 @@ export class ArticlesEditComponent implements OnInit {
   arrayToIterate:number =0;
   interests = [];
   interests1 = [];
-  list: any = {};
-  @Input() name: string;
+
+  model2:any={};
+  selectedDay: string = '';
+  languageId:number;
 
   constructor(private activeAouter: ActivatedRoute, 
     private router: Router,private api: ArticleEditService , 
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,  
     private _myService:CategoriesListService,
-    private obtenerArticulo:ObtenerCategoriasArticuloService) { }
+    private obtenerArticulo:ObtenerCategoriasArticuloService,
+    private obtenerTodosLosIdiomasService:ObtenerIdiomasService
+    ) { }
 
   ngOnInit() {
-
-
     this.getDetail(this.activeAouter.snapshot.params['id']);
+    this.getLanguages();
     this.getCategoriasByArticle(this.activeAouter.snapshot.params['id']);
-  }
-
-  getDetail(id) {
-    this.api.getArticle(id).subscribe(data => {
-        this.model = data;
-    });
-  }
-
-  getCategoriasByArticle(id) {
-    this.obtenerArticulo.getCategoriesPorArticulo(id).subscribe(data => {
-        this.list = data;
-    });
-  }
-
-  getCategories(){
-    this._myService.getCategoriesList().subscribe(
-      data=>{        
-        this.categories=data['content'];   
-      },
-      (error)=>{
-        console.log("Error");
-      }
-  
-    );
-  }
+  } 
   
   editar(){
+    console.log(this.model);
     this.loading = true;
     
     this.model.imageName = this.images;
@@ -98,6 +81,33 @@ export class ArticlesEditComponent implements OnInit {
             });
   }
 
+  getLanguages(){
+    this.obtenerTodosLosIdiomasService.getObtenerIdiomas().subscribe(
+      data=>{        
+        this.model1.languages=data["_embedded"];
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  getCategoriasByArticle(id){
+    this.obtenerArticulo.getCategoriesPorArticulo(id).subscribe(
+      data=>{        
+        this.list=data;
+      },
+      (error)=>{ 
+        console.log("Error");
+      }
+    );
+  }
+
+  getDetail(id) {
+    this.api.getArticle(id).subscribe(data => {
+        this.model = data;
+    });
+  }
   
   // Image Preview
   showPreview(event) {
@@ -119,10 +129,23 @@ export class ArticlesEditComponent implements OnInit {
       this.interests1.push(id);
 
     }
-  }    
-    
+  } 
+  
+  changedata(evt) {
+    this.model.languageId = evt.target.value;
+    this._myService.getCategoriesList(this.model.languageId).subscribe(
+      data=>{        
+        this.list=null;
+        this.list1= data['content'];
+        console.log(this.categories);
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
   }
-
+    
+}
   
 
   

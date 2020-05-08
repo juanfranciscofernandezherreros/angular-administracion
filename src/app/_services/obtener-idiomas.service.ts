@@ -6,17 +6,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ObtenerIdiomasService {
 
-  private languages:string = 'http://localhost:8090/api/blogs/v1';
+  private languages:string = 'http://localhost:8090/api/languages/v1/languages';
 
   constructor(private http: HttpClient) { }
 
-  borrarArticuloPorIdentificador(article:number){
+  getObtenerIdiomas(){
     
     const headers = {
-      'accept-language': 'es-ES',
       'Content-type': 'application/json'
     }
 
-    return this.http.delete(this.languages+"/"+article,{headers});
+    return this.http.get(this.languages,{headers});
   }
 }

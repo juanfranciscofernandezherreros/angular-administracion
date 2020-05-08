@@ -2,7 +2,6 @@
   <div class="card">
     <div class="card-body">
     <div class="card-title">Editar artículo</div>
-    <hr>
     <form name="form" (ngSubmit)="f.form.valid && editar()" #f="ngForm" novalidate>           
       <div class="form-group">
         <label for="exampleFormControlFile1">Titulo</label>
@@ -17,22 +16,30 @@
         <input type="text" value="model.id" name="urlSeo" [(ngModel)]="model.urlSeo" #urlSeo="ngModel" class="form-control" id="input-1" placeholder="Enter Your Name">
        </div> 
        <div class="form-group">
-        <label for="input-1">ID Username</label>
-        <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1" placeholder="Enter Your username" disabled>
+        <label for="input-1">Username</label>
+        <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1" placeholder="Enter Your username">
        </div> 
        <div class="form-group">
-        <label for="input-1">Categorias</label>
-       <div *ngFor="let category of list; let num = index">
-        <div *ngIf="category.hasCategory === true">
-          <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)" checked/>{{category.nameCategory}}
+        <label for="input-1">Seleccionar idioma</label>  
+        <select class="form-control" (change) = "changedata($event)">
+          <option>{{model.languageId }}</option>
+          <option *ngFor="let option of model1.languages.languages" [value]="option.iso2"> {{option.iso2}} </option>
+        </select>  
+        <div class="form-group">
+          <label for="input-1">Categorias</label>
+          <div *ngFor="let category of list; let num = index">
+            <div *ngIf="category.hasCategory === true">
+              <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)" checked/>{{category.nameCategoryTranslated}}
+            </div>
+            <div *ngIf="category.hasCategory === false">
+              <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)"/>{{category.nameCategoryTranslated}}
+            </div>                    
+          </div> 
+          <div *ngFor="let category of list1; let num = index">
+              <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)"/>{{category.nameCategoryTranslated}}
+          </div>                
         </div>
-        <div *ngIf="category.hasCategory === false">
-          <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)"/>{{category.nameCategory}}
-        </div>                    
       </div>
-       </div>
-
-        
        <div class="form-group">
         <label for="input-1">Image</label>
         <input type="file" (change)="showPreview($event)">
@@ -46,8 +53,8 @@
         <label for="exampleFormControlTextarea1">Descripcion</label>
         <ckeditor name="content" [(ngModel)]="model.content" #content="ngModel"></ckeditor>
       </div>
-    <button [disabled]="loading" class="btn btn-primary">Editar</button>                                                 
-   </form>
+      <button [disabled]="loading" class="btn btn-primary">Editar</button>                                                 
+    </form>
   </div>
   </div>
 </div>
