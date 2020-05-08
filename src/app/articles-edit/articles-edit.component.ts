@@ -62,7 +62,6 @@ export class ArticlesEditComponent implements OnInit {
   } 
   
   editar(){
-    console.log(this.model);
     this.loading = true;
     
     this.model.imageName = this.images;
