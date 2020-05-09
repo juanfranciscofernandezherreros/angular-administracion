@@ -16,7 +16,7 @@ export class ArticlesCreateService {
 
   userRegistration(article: Article) {
     
-    console.log("Article :" + JSON.stringify(article));
+    console.log("Article :" + article);
      
     return this.http.post(this.articles, article , {headers : this.httpHeaders});
   }

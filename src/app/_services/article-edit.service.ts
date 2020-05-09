@@ -21,6 +21,9 @@ export class ArticleEditService {
     return this.http.get<Article[]>(this.url+"/"+ idArticle,  {headers : this.httpHeaders})      
   }
 
+  getArticleTranslate (idArticle:number): Observable<Article[]> {
+    return this.http.get<Article[]>(this.url+"/"+ idArticle + "/blog");
+  }
 
   updateTodo (id,todo): Observable<any> {    
     console.log("Editar - ID - " + id + "Todo " + JSON.stringify(todo));
