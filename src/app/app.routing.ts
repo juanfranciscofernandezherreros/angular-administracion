@@ -16,12 +16,15 @@ import { AuthGuard } from './_guards/index';
 import { AdminGuard } from './_guards/index';
 import { AdminComponent } from './admin/admin.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 import { ArticleTranslateComponent } from './article-translate/article-translate.component';
+import { ArticlesViewComponent } from './articles-view/articles-view.component';
+import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 
 const routes: Routes = [
 	{
@@ -44,9 +47,18 @@ const routes: Routes = [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
       { path: 'edit/:id', component: ArticlesEditComponent },
+      { path: 'view/:id', component: ArticlesViewComponent },
       { path: 'translate/:id', component: ArticleTranslateComponent }
 
     ]	 
+  },
+  {
+    path: 'dashboard/comentarios',
+    component: ComentariosComponent,
+    canActivate: [AdminGuard],
+    children: [
+     { path: '', component: ComentariosListComponent }
+   ]	 
   },
   {
      path: '**',

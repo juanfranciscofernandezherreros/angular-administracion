@@ -4,19 +4,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ArticlesListService {
+export class ObtenerArticuloService {
 
-  private articles:string = 'http://localhost:8090/api/blogs/v2';
+  private comentarios:string = 'http://localhost:8090/api/comentarios/v1/comentarios';
 
   constructor(private http: HttpClient) { }
 
-  getArticles(page:number){
+  getComentarios(){
 
     const headers = {
-      'accept-language': 'fr-FR',
       'Content-type': 'application/json'
     }
 
-    return this.http.get(this.articles+"?page="+page+"&size=2",{headers});
+    return this.http.get(this.comentarios,{headers});
   }
+  
 }

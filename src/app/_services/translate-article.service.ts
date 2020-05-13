@@ -19,7 +19,6 @@ export class TranslateArticleService {
     
     
     console.log("Article : " + JSON.stringify(article));
-   
     return this.http.post(this.translatedBlog,article,{headers : this.httpHeaders});
   }
 }

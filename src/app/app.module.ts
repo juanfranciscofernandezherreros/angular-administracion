@@ -32,6 +32,9 @@ import { ArticlesCreateComponent } from './articles-create/articles-create.compo
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 import { ArticleTranslateComponent } from './article-translate/article-translate.component';
+import { ArticlesViewComponent } from './articles-view/articles-view.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
+import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -62,7 +65,10 @@ import { ArticleTranslateComponent } from './article-translate/article-translate
 			ArticlesListComponent,
 			ArticlesCreateComponent,
 			ArticlesEditComponent,
-			ArticleTranslateComponent
+			ArticleTranslateComponent,
+			ArticlesViewComponent,
+			ComentariosComponent,
+			ComentariosListComponent
 			
     ],
     providers: [
