@@ -19,7 +19,11 @@
                 </tr>  
               </tbody>
             </table>
-            
+            <ul class="nav nav-pills">
+              <li class="nav-item" *ngFor="let page of pages;let i=index">
+                <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+              </li>
+            </ul>
           </div>
           </div>
         </div>

@@ -11,20 +11,14 @@ import { Article } from '../_models/article';
 })
 export class CategoriesListService {
 
-  private categories:string = 'http://localhost:8090/api/categories/';
+  private categories:string = 'http://localhost:8090/api/categories/public/v1/language/'+localStorage.getItem("languageIdArticlesBackend");
 
   constructor(private http: HttpClient) { }
 
   private article : Article;
 
   getCategories(page:number){
-
-    const headers = {
-      'accept-language': 'es-ES',
-      'Content-type': 'application/json'
-    }
-
-    return this.http.get(this.categories+"v1?page="+page+"&size=2",{headers});
+    return this.http.get(this.categories+"?page="+page+"&size=4");
   }
 
   getCategoriesList(iso2:string){
