@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ArticlesListService} from '../_services/articles-list.service';
 import {BorrarArticuloService} from '../_services/borrar-articulo.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Article} from '../_models/article';
 
 @Component({
   selector: 'app-articles-list',
@@ -11,51 +12,36 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class ArticlesListComponent implements OnInit {
 
-  private page : number = 0;
-  private articles:Array<any>;
-  private pages:Array<number>;
+  articles : Article[];
+  popular : Article[];
+  
+  //Paginacion Blogs
+  page : number = 0;
+  pages:Array<number>;
 
   constructor(
-    private _myService:ArticlesListService , 
-    private _borrarArticuloService:BorrarArticuloService,
     private route: ActivatedRoute,
-    private router: Router,) {}
+    private router: Router,
+    private articleService : ArticlesListService , 
+  ) { }
 
   ngOnInit() {
-    this.getArticles();
-  };
+   this.getArticles();
+  }
 
   setPage(i,event:any){
     event.preventDefault();
     this.page=i;
-    this.getArticles();
+    this.getArticles();    
   }
 
-  getArticlesTranslated(language:string){
-    console.log(language);
-  }
-
+  
   getArticles(){
-    this._myService.getArticles(this.page).subscribe(
-      data=>{        
-        console.log(data);
+    this.articleService.getArticles(this.page).subscribe(      
+      data=>{      
         this.articles=data['content'];
-        this.pages = new Array(data['totalPages']);
-
+        this.pages = new Array(data['totalPages']);       
       },
-
-      (error)=>{
-        console.log("Error");
-      }
-    );
-  }
-
-  deleteArticle(idArticle:number){
-    this._borrarArticuloService.borrarArticuloPorIdentificador(idArticle).subscribe(
-      data=>{        
-        this.router.navigate(['/dashboard/articles']);
-      },
-
       (error)=>{
         console.log("Error");
       }

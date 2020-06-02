@@ -5,8 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
 import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
 import { Article } from '../_models/article';
-import { Categories } from '../_models/categories';
-
 @Component({
   selector: 'app-articles-create',
   templateUrl: './articles-create.component.html',
@@ -15,7 +13,7 @@ import { Categories } from '../_models/categories';
 export class ArticlesCreateComponent implements OnInit {
 
   model: any = {};
-  model2:any={};
+  model2: any = {};
   selectedDay: string = '';
   log = '';
   loading = false;
@@ -24,8 +22,8 @@ export class ArticlesCreateComponent implements OnInit {
   checkbox: boolean;
   categoriesList: any = {};
   interests = [];
+  user : any = {};
   private categories:Array<any>;
-  languageId:number;
 
   constructor( 
     private route: ActivatedRoute,
@@ -33,7 +31,7 @@ export class ArticlesCreateComponent implements OnInit {
     private _myService:CategoriesListService,
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,
-    private obtenerTodosLosIdiomasService:ObtenerIdiomasService
+    private languageService:ObtenerIdiomasService
     ) {}
     
 
@@ -50,10 +48,14 @@ export class ArticlesCreateComponent implements OnInit {
   }
 
   register() {
+    this.user = localStorage.getItem("currentUser");
     this.loading = true;    
     this.model.images = this.model.images;
     this.model.categorias = this.interests;
-    this.articlesCreateService.userRegistration(this.model)
+    this.model.userId =localStorage.getItem("idUser");
+    this.model.isPublished=0;
+    this.getLanguageByIso2(this.model.languageId);
+    this.articlesCreateService.create(this.model)
         .subscribe(
             data => {
                 this.alertService.success('Registration successful', true);
@@ -66,9 +68,9 @@ export class ArticlesCreateComponent implements OnInit {
   }  
 
   getLanguages(){
-    this.obtenerTodosLosIdiomasService.getObtenerIdiomas().subscribe(
+    this.languageService.getObtenerIdiomas().subscribe(
       data=>{        
-        this.model.languages=data["_embedded"];
+        this.model2.languages=data["_embedded"];
       },
       (error)=>{
         console.log("Error");
@@ -115,6 +117,17 @@ changedata(evt) {
         console.log("Error");
       }
     );
+}
+
+getLanguageByIso2(language:string){
+  this.languageService.getLanguageByIso2(language).subscribe(
+    data=>{       
+      this.model.languageId=data["id"];
+    },
+    (error)=>{
+      console.log("Error");
+    }
+  );
 }
 
 }

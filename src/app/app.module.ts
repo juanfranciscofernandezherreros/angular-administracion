@@ -35,6 +35,8 @@ import { ArticleTranslateComponent } from './article-translate/article-translate
 import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -68,7 +70,9 @@ import { ComentariosListComponent } from './comentarios-list/comentarios-list.co
 			ArticleTranslateComponent,
 			ArticlesViewComponent,
 			ComentariosComponent,
-			ComentariosListComponent
+			ComentariosListComponent,
+			UserRegistrationComponent,
+			UserLoginComponent
 			
     ],
     providers: [

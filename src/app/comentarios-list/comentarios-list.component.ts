@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ObtenerComentariosService} from '../_services/obtener-comentarios.service';
 
 @Component({
   selector: 'app-comentarios-list',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComentariosListComponent implements OnInit {
 
-  constructor() { }
+  private page : number = 0;
+  private comentarios:Array<any>;
+  private pages:Array<number>;
+
+  constructor(private _myService:ObtenerComentariosService) {}
 
   ngOnInit() {
+    this.getComentarios();
+  }
+
+  setPage(i,event:any){
+    event.preventDefault();
+    this.page=i;
+    this.getComentarios();
+  }
+
+  getComentarios(){
+    this._myService.getComentarios(this.page).subscribe(
+      data=>{        
+        this.comentarios=data['content'];
+        this.pages = new Array(data['totalPages']);
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
   }
 
 }

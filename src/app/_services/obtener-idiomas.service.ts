@@ -18,4 +18,11 @@ export class ObtenerIdiomasService {
 
     return this.http.get(this.languages,{headers});
   }
+
+  getLanguageByIso2(languageIso2:string){
+    const headers = {
+      'Content-type': 'application/json'
+    }
+    return this.http.get(this.languages+"/search/find?iso2="+languageIso2,{headers});
+  }
 }

@@ -6,17 +6,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ArticlesListService {
 
-  private articles:string = 'http://localhost:8090/api/blogs/v2';
+  private articles:string = 'http://localhost:8090/api/blogs/v1/';
 
   constructor(private http: HttpClient) { }
 
   getArticles(page:number){
-
-    const headers = {
-      'accept-language': 'fr-FR',
-      'Content-type': 'application/json'
-    }
-
-    return this.http.get(this.articles+"?page="+page+"&size=2",{headers});
+    return this.http.get(this.articles+localStorage.getItem("userIdBackend")+"/language/"+localStorage.getItem("languageIdArticlesBackend")+"?page="+page+"&size=6");
   }
 }

@@ -24,7 +24,7 @@ export class CategoriesListService {
       'Content-type': 'application/json'
     }
 
-    return this.http.get(this.categories+"v2?page="+page+"&size=2",{headers});
+    return this.http.get(this.categories+"v1?page="+page+"&size=2",{headers});
   }
 
   getCategoriesList(iso2:string){
@@ -34,7 +34,7 @@ export class CategoriesListService {
       'Content-type': 'application/json'
     }
 
-    return this.http.get(this.categories+"v2",{headers});
+    return this.http.get(this.categories+"v1",{headers});
   }
   
 

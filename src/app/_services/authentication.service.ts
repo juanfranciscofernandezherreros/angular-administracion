@@ -24,16 +24,18 @@ export class AuthenticationService {
       .set('username', username)
       .set('password', password)
       .set('grant_type', 'password');
-  
+
     return this.http.post<User>(this.loginEndpoint, body , {headers})
             .map(user => {
                 console.log("Paso 2 - Login succes");
                 console.log("User" +  JSON.stringify(user));
-                // login successful if there's a jwt token in the response
                 if (user && user.access_token) {
                     console.log("Paso 3 - Save user");
+                    alert("User"+user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('username',JSON.stringify(user.username));
+                    localStorage.setItem('userIdBackend',JSON.stringify(user.id));        
+                    localStorage.setItem('languageIdArticlesBackend',JSON.stringify(4));            
                     localStorage.setItem('token', JSON.stringify(user.access_token));
                 }
                 return user;

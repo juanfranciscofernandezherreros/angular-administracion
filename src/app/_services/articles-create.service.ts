@@ -14,7 +14,7 @@ export class ArticlesCreateService {
 
   constructor(private http:HttpClient){}
 
-  userRegistration(article: Article) {
+  create(article: Article) {
     
     console.log("Article :" + article);
      
