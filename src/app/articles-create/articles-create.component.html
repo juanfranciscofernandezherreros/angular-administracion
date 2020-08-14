@@ -23,7 +23,7 @@
      <div class="form-group">
       <label for="input-1">Seleccionar idioma</label>      
     <select class="form-control" (change) = "changedata($event)">
-      <option *ngFor="let option of model2.languages.languages"> {{option.iso2}} </option>
+      <option *ngFor="let option of model2.languages.languages" value="{{option.id}}"> {{option.iso2}} </option>
   </select>
   <div class="form-group">
   <label for="input-1">Categorías</label>

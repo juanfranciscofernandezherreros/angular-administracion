@@ -51,10 +51,12 @@ export class ArticlesCreateComponent implements OnInit {
     this.user = localStorage.getItem("currentUser");
     this.loading = true;    
     this.model.images = this.model.images;
+    this.model.title= this.model.title
     this.model.categorias = this.interests;
-    this.model.userId =localStorage.getItem("idUser");
+    this.model.userId = localStorage.getItem("userIdBackend");
     this.model.isPublished=0;
     this.getLanguageByIso2(this.model.languageId);
+    alert(JSON.stringify(this.model));
     this.articlesCreateService.create(this.model)
         .subscribe(
             data => {
@@ -106,6 +108,7 @@ onCheckboxChange(evt,value) {
 //event handler for the select element's change event
 
 changedata(evt) {
+  alert(evt.target.value);
   this.model.languageId = evt.target.value;
     this.categories=null;
     this._myService.getCategoriesList(this.model.languageId).subscribe(
