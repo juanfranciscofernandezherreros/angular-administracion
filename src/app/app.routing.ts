@@ -27,6 +27,8 @@ import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 import { UsersComponent } from './users/users.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { TagsComponent } from './tags/tags.component';
+import { TagsListComponent } from './tags-list/tags-list.component';
 
 const routes: Routes = [
 	{
@@ -64,6 +66,13 @@ const routes: Routes = [
     component: UsersComponent,
     children: [
     { path: '', component: UsersListComponent }
+  ]	 
+  },
+  {
+    path: 'dashboard/tags',
+    component: TagsComponent,
+    children: [
+    { path: '', component: TagsListComponent }
   ]	 
   },
   {

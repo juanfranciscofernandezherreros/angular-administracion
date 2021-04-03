@@ -40,6 +40,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { CustomHttpInterceptorService } from '../app/_helpers/CustomHttpInterceptorService';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersComponent } from './users/users.component';
+import { TagsComponent } from './tags/tags.component';
+import { TagsListComponent } from './tags-list/tags-list.component';
 
 @NgModule({
 		imports: [
@@ -78,7 +80,9 @@ import { UsersComponent } from './users/users.component';
 			UserRegistrationComponent,
 			UserLoginComponent,
    UsersListComponent,
-   UsersComponent
+   UsersComponent,
+   TagsComponent,
+   TagsListComponent
 			
     ],
     providers: [
