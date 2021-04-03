@@ -1,29 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
-import { retry} from 'rxjs/operators';
-import { tap, catchError, map} from 'rxjs/operators';
-import { Categories } from '../_models/categories';
-import {ResDataCategories} from '../_models/restDataCategories';
-import { Article } from '../_models/article';
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesListService {
 
-  private categories:string = 'http://localhost:8090/api/categories/public/v1/language/';
+  public apiUrl: string;
+
+  private articles:string = environment.blogs;
 
   constructor(private http: HttpClient) { }
 
-  private article : Article;
-
   getCategories(page:number){
-    return this.http.get(this.categories+localStorage.getItem("languageIdArticlesBackend")+"?page="+page+"&size=4");
+    return this.http.get(this.articles+"/api/public/v1/categories?page="+page);
   }
 
   getCategoriesList(iso2:string){
 
-    return this.http.get(this.categories+iso2);
+    return this.http.get(this.articles+iso2);
   }
   
 

@@ -1,8 +1,8 @@
 export class Categories {
 
     id: number;
-    nameCategory:string;
-    total:number;
-    categoryId:number;
-    clave:string;
+    name:string;
+    slug:string;
+    language:string;
+    totalArticles:number;
 }

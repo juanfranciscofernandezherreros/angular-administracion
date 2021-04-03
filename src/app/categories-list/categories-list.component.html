@@ -1,1 +1,45 @@
-CATEGORIES LIST
+
+    
+
+    <a class="btn btn-success" href="dashboard/articles/create">Crear categoría</a>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Listado de categorías</h5>
+      <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Título</th>
+                  <th scope="col">Slug</th>
+                  <th scope="col">Idioma</th>
+                  <th scope="col">Total artículos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let category of categories">
+                  <td>{{category.id}}</td>
+                  <td>{{category.name}}</td>
+                  <td>{{category.slug}}</td>   
+                  <td>{{category.language}}</td>    
+                  <td>{{category.totalArticles}}</td>                          
+                </tr>  
+              </tbody>
+            </table>
+            <ul class="nav nav-pills">
+              <li class="nav-item" *ngFor="let page of pages;let i=index">
+                <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+              </li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<ul>
+
+</ul>
