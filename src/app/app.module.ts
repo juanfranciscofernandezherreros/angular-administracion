@@ -37,6 +37,8 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { CustomHttpInterceptorService } from '../app/_helpers/CustomHttpInterceptorService';
+
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -87,7 +89,11 @@ import { UserLoginComponent } from './user-login/user-login.component';
             useClass: JwtInterceptor,
             multi: true
         },
-
+		{
+			provide: HTTP_INTERCEPTORS, 
+			useClass: CustomHttpInterceptorService, 
+			multi: true
+		},
     ],
     bootstrap: [AppComponent]
 })

@@ -12,8 +12,7 @@ import {Article} from '../_models/article';
 
 export class ArticlesListComponent implements OnInit {
 
-  articles : Article[];
-  popular : Article[];
+  articles:Article[];
   
   //Paginacion Blogs
   page : number = 0;
