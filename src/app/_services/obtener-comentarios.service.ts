@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObtenerComentariosService {
 
-  private comentarios:string = 'http://localhost:8090/api/comentarios/v2';
+  public apiUrl: string;
+
+  private articles:string = environment.blogs;
 
   constructor(private http: HttpClient) { }
 
   getComentarios(page:number){
-
-    const headers = {
-      'Content-type': 'application/json'
-    }
-
-    return this.http.get(this.comentarios+"?page="+page+"&size=2",{headers});
+    return this.http.get(this.articles+"/api/public/v1/comments?page="+page);
   }
 
 }

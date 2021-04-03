@@ -56,7 +56,7 @@ const routes: Routes = [
     children: [
      { path: '', component: ComentariosListComponent }
    ]	 
-  },
+ },
   {
      path: '**',
      redirectTo: ''
