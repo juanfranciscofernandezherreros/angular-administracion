@@ -25,6 +25,8 @@ import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
+import { UsersComponent } from './users/users.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
 	{
@@ -57,6 +59,13 @@ const routes: Routes = [
      { path: '', component: ComentariosListComponent }
    ]	 
  },
+  {
+    path: 'dashboard/users',
+    component: UsersComponent,
+    children: [
+    { path: '', component: UsersListComponent }
+  ]	 
+  },
   {
      path: '**',
      redirectTo: ''

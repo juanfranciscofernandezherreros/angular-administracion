@@ -38,6 +38,8 @@ import { ComentariosListComponent } from './comentarios-list/comentarios-list.co
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CustomHttpInterceptorService } from '../app/_helpers/CustomHttpInterceptorService';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
 		imports: [
@@ -74,7 +76,9 @@ import { CustomHttpInterceptorService } from '../app/_helpers/CustomHttpIntercep
 			ComentariosComponent,
 			ComentariosListComponent,
 			UserRegistrationComponent,
-			UserLoginComponent
+			UserLoginComponent,
+   UsersListComponent,
+   UsersComponent
 			
     ],
     providers: [
