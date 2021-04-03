@@ -34,7 +34,6 @@ const routes: Routes = [
   {
      path: 'dashboard/categories',
      component: CategoriesComponent,
-     canActivate: [AdminGuard],
      children: [
       { path: '', component: CategoriesListComponent }
     ]	 
@@ -42,7 +41,6 @@ const routes: Routes = [
   {
      path: 'dashboard/articles',
      component: ArticlesComponent,
-     canActivate: [AdminGuard],
      children: [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
@@ -55,7 +53,6 @@ const routes: Routes = [
   {
     path: 'dashboard/comentarios',
     component: ComentariosComponent,
-    canActivate: [AdminGuard],
     children: [
      { path: '', component: ComentariosListComponent }
    ]	 
