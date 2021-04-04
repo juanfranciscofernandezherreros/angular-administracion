@@ -1,1 +1,47 @@
-ARTICLES CREATE
+<div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+      <div class="card-title">Crear artículo</div>
+      <hr>
+      <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>      
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Titulo</label>
+          <input type="text" name="title" [(ngModel)]="model.title" #title="ngModel" class="form-control" id="titulo">
+        </div>
+      <div class="form-group">
+        <label for="input-1">SLUG</label>
+        <input type="text" name="slug" [(ngModel)]="model.slug" #slug="ngModel" class="form-control" id="input-1" >
+       </div> 
+       <div class="form-group">
+        <label for="input-1">Username</label>
+        <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1">
+       </div>
+       <div class="form-group">
+        <label for="input-1">Language</label>
+        <input type="text" name="language" [(ngModel)]="model.language" #language="ngModel" class="form-control" id="input-1">
+       </div>                    
+      <div class="form-group">
+        
+        <label for="exampleFormControlTextarea1">Descripcion</label>
+        <textarea name="description" [(ngModel)]="model.description" #description="ngModel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="filePicker">Choose or drag a file:</label><br>
+          <input type="file" id="filePicker" (change)="handleFileSelect($event)">
+        </div>
+        <br>
+        <div>
+          <h1>Base64 encoded version</h1>
+          <textarea name="mainImage" [(ngModel)]="model.mainImage" #mainImage="ngModel" placeholder="Base64 will appear here" cols="50" rows="15">{{base64textString}}</textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">CONTENIDO</label>
+        <ckeditor name="content" [(ngModel)]="model.content" #content="ngModel"></ckeditor>
+      </div>     
+      <button [disabled]="loading" class="btn btn-primary">Crear artículo</button>                                                 
+     </form>
+    </div>
+    </div>
+  </div>

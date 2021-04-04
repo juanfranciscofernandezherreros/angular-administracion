@@ -4,14 +4,19 @@ import { ArticlesCreateService } from '../_services/articles-create.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
 import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
+import { UserService } from '../_services/user.service';
 import { Article } from '../_models/article';
+import { FormBuilder, FormGroup, FormControl , Validators} from '@angular/forms';
+import { User } from '../_models';
+import { title } from 'process';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
-  selector: 'app-articles-create',
+  selector: 'app-articles-create', 
   templateUrl: './articles-create.component.html',
   styleUrls: ['./articles-create.component.css']
 })
 export class ArticlesCreateComponent implements OnInit {
-
+  private base64textString:String="";
   model: any = {};
   model2: any = {};
   selectedDay: string = '';
@@ -19,28 +24,43 @@ export class ArticlesCreateComponent implements OnInit {
   loading = false;
   returnUrl: string;
   article: Article = new Article()
+  user: any = {};
   checkbox: boolean;
   categoriesList: any = {};
   interests = [];
-  user : any = {};
   private categories:Array<any>;
+  page : number = 0;
+  pages: Array<number>;
+  username:String;
+
+  /*IMAGE */
+  imageError: string;
+  isImageSaved: boolean;
+  cardImageBase64: string;  
 
   constructor( 
     private route: ActivatedRoute,
     private router: Router,
-    private _myService:CategoriesListService,
+    private categoriesListService:CategoriesListService,
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,
+    private userService: UserService,
     private languageService:ObtenerIdiomasService
     ) {}
     
+    createArticle = new FormGroup({
+      title: new FormControl(),
+      slug: new FormControl(),
+      username: new FormControl(),
+      language: new FormControl(),
+      content: new FormControl(),
+      mainImage: new FormControl(),
+      description: new FormControl(),
+    });
+  
 
   ngOnInit() {
-
-      this.getLanguages();
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
-
+    this.getCategories();
   }
 
   logCheckbox(element: HTMLInputElement): void {
@@ -48,14 +68,11 @@ export class ArticlesCreateComponent implements OnInit {
   }
 
   register() {
-    this.user = localStorage.getItem("currentUser");
     this.loading = true;    
     this.model.images = this.model.images;
     this.model.title= this.model.title
     this.model.categorias = this.interests;
-    this.model.userId = localStorage.getItem("userIdBackend");
-    this.model.isPublished=0;
-    this.getLanguageByIso2(this.model.languageId);
+    this.model.username = this.model.username;
     alert(JSON.stringify(this.model));
     this.articlesCreateService.create(this.model)
         .subscribe(
@@ -68,7 +85,6 @@ export class ArticlesCreateComponent implements OnInit {
                 this.loading = false;
             });
   }  
-
   getLanguages(){
     this.languageService.getObtenerIdiomas().subscribe(
       data=>{        
@@ -80,38 +96,11 @@ export class ArticlesCreateComponent implements OnInit {
     );
   }
 
-handleUpload(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-        var targ = event.target || event.srcElement;
-        this.model.images = reader.result;
-    };
-}
-
-
-onCheckboxChange(evt,value) {
-  this.checkbox = evt.target.checked;
-  console.log();
-  if(evt.target.checked){
-    this.interests.push(value);
-  }else{
-    let index = this.interests.indexOf(value);
-    if (index > -1) {
-      this.interests.splice(index, 1);
-    }
-  }
-   
-}
-
-//event handler for the select element's change event
-
 changedata(evt) {
   alert(evt.target.value);
   this.model.languageId = evt.target.value;
     this.categories=null;
-    this._myService.getCategoriesList(this.model.languageId).subscribe(
+    this.categoriesListService.getCategoriesList(this.model.languageId).subscribe(
       data=>{        
         this.categories=data['content'];
         console.log(this.categories);
@@ -122,15 +111,34 @@ changedata(evt) {
     );
 }
 
-getLanguageByIso2(language:string){
-  this.languageService.getLanguageByIso2(language).subscribe(
-    data=>{       
-      this.model.languageId=data["id"];
+getCategories(){
+  this.categoriesListService.getCategories(this.page).subscribe(      
+    data=>{      
+      this.categories=data['content'];
+      this.pages = new Array(data['totalPages']);       
     },
     (error)=>{
       console.log("Error");
     }
   );
 }
+
+handleFileSelect(evt){
+  var files = evt.target.files;
+  var file = files[0];
+
+if (files && file) {
+    var reader = new FileReader();
+
+    reader.onload =this._handleReaderLoaded.bind(this);
+
+    reader.readAsBinaryString(file);
+}
+}
+
+_handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.model.mainImage = btoa(binaryString);
+  }
 
 }
