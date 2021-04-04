@@ -6,7 +6,7 @@ import { AlertService } from '../_services/index';
 import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
 import { UserService } from '../_services/user.service';
 import { Article } from '../_models/article';
-import { FormBuilder, FormGroup, FormControl , Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import { User } from '../_models';
 import { title } from 'process';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -36,7 +36,14 @@ export class ArticlesCreateComponent implements OnInit {
   /*IMAGE */
   imageError: string;
   isImageSaved: boolean;
-  cardImageBase64: string;  
+  cardImageBase64: string;
+
+  categoriesSelected = [];
+
+
+  /** https://www.freakyjolly.com/angular-input-file-image-file-upload-to-base64-tutorial-by-example*/
+
+  form: FormGroup;
 
   constructor( 
     private route: ActivatedRoute,
@@ -45,8 +52,13 @@ export class ArticlesCreateComponent implements OnInit {
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,
     private userService: UserService,
-    private languageService:ObtenerIdiomasService
-    ) {}
+    private languageService:ObtenerIdiomasService,
+    private formBuilder: FormBuilder
+    ) {
+      this.form = this.formBuilder.group({
+        website: this.formBuilder.array([], [Validators.required])
+      })
+    }
     
     createArticle = new FormGroup({
       title: new FormControl(),
@@ -65,45 +77,14 @@ export class ArticlesCreateComponent implements OnInit {
 
   logCheckbox(element: HTMLInputElement): void {
     this.log += `Checkbox ${element.value} was ${element.checked ? '' : 'un'}checked\n`;
-  }
-
-  register() {
-    this.loading = true;    
-    this.model.images = this.model.images;
-    this.model.title= this.model.title
-    this.model.categorias = this.interests;
-    this.model.username = this.model.username;
-    alert(JSON.stringify(this.model));
-    this.articlesCreateService.create(this.model)
-        .subscribe(
-            data => {
-                this.alertService.success('Registration successful', true);
-                this.router.navigate(['/dashboard/articles']);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
-  }  
-  getLanguages(){
-    this.languageService.getObtenerIdiomas().subscribe(
-      data=>{        
-        this.model2.languages=data["_embedded"];
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
-  }
+  } 
 
 changedata(evt) {
-  alert(evt.target.value);
   this.model.languageId = evt.target.value;
     this.categories=null;
     this.categoriesListService.getCategoriesList(this.model.languageId).subscribe(
       data=>{        
         this.categories=data['content'];
-        console.log(this.categories);
       },
       (error)=>{
         console.log("Error");
@@ -140,5 +121,84 @@ _handleReaderLoaded(readerEvt) {
     var binaryString = readerEvt.target.result;
     this.model.mainImage = btoa(binaryString);
   }
+
+  onCheck(event,$value){ 
+    if ( event.target.checked ) {      
+      this.categoriesSelected.push($value);
+    }else{
+      const index: number = this.categoriesSelected.indexOf($value);
+      this.categoriesSelected.splice(index, 1);
+    }
+  }
+    
+  submit(){
+    this.model.title = this.createArticle.get('title').value;
+    this.model.slug = this.createArticle.get('slug').value;
+    this.model.username = this.createArticle.get('username').value;
+    this.model.language = this.createArticle.get('language').value;
+    this.model.content = this.createArticle.get('content').value;
+    this.model.mainImage = this.createArticle.get('mainImage').value;
+    this.model.description = this.createArticle.get('description').value;
+    this.model.mainImage = this.cardImageBase64;
+    this.model.categories = this.categoriesSelected;
+    this.articlesCreateService.create(this.model)
+    .subscribe(
+        data => {
+            this.alertService.success('Registration successful', true);
+            this.router.navigate(['/dashboard/articles']);
+        },
+        error => {
+            this.alertService.error(error);
+            this.loading = false;
+        });
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
+
+        if (fileInput.target.files[0].size > max_size) {
+            this.imageError =
+                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+
+            return false;
+        }        
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                console.log(img_height, img_width);
+
+
+                if (img_height > max_height && img_width > max_width) {
+                    this.imageError =
+                        'Maximum dimentions allowed ' +
+                        max_height +
+                        '*' +
+                        max_width +
+                        'px';
+                    return false;
+                } else {
+                    const imgBase64Path = e.target.result;
+                    this.cardImageBase64 = imgBase64Path;
+                    this.isImageSaved = true;
+                    // this.previewImagePath = imgBase64Path;
+                }
+            };
+        };
+
+        reader.readAsDataURL(fileInput.target.files[0]);
+    }
+}
+
 
 }
