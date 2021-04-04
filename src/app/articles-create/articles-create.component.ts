@@ -124,8 +124,9 @@ export class ArticlesCreateComponent implements OnInit {
   
 
   ngOnInit() {
-    this.getCategories();
+    this.getCategories();    
   }
+
 
   logCheckbox(element: HTMLInputElement): void {
     this.log += `Checkbox ${element.value} was ${element.checked ? '' : 'un'}checked\n`;
