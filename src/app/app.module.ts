@@ -42,6 +42,8 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UsersComponent } from './users/users.component';
 import { TagsComponent } from './tags/tags.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
+import { HighlightDirective } from './_directives/highlight.directive';
+import { FilterPipe } from './_pipes/filter.pipe';
 
 @NgModule({
 		imports: [
@@ -80,11 +82,12 @@ import { TagsListComponent } from './tags-list/tags-list.component';
 			ComentariosListComponent,
 			UserRegistrationComponent,
 			UserLoginComponent,
-   UsersListComponent,
-   UsersComponent,
-   TagsComponent,
-   TagsListComponent
-			
+			UsersListComponent,
+			UsersComponent,
+			TagsComponent,
+			TagsListComponent,
+			HighlightDirective,
+			FilterPipe		
     ],
     providers: [
         AuthGuard,

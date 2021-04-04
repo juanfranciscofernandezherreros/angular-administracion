@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriesListService} from '../_services/categories-list.service';
+import {TagsListService} from '../_services/tags-list.service';
 import { ArticlesCreateService } from '../_services/articles-create.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
@@ -37,9 +38,58 @@ export class ArticlesCreateComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
-
+  
+  tagsSelected = [];
   categoriesSelected = [];
-
+  
+  characters = [
+    'Ant-Man',
+    'Aquaman',
+    'Asterix',
+    'The Atom',
+    'The Avengers',
+    'Batgirl',
+    'Batman',
+    'Batwoman',
+    'Black Canary',
+    'Black Panther',
+    'Captain America',
+    'Captain Marvel',
+    'Catwoman',
+    'Conan the Barbarian',
+    'Daredevil',
+    'The Defenders',
+    'Doc Savage',
+    'Doctor Strange',
+    'Elektra',
+    'Fantastic Four',
+    'Ghost Rider',
+    'Green Arrow',
+    'Green Lantern',
+    'Guardians of the Galaxy',
+    'Hawkeye',
+    'Hellboy',
+    'Incredible Hulk',
+    'Iron Fist',
+    'Iron Man',
+    'Marvelman',
+    'Robin',
+    'The Rocketeer',
+    'The Shadow',
+    'Spider-Man',
+    'Sub-Mariner',
+    'Supergirl',
+    'Superman',
+    'Teenage Mutant Ninja Turtles',
+    'Thor',
+    'The Wasp',
+    'Watchmen',
+    'Wolverine',
+    'Wonder Woman',
+    'X-Men',
+    'Zatanna',
+    'Zatara',
+  ]
 
   /** https://www.freakyjolly.com/angular-input-file-image-file-upload-to-base64-tutorial-by-example*/
 
@@ -52,6 +102,7 @@ export class ArticlesCreateComponent implements OnInit {
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,
     private userService: UserService,
+    private tagsService:TagsListService,
     private languageService:ObtenerIdiomasService,
     private formBuilder: FormBuilder
     ) {
@@ -67,6 +118,7 @@ export class ArticlesCreateComponent implements OnInit {
       language: new FormControl(),
       content: new FormControl(),
       mainImage: new FormControl(),
+      searchText: new FormControl(),
       description: new FormControl(),
     });
   
@@ -130,6 +182,13 @@ _handleReaderLoaded(readerEvt) {
       this.categoriesSelected.splice(index, 1);
     }
   }
+
+  onKeyUpEvent(event: any) {
+    if(event.target.value.length>3){
+      alert(event.target.value);
+    } 
+  }
+  
     
   submit(){
     this.model.title = this.createArticle.get('title').value;
