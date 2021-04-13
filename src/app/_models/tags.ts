@@ -4,4 +4,5 @@ export class Tags {
     name:string;
     slug:string;
     language:string;
+    totalArticles:number;
 }
