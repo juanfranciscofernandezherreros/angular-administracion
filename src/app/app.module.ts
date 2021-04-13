@@ -42,8 +42,12 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UsersComponent } from './users/users.component';
 import { TagsComponent } from './tags/tags.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
+import { TagsCreateComponent } from './tags-create/tags-create.component';
 import { HighlightDirective } from './_directives/highlight.directive';
 import { FilterPipe } from './_pipes/filter.pipe';
+import { TagsEditComponent } from './tags-edit/tags-edit.component';
+import { TagsService } from './_services/tags.service';
+import { TagsViewComponent } from './tags-view/tags-view.component';
 
 @NgModule({
 		imports: [
@@ -86,8 +90,11 @@ import { FilterPipe } from './_pipes/filter.pipe';
 			UsersComponent,
 			TagsComponent,
 			TagsListComponent,
+			TagsCreateComponent,
 			HighlightDirective,
-			FilterPipe		
+			FilterPipe,
+   TagsEditComponent,
+   TagsViewComponent,
     ],
     providers: [
         AuthGuard,
@@ -95,6 +102,7 @@ import { FilterPipe } from './_pipes/filter.pipe';
         AlertService,
 		AuthenticationService,
 		CategoriesListService,
+		TagsService,
         UserService ,
         {
             provide: HTTP_INTERCEPTORS,

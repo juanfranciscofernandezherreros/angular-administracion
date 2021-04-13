@@ -7,20 +7,16 @@ import { Tags } from '../_models/tags';
 @Injectable({
   providedIn: 'root'
 })
-export class TagsListService {
+export class TagsCreateService {
 
   public apiUrl: string;
   private articles:string = environment.blogs;
   
   constructor(private http: HttpClient) { }
 
-  getTags(page:number){
-    return this.http.get(this.articles+"/api/public/v1/tags?page="+page);
-  }
-
-  getTagById(tagId:number){
-    return this.http.get(this.articles+"/api/public/v1/tag?tagId="+tagId);
-
+  createTags(tags:Tags){
+    return this.http.post(this.articles+"/api/protected/v1/tag",tags);
   }
 
 }
+

@@ -1,19 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { RolesComponent } from './roles/roles.component';
-import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
-import { LogoComponent } from './logo/logo.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AlertComponent } from './alert/alert.component';
-import { HomeComponent } from './home/home.component';
-import { AdministradorComponent } from './administrador/administrador.component';
-import { AuthGuard } from './_guards/index';
-import { AdminGuard } from './_guards/index';
 import { AdminComponent } from './admin/admin.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
@@ -29,6 +14,9 @@ import { UsersComponent } from './users/users.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { TagsComponent } from './tags/tags.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
+import { TagsCreateComponent } from './tags-create/tags-create.component';
+import { TagsEditComponent } from './tags-edit/tags-edit.component';
+import { TagsViewComponent } from './tags-view/tags-view.component';
 
 const routes: Routes = [
 	{
@@ -49,9 +37,7 @@ const routes: Routes = [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
       { path: 'edit/:id', component: ArticlesEditComponent },
-      { path: 'view/:id', component: ArticlesViewComponent },
-      { path: 'translate/:id', component: ArticleTranslateComponent }
-
+      { path: 'view/:id', component: ArticlesViewComponent }
     ]	 
   },
   {
@@ -60,7 +46,7 @@ const routes: Routes = [
     children: [
      { path: '', component: ComentariosListComponent }
    ]	 
- },
+  },
   {
     path: 'dashboard/users',
     component: UsersComponent,
@@ -72,8 +58,11 @@ const routes: Routes = [
     path: 'dashboard/tags',
     component: TagsComponent,
     children: [
-    { path: '', component: TagsListComponent }
-  ]	 
+    { path: '', component: TagsListComponent },
+    { path: 'create', component: TagsCreateComponent },
+    { path: 'edit/:id', component: TagsEditComponent },
+    { path: 'view/:id', component: TagsViewComponent }
+    ]	 
   },
   {
      path: '**',
