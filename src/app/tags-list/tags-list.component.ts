@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TagsListService} from '../_services/tags-list.service';
+import {TagsDeleteService} from '../_services/tags-delete.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tags-list',
@@ -12,7 +14,10 @@ export class TagsListComponent implements OnInit {
   private tags:Array<any>;
   private pages:Array<number>;
 
-  constructor(private _myService:TagsListService) {}
+  constructor(private _myService:TagsListService,
+              private _deleteService:TagsDeleteService,
+              private route: ActivatedRoute,
+              private router: Router,) {}
 
   ngOnInit() {
     this.getTags();
@@ -29,6 +34,18 @@ export class TagsListComponent implements OnInit {
       data=>{        
         this.tags=data['content'];
         this.pages = new Array(data['totalPages']);
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  deleteTag(tagId:number){
+    this._deleteService.deleteTagById(tagId).subscribe(
+      data=>{
+        this.router.navigate(['/dashboard/tags']);        
       },
 
       (error)=>{

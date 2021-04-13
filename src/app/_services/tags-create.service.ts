@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders  } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Article } from '../_models/article';
+import { Tags } from '../_models/tags';
+
 @Injectable({
   providedIn: 'root'
 })
-export class ArticlesCreateService {
+export class TagsCreateService {
 
   public apiUrl: string;
-
   private articles:string = environment.blogs;
-
+  
   constructor(private http: HttpClient) { }
 
-  create(article: Article) {
-    alert(JSON.stringify(article));
-    return this.http.post(this.articles+"/api/protected/v1/article", article);
+  createTags(tags:Tags){
+    return this.http.post(this.articles+"/api/protected/v1/tag",tags);
   }
 
 }
+

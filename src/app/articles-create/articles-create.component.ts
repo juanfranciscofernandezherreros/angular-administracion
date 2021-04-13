@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriesListService} from '../_services/categories-list.service';
+import {TagsListService} from '../_services/tags-list.service';
 import { ArticlesCreateService } from '../_services/articles-create.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
 import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
+import { UserService } from '../_services/user.service';
 import { Article } from '../_models/article';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
+import { User } from '../_models';
+import { title } from 'process';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
-  selector: 'app-articles-create',
+  selector: 'app-articles-create', 
   templateUrl: './articles-create.component.html',
   styleUrls: ['./articles-create.component.css']
 })
 export class ArticlesCreateComponent implements OnInit {
-
+  private base64textString:String="";
   model: any = {};
   model2: any = {};
   selectedDay: string = '';
@@ -19,102 +25,119 @@ export class ArticlesCreateComponent implements OnInit {
   loading = false;
   returnUrl: string;
   article: Article = new Article()
+  user: any = {};
   checkbox: boolean;
   categoriesList: any = {};
   interests = [];
-  user : any = {};
   private categories:Array<any>;
+  page : number = 0;
+  pages: Array<number>;
+  username:String;
+
+  /*IMAGE */
+  imageError: string;
+  isImageSaved: boolean;
+  cardImageBase64: string;
+  
+  tagsSelected = [];
+  categoriesSelected = [];
+  
+  characters = [
+    'Ant-Man',
+    'Aquaman',
+    'Asterix',
+    'The Atom',
+    'The Avengers',
+    'Batgirl',
+    'Batman',
+    'Batwoman',
+    'Black Canary',
+    'Black Panther',
+    'Captain America',
+    'Captain Marvel',
+    'Catwoman',
+    'Conan the Barbarian',
+    'Daredevil',
+    'The Defenders',
+    'Doc Savage',
+    'Doctor Strange',
+    'Elektra',
+    'Fantastic Four',
+    'Ghost Rider',
+    'Green Arrow',
+    'Green Lantern',
+    'Guardians of the Galaxy',
+    'Hawkeye',
+    'Hellboy',
+    'Incredible Hulk',
+    'Iron Fist',
+    'Iron Man',
+    'Marvelman',
+    'Robin',
+    'The Rocketeer',
+    'The Shadow',
+    'Spider-Man',
+    'Sub-Mariner',
+    'Supergirl',
+    'Superman',
+    'Teenage Mutant Ninja Turtles',
+    'Thor',
+    'The Wasp',
+    'Watchmen',
+    'Wolverine',
+    'Wonder Woman',
+    'X-Men',
+    'Zatanna',
+    'Zatara',
+  ]
+
+  /** https://www.freakyjolly.com/angular-input-file-image-file-upload-to-base64-tutorial-by-example*/
+
+  form: FormGroup;
 
   constructor( 
     private route: ActivatedRoute,
     private router: Router,
-    private _myService:CategoriesListService,
+    private categoriesListService:CategoriesListService,
     private articlesCreateService: ArticlesCreateService,
     private alertService: AlertService,
-    private languageService:ObtenerIdiomasService
-    ) {}
+    private userService: UserService,
+    private tagsService:TagsListService,
+    private languageService:ObtenerIdiomasService,
+    private formBuilder: FormBuilder
+    ) {
+      this.form = this.formBuilder.group({
+        website: this.formBuilder.array([], [Validators.required])
+      })
+    }
     
+    createArticle = new FormGroup({
+      title: new FormControl(),
+      slug: new FormControl(),
+      username: new FormControl(),
+      language: new FormControl(),
+      content: new FormControl(),
+      mainImage: new FormControl(),
+      searchText: new FormControl(),
+      description: new FormControl(),
+    });
+  
 
   ngOnInit() {
-
-      this.getLanguages();
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
-
+    this.getCategories();    
   }
+
 
   logCheckbox(element: HTMLInputElement): void {
     this.log += `Checkbox ${element.value} was ${element.checked ? '' : 'un'}checked\n`;
-  }
-
-  register() {
-    this.user = localStorage.getItem("currentUser");
-    this.loading = true;    
-    this.model.images = this.model.images;
-    this.model.title= this.model.title
-    this.model.categorias = this.interests;
-    this.model.userId = localStorage.getItem("userIdBackend");
-    this.model.isPublished=0;
-    this.getLanguageByIso2(this.model.languageId);
-    alert(JSON.stringify(this.model));
-    this.articlesCreateService.create(this.model)
-        .subscribe(
-            data => {
-                this.alertService.success('Registration successful', true);
-                this.router.navigate(['/dashboard/articles']);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
-  }  
-
-  getLanguages(){
-    this.languageService.getObtenerIdiomas().subscribe(
-      data=>{        
-        this.model2.languages=data["_embedded"];
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
-  }
-
-handleUpload(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-        var targ = event.target || event.srcElement;
-        this.model.images = reader.result;
-    };
-}
-
-
-onCheckboxChange(evt,value) {
-  this.checkbox = evt.target.checked;
-  console.log();
-  if(evt.target.checked){
-    this.interests.push(value);
-  }else{
-    let index = this.interests.indexOf(value);
-    if (index > -1) {
-      this.interests.splice(index, 1);
-    }
-  }
-   
-}
-
-//event handler for the select element's change event
+  } 
 
 changedata(evt) {
-  alert(evt.target.value);
   this.model.languageId = evt.target.value;
     this.categories=null;
-    this._myService.getCategoriesList(this.model.languageId).subscribe(
+    this.categoriesListService.getCategoriesList(this.model.languageId).subscribe(
       data=>{        
         this.categories=data['content'];
-        console.log(this.categories);
       },
       (error)=>{
         console.log("Error");
@@ -122,15 +145,120 @@ changedata(evt) {
     );
 }
 
-getLanguageByIso2(language:string){
-  this.languageService.getLanguageByIso2(language).subscribe(
-    data=>{       
-      this.model.languageId=data["id"];
+getCategories(){
+  this.categoriesListService.getCategories(this.page).subscribe(      
+    data=>{      
+      this.categories=data['content'];
+      this.pages = new Array(data['totalPages']);       
     },
     (error)=>{
       console.log("Error");
     }
   );
 }
+
+handleFileSelect(evt){
+  var files = evt.target.files;
+  var file = files[0];
+
+if (files && file) {
+    var reader = new FileReader();
+
+    reader.onload =this._handleReaderLoaded.bind(this);
+
+    reader.readAsBinaryString(file);
+}
+}
+
+_handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.model.mainImage = btoa(binaryString);
+  }
+
+  onCheck(event,$value){ 
+    if ( event.target.checked ) {      
+      this.categoriesSelected.push($value);
+    }else{
+      const index: number = this.categoriesSelected.indexOf($value);
+      this.categoriesSelected.splice(index, 1);
+    }
+  }
+
+  onKeyUpEvent(event: any) {
+    if(event.target.value.length>3){
+      alert(event.target.value);
+    } 
+  }
+  
+    
+  submit(){
+    this.model.title = this.createArticle.get('title').value;
+    this.model.slug = this.createArticle.get('slug').value;
+    this.model.username = this.createArticle.get('username').value;
+    this.model.language = this.createArticle.get('language').value;
+    this.model.content = this.createArticle.get('content').value;
+    this.model.mainImage = this.createArticle.get('mainImage').value;
+    this.model.description = this.createArticle.get('description').value;
+    this.model.mainImage = this.cardImageBase64;
+    this.model.categories = this.categoriesSelected;
+    this.articlesCreateService.create(this.model)
+    .subscribe(
+        data => {
+            this.alertService.success('Registration successful', true);
+            this.router.navigate(['/dashboard/articles']);
+        },
+        error => {
+            this.alertService.error(error);
+            this.loading = false;
+        });
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
+
+        if (fileInput.target.files[0].size > max_size) {
+            this.imageError =
+                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+
+            return false;
+        }        
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                console.log(img_height, img_width);
+
+
+                if (img_height > max_height && img_width > max_width) {
+                    this.imageError =
+                        'Maximum dimentions allowed ' +
+                        max_height +
+                        '*' +
+                        max_width +
+                        'px';
+                    return false;
+                } else {
+                    const imgBase64Path = e.target.result;
+                    this.cardImageBase64 = imgBase64Path;
+                    this.isImageSaved = true;
+                    // this.previewImagePath = imgBase64Path;
+                }
+            };
+        };
+
+        reader.readAsDataURL(fileInput.target.files[0]);
+    }
+}
+
 
 }

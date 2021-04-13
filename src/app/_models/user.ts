@@ -8,6 +8,4 @@ export class User {
     token:string;
     access_token:string;
     roles:string[];
-    
-
 }

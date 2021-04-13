@@ -16,6 +16,10 @@ export class UserService {
     
     constructor(private http: HttpClient) { }
 
+    findUserByUsername(username:String){
+      return this.http.get(this.articles+"/api/public/v1/user?username="+username);
+    }
+
     getUsers(page:number){
       return this.http.get(this.articles+"/api/public/v1/users?page="+page);
     }

@@ -17,6 +17,10 @@ export class CategoriesListService {
     return this.http.get(this.articles+"/api/public/v1/categories?page="+page);
   }
 
+  findCategoryById(categoryId:number){
+    return this.http.get(this.articles+"/api/public/v1/category?categoryId="+categoryId);
+  }
+
   getCategoriesList(iso2:string){
 
     return this.http.get(this.articles+iso2);

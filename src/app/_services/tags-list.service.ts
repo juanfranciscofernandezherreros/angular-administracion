@@ -18,4 +18,9 @@ export class TagsListService {
     return this.http.get(this.articles+"/api/public/v1/tags?page="+page);
   }
 
+  getTagById(tagId:number){
+    return this.http.get(this.articles+"/api/public/v1/tag?tagId="+tagId);
+
+  }
+
 }

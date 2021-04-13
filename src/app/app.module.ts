@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule , ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './alert/alert.component';
@@ -42,11 +42,18 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UsersComponent } from './users/users.component';
 import { TagsComponent } from './tags/tags.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
+import { TagsCreateComponent } from './tags-create/tags-create.component';
+import { HighlightDirective } from './_directives/highlight.directive';
+import { FilterPipe } from './_pipes/filter.pipe';
+import { TagsEditComponent } from './tags-edit/tags-edit.component';
+import { TagsService } from './_services/tags.service';
+import { TagsViewComponent } from './tags-view/tags-view.component';
 
 @NgModule({
 		imports: [
 			BrowserModule,
 	    FormsModule,
+		ReactiveFormsModule,
 		HttpClientModule,
 		CKEditorModule,
 	    routing
@@ -79,11 +86,15 @@ import { TagsListComponent } from './tags-list/tags-list.component';
 			ComentariosListComponent,
 			UserRegistrationComponent,
 			UserLoginComponent,
-   UsersListComponent,
-   UsersComponent,
-   TagsComponent,
-   TagsListComponent
-			
+			UsersListComponent,
+			UsersComponent,
+			TagsComponent,
+			TagsListComponent,
+			TagsCreateComponent,
+			HighlightDirective,
+			FilterPipe,
+   TagsEditComponent,
+   TagsViewComponent,
     ],
     providers: [
         AuthGuard,
@@ -91,6 +102,7 @@ import { TagsListComponent } from './tags-list/tags-list.component';
         AlertService,
 		AuthenticationService,
 		CategoriesListService,
+		TagsService,
         UserService ,
         {
             provide: HTTP_INTERCEPTORS,
