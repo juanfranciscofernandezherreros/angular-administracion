@@ -25,6 +25,9 @@ import { TopbarheaderComponent } from './topbarheader/topbarheader.component';
 import { ProfileMainComponent } from './profile-main/profile-main.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { CategoriesCreateComponent } from './categories-create/categories-create.component';
+import { CategoriesEditComponent } from './categories-edit/categories-edit.component';
+import { CategoriesViewComponent } from './categories-view/categories-view.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
@@ -76,6 +79,9 @@ import { TagsViewComponent } from './tags-view/tags-view.component';
 			ProfileMainComponent,
 			CategoriesComponent,
 			CategoriesListComponent,
+			CategoriesCreateComponent,
+			CategoriesEditComponent,
+			CategoriesViewComponent,
 			ArticlesComponent,
 			ArticlesListComponent,
 			ArticlesCreateComponent,
@@ -93,8 +99,8 @@ import { TagsViewComponent } from './tags-view/tags-view.component';
 			TagsCreateComponent,
 			HighlightDirective,
 			FilterPipe,
-   TagsEditComponent,
-   TagsViewComponent,
+			TagsEditComponent,
+			TagsViewComponent,
     ],
     providers: [
         AuthGuard,

@@ -1,13 +1,15 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { CategoriesCreateComponent } from './categories-create/categories-create.component';
+import { CategoriesEditComponent } from './categories-edit/categories-edit.component';
+import { CategoriesViewComponent } from './categories-view/categories-view.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
-import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
 import { UsersComponent } from './users/users.component';
@@ -27,7 +29,10 @@ const routes: Routes = [
      path: 'dashboard/categories',
      component: CategoriesComponent,
      children: [
-      { path: '', component: CategoriesListComponent }
+      { path: '', component: CategoriesListComponent },
+      { path: 'create', component: CategoriesCreateComponent },
+      { path: 'edit/:id', component: CategoriesEditComponent },
+      { path: 'view/:id', component: CategoriesViewComponent }
     ]	 
   },
   {
@@ -58,10 +63,10 @@ const routes: Routes = [
     path: 'dashboard/tags',
     component: TagsComponent,
     children: [
-    { path: '', component: TagsListComponent },
-    { path: 'create', component: TagsCreateComponent },
-    { path: 'edit/:id', component: TagsEditComponent },
-    { path: 'view/:id', component: TagsViewComponent }
+      { path: '', component: TagsListComponent },
+      { path: 'create', component: TagsCreateComponent },
+      { path: 'edit/:id', component: TagsEditComponent },
+      { path: 'view/:id', component: TagsViewComponent }
     ]	 
   },
   {
