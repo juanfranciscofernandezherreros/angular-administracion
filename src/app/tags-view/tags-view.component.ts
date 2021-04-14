@@ -50,9 +50,13 @@ export class TagsViewComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
       });
-
-  
       
+  }
+
+  deleteArticleFromTag(tagId:number,articleId:number){
+    this.apiService.deleteArticleFromTag(tagId,articleId).subscribe(data => {    
+      this.tag = data;    
+    }, error => console.log(error));
   }
 
 }

@@ -32,4 +32,8 @@ export class TagsService {
   deleteUser(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseUrl+"protected/v1/tag/"+id);
   }
+
+  deleteArticleFromTag(tagId: number , articleId:number):Observable<any> {
+    return this.http.delete(this.baseUrl+"protected/v1/tag/"+tagId+"/article/"+articleId);
+  }
 }
