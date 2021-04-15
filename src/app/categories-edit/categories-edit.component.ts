@@ -49,7 +49,7 @@ export class CategoriesEditComponent implements OnInit {
     this.categoriesEditService.updateCategory(this.model).subscribe(
       data => {
           this.alertService.success('Tag successful', true);
-          this.router.navigate(['/dashboard/tags']);
+          this.router.navigate(['/dashboard/categories']);
       },
       error => {
           this.alertService.error(error);
