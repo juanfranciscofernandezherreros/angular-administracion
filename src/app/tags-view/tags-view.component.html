@@ -28,7 +28,7 @@
               <tr *ngFor="let article of tag.articles">
                 <td>{{article.id}}</td>
                 <td>{{article.title}}</td>   
-                <td><a class="btn btn-danger" (click)="deleteArticleFromTag(tag.id , article.id)">Borrar</a> <a class="btn btn-info" href="dashboard/articles/view/{{tag.id}}">Ver</a></td>             
+                <td><a class="btn btn-danger" (click)="deleteArticleFromTag(tag.id , article.id)">Borrar</a></td>             
               </tr>  
             </tbody>
           </table>

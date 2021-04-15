@@ -1,3 +1,5 @@
+import { Article } from "./article";
+
 export class Categories {
 
     id: number;
@@ -5,4 +7,5 @@ export class Categories {
     slug:string;
     language:string;
     totalArticles:number;
+    articles: Article[];
 }

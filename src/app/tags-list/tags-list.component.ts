@@ -17,7 +17,7 @@ export class TagsListComponent implements OnInit {
   constructor(private _myService:TagsListService,
               private _deleteService:TagsDeleteService,
               private route: ActivatedRoute,
-              private router: Router,) {}
+              private router: Router) {}
 
   ngOnInit() {
     this.getTags();

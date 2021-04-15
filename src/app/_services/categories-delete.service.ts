@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesDeleteService {
 
-  public apiUrl: string;
   private articles:string = environment.blogs;
   
   constructor(private http: HttpClient) { }
@@ -15,4 +14,9 @@ export class CategoriesDeleteService {
   deleteCategoryById(categoryId:number){
     return this.http.delete(this.articles+"/api/protected/v1/category/"+categoryId);
   }
+
+  deleteArticleCategory(categoryId: number , articleId:number):Observable<any> {
+    return this.http.delete(this.articles+"/api/protected/v1/category/"+categoryId+"/article/"+articleId);
+  }
+
 }

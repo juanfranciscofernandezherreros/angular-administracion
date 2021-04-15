@@ -30,28 +30,6 @@ export class TagsViewComponent implements OnInit {
     }, error => console.log(error)); 
   }
 
-  updateTag = new FormGroup({
-    name: new FormControl(),
-    slug: new FormControl(),
-    language: new FormControl()
-  });
-
-  submit() {
-    this.model.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.model.name = this.updateTag.get('name').value;
-    this.model.slug = this.updateTag.get('slug').value;   
-    this.model.language = this.updateTag.get('language').value;   
-    this.apiService.updateTag(this.model).subscribe(
-      data => {
-          this.alertService.success('Tag successful', true);
-          this.router.navigate(['/dashboard/tags']);
-      },
-      error => {
-          this.alertService.error(error);
-          this.loading = false;
-      });
-      
-  }
 
   deleteArticleFromTag(tagId:number,articleId:number){
     this.apiService.deleteArticleFromTag(tagId,articleId).subscribe(data => {    
