@@ -30,6 +30,7 @@ export class ArticlesCreateComponent implements OnInit {
   categoriesList: any = {};
   interests = [];
   private categories:Array<any>;
+  private tags:Array<any>;
   page : number = 0;
   pages: Array<number>;
   username:String;
@@ -125,6 +126,7 @@ export class ArticlesCreateComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();    
+    this.getTags();
   }
 
 
@@ -150,6 +152,17 @@ getCategories(){
     data=>{      
       this.categories=data['content'];
       this.pages = new Array(data['totalPages']);       
+    },
+    (error)=>{
+      console.log("Error");
+    }
+  );
+}
+
+getTags(){
+  this.tagsService.getTags(this.page).subscribe(      
+    data=>{      
+      this.tags=data['content'];
     },
     (error)=>{
       console.log("Error");
@@ -184,6 +197,15 @@ _handleReaderLoaded(readerEvt) {
     }
   }
 
+  onCheckTag(event,$value){ 
+    if ( event.target.checked ) {      
+      this.tagsSelected.push($value);
+    }else{
+      const index: number = this.tagsSelected.indexOf($value);
+      this.tagsSelected.splice(index, 1);
+    }
+  }
+
   onKeyUpEvent(event: any) {
     if(event.target.value.length>3){
       alert(event.target.value);
@@ -201,6 +223,7 @@ _handleReaderLoaded(readerEvt) {
     this.model.description = this.createArticle.get('description').value;
     this.model.mainImage = this.cardImageBase64;
     this.model.categories = this.categoriesSelected;
+    this.model.tags = this.tagsSelected;
     this.articlesCreateService.create(this.model)
     .subscribe(
         data => {
