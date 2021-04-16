@@ -21,6 +21,7 @@ export class ArticlesListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private deleteArticleService: BorrarArticuloService,
     private articleService : ArticlesListService , 
   ) { }
 
@@ -46,5 +47,18 @@ export class ArticlesListComponent implements OnInit {
       }
     );
   }
+  
+  deleteArticle(articleId:number){
+    this.deleteArticleService.deleteArticle(articleId).subscribe(
+      data=>{
+        this.router.navigate(['/dashboard/articles']);        
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+  
 
 }
