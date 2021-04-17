@@ -43,7 +43,7 @@
           <tr *ngFor="let tag of article.tags">
             <td>{{tag.id}}</td>
             <td>{{tag.name}}</td>   
-            <td><a class="btn btn-danger" (click)="deleteArticleFromCategory(tag.id , tag.id)">Borrar</a></td>             
+            <td><a class="btn btn-danger" (click)="deleteTagFromArticle(tag.id , article.id)">Borrar</a></td>             
           </tr>  
         </tbody>
       </table>
@@ -60,7 +60,7 @@
           <tr *ngFor="let category of article.categories">
             <td>{{category.id}}</td>
             <td>{{category.name}}</td>   
-            <td><a class="btn btn-danger" (click)="deleteArticleFromCategory(tag.id , tag.id)">Borrar</a></td>             
+            <td><a class="btn btn-danger" (click)="deleteCategoryFromArticle(category.id , article.id)">Borrar</a></td>             
           </tr>  
         </tbody>
       </table>
