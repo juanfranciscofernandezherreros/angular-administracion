@@ -13,4 +13,4 @@ export class Article {
     user:User;
     tags:Tags[];
     categories:Categories[];
-}
+} 
