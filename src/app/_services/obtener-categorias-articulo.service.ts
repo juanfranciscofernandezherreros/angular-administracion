@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObtenerCategoriasArticuloService {
 
-  private categories:string = 'http://localhost:8090/api/categories/v1';
+  private articles:string = environment.blogs;
 
   constructor(private http: HttpClient) { }
 
   getCategoriesPorArticulo(article:number){
-    return this.http.get(this.categories+"/"+article+"/articles");
+    return this.http.get(this.articles+"/article/"+article+"/categories");
   }
 
 }

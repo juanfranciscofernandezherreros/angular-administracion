@@ -33,9 +33,22 @@
        <div class="form-group">
         <label for="input-1">Language</label>
         <input type="text" formControlName="language" class="form-control" [(ngModel)]="article.language">
-       </div>  
+       </div>        
        <div class="form-group">
-        
+        <label for="input-1">Categorias</label>
+        <div *ngFor="let category of list; let num = index">
+          <div *ngIf="category.hasCategory === true">
+            <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)" checked/>{{category.name}}
+          </div>
+          <div *ngIf="category.hasCategory === false">
+            <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)"/>{{category.name}}
+          </div>                    
+        </div> 
+        <div *ngFor="let category of list1; let num = index">
+            <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)"/>{{category.name}}
+        </div>                
+      </div>
+       <div class="form-group">        
         <label for="exampleFormControlTextarea1">Descripcion</label>
         <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="article.description"></textarea>
       </div>   

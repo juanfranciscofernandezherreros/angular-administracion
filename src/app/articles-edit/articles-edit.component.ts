@@ -4,6 +4,7 @@ import { ArticleViewService} from '../_services/article-view.service';
 import { ArticleEditService} from '../_services/article-edit.service';
 import { Article } from '../_models/article';
 import { CategoriesDeleteService } from '../_services/categories-delete.service';
+import { ObtenerCategoriasArticuloService } from '../_services/obtener-categorias-articulo.service';
 import { TagsService } from '../_services/tags.service';
 import { Categories } from '../_models/categories';
 import { Tags } from '../_models/tags';
@@ -30,12 +31,15 @@ export class ArticlesEditComponent implements OnInit {
   isImageSaved: boolean;
   cardImageBase64: string;
 
+  list: any = {};
+
   constructor(private activeAouter: ActivatedRoute, 
     private router: Router,
     private tagsService: TagsService,
     private categoriesDeleteService: CategoriesDeleteService,
     private articleViewService: ArticleViewService,
     private articleEditService: ArticleEditService,
+    private obtenerArticulo: ObtenerCategoriasArticuloService,
     private alertService: AlertService,
     private apiService: TagsService,    
     private formBuilder: FormBuilder
@@ -60,6 +64,7 @@ export class ArticlesEditComponent implements OnInit {
   ngOnInit() {
     const id = this.activeAouter.snapshot.params['id'];
     this.getArticleById(id);    
+    this.getCategoriasByArticle(id);
   } 
 
   getArticleById(id) {
@@ -142,6 +147,17 @@ export class ArticlesEditComponent implements OnInit {
 
         reader.readAsDataURL(fileInput.target.files[0]);
     }
+}
+
+getCategoriasByArticle(id){
+  this.obtenerArticulo.getCategoriesPorArticulo(id).subscribe(
+    data=>{        
+      this.list=data;
+    },
+    (error)=>{ 
+      console.log("Error");
+    }
+  );
 }
 
     
