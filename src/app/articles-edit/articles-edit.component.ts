@@ -86,7 +86,7 @@ export class ArticlesEditComponent implements OnInit {
     this.model.username = this.updateArticle.get('username').value;
     this.model.language = this.updateArticle.get('language').value;
     this.model.content = this.updateArticle.get('content').value;
-    this.model.mainImage = this.updateArticle.get('mainImage').value;
+    this.model.mainImage = this.cardImageBase64;
     this.model.description = this.updateArticle.get('description').value;    
     this.model.createdDate = this.updateArticle.get('createdDate').value;    
     this.articleEditService.update(this.model)
@@ -136,7 +136,6 @@ export class ArticlesEditComponent implements OnInit {
                     const imgBase64Path = e.target.result;
                     this.cardImageBase64 = imgBase64Path;
                     this.isImageSaved = true;
-                    alert(this.cardImageBase64);
                 }
             };
         };
