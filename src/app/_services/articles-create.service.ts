@@ -15,7 +15,6 @@ export class ArticlesCreateService {
   constructor(private http: HttpClient) { }
 
   create(article: Article) {
-    alert(JSON.stringify(article));
     return this.http.post(this.articles+"/api/protected/v1/article", article);
   }
 

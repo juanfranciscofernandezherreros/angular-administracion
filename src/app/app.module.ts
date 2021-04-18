@@ -34,7 +34,6 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortMo
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
-import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
@@ -86,7 +85,6 @@ import { TagsViewComponent } from './tags-view/tags-view.component';
 			ArticlesListComponent,
 			ArticlesCreateComponent,
 			ArticlesEditComponent,
-			ArticleTranslateComponent,
 			ArticlesViewComponent,
 			ComentariosComponent,
 			ComentariosListComponent,

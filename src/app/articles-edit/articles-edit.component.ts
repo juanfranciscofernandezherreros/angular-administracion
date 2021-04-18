@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleEditService } from '../_services/article-edit.service';
-import { ArticlesCreateService } from '../_services/articles-create.service';
+import { ArticleViewService} from '../_services/article-view.service';
+import { ArticleEditService} from '../_services/article-edit.service';
 import { Article } from '../_models/article';
-import {CategoriesListService} from '../_services/categories-list.service';
-import { AlertService } from '../_services/index';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { OnChanges, Input } from '@angular/core';
-import {ObtenerCategoriasArticuloService} from '../_services/obtener-categorias-articulo.service';
-import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
-
+import { CategoriesDeleteService } from '../_services/categories-delete.service';
+import { TagsService } from '../_services/tags.service';
+import { Categories } from '../_models/categories';
+import { Tags } from '../_models/tags';
+import { AlertService } from '../_services';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 
 declare function myMehtod(model): any;
 @Component({
@@ -19,130 +17,134 @@ declare function myMehtod(model): any;
   styleUrls: ['./articles-edit.component.css']
 })
 export class ArticlesEditComponent implements OnInit {
+  
   model: any = {};
-  model1: any = {};
-  list: any = {};
-  list1: any = {};
-  log = '';
   loading = false;
-  returnUrl: string;
-  article: Article = new Article()
-  images: any = {};
-  checkbox: boolean;
-  public imagePath;
-  imgURL: any;
-  public message: string;
-  fileData: File = null;
-  previewUrl:any = null;
-  fileUploadProgress: string = null;
-  uploadedFilePath: string = null;
-  //HTML
-   categories:Array<any>;
-  arrayToIterate:number =0;
-  interests = [];
-  interests1 = [];
+  article: Article;  
+  category: Categories;  
+  tag: Tags; 
+  form: FormGroup;
 
-  model2:any={};
-  selectedDay: string = '';
-  languageId:number;
+  /*IMAGE */
+  imageError: string;
+  isImageSaved: boolean;
+  cardImageBase64: string;
 
   constructor(private activeAouter: ActivatedRoute, 
-    private router: Router,private api: ArticleEditService , 
-    private articlesCreateService: ArticlesCreateService,
-    private alertService: AlertService,  
-    private _myService:CategoriesListService,
-    private obtenerArticulo:ObtenerCategoriasArticuloService,
-    private obtenerTodosLosIdiomasService:ObtenerIdiomasService
-    ) { }
+    private router: Router,
+    private tagsService: TagsService,
+    private categoriesDeleteService: CategoriesDeleteService,
+    private articleViewService: ArticleViewService,
+    private articleEditService: ArticleEditService,
+    private alertService: AlertService,
+    private apiService: TagsService,    
+    private formBuilder: FormBuilder
+    ) { 
 
-  ngOnInit() {
-    this.getDetail(this.activeAouter.snapshot.params['id']);
-    this.getLanguages();
-    this.getCategoriasByArticle(this.activeAouter.snapshot.params['id']);
-  } 
+  this.form = this.formBuilder.group({
+    website: this.formBuilder.array([], [Validators.required])
+    })
+  }
+
+  updateArticle = new FormGroup({
+    title: new FormControl(),
+    slug: new FormControl(),
+    username: new FormControl(),
+    content: new FormControl(),
+    mainImage: new FormControl(),
+    description: new FormControl(),
+    createdDate: new FormControl(),
+    language: new FormControl()
+  });
   
-  editar(){
-    this.loading = true;
-    
-    this.model.imageName = this.images;
-    this.model.categorias = this.interests;
-    this.model.categoriesToDelete = this.interests1;
+  ngOnInit() {
+    const id = this.activeAouter.snapshot.params['id'];
+    this.getArticleById(id);    
+  } 
 
-    this.api.updateTodo(this.activeAouter.snapshot.params['id'] ,this.model)
-        .subscribe(
-            data => {
-                this.alertService.success('Edit successful', true);
-                this.router.navigate(['/dashboard/articles']);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
-  }
-
-  getLanguages(){
-    this.obtenerTodosLosIdiomasService.getObtenerIdiomas().subscribe(
-      data=>{        
-        this.model1.languages=data["_embedded"];
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
-  }
-
-  getCategoriasByArticle(id){
-    this.obtenerArticulo.getCategoriesPorArticulo(id).subscribe(
-      data=>{        
-        this.list=data;
-      },
-      (error)=>{ 
-        console.log("Error");
-      }
-    );
-  }
-
-  getDetail(id) {
-    this.api.getArticle(id).subscribe(data => {
-        this.model = data;
+  getArticleById(id) {
+    this.articleViewService.getArticleById(id).subscribe(data => {
+        this.article = data;
     });
   }
+
+  deleteTagFromArticle(tagId:number,articleId:number){
+    this.apiService.deleteArticleFromTag(tagId,articleId).subscribe(data => {    
+      this.tag = data;    
+    }, error => console.log(error));
+  }
   
-  // Image Preview
-  showPreview(event) {
-    var reader = new FileReader();
-    const file = (event.target as HTMLInputElement).files[0];
-    this.model.images="";
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-        var targ = event.target || event.srcElement;
-        this.model.images = reader.result;
-    };
+  deleteCategoryFromArticle(categoryId:number,articleId:number){
+    this.categoriesDeleteService.deleteArticleCategory(categoryId,articleId).subscribe(data => {    
+      this.category = data;    
+    }, error => console.log(error));
   }
 
-  onCheckboxChange(evt,id:number) {
-    this.checkbox = evt.target.checked;
-    if(evt.target.checked){
-      this.interests.push(id);
-    }else{      
-      this.interests1.push(id);
+  submit(){
+    this.model.title = this.updateArticle.get('title').value;
+    this.model.slug = this.updateArticle.get('slug').value;
+    this.model.username = this.updateArticle.get('username').value;
+    this.model.language = this.updateArticle.get('language').value;
+    this.model.content = this.updateArticle.get('content').value;
+    this.model.mainImage = this.updateArticle.get('mainImage').value;
+    this.model.description = this.updateArticle.get('description').value;    
+    this.model.createdDate = this.updateArticle.get('createdDate').value;    
+    this.articleEditService.update(this.model)
+    .subscribe(
+        data => {
+            this.alertService.success('Update successful', true);
+            this.router.navigate(['/dashboard/articles']);
+        },
+        error => {
+            this.alertService.error(error);
+            this.loading = false;
+        });
+  }
 
+  fileChangeEvent(fileInput: any) {
+    this.imageError = null;
+    if (fileInput.target.files && fileInput.target.files[0]) {
+        // Size Filter Bytes
+        const max_size = 20971520;
+        const allowed_types = ['image/png', 'image/jpeg'];
+        const max_height = 15200;
+        const max_width = 25600;
+        if (fileInput.target.files[0].size > max_size) {
+            this.imageError ='Maximum size allowed is ' + max_size / 1000 + 'Mb';
+            return false;
+        }        
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                console.log(img_height, img_width);
+
+
+                if (img_height > max_height && img_width > max_width) {
+                    this.imageError =
+                        'Maximum dimentions allowed ' +
+                        max_height +
+                        '*' +
+                        max_width +
+                        'px';
+                    return false;
+                } else {
+                    const imgBase64Path = e.target.result;
+                    this.cardImageBase64 = imgBase64Path;
+                    this.isImageSaved = true;
+                    alert(this.cardImageBase64);
+                }
+            };
+        };
+
+        reader.readAsDataURL(fileInput.target.files[0]);
     }
-  } 
-  
-  changedata(evt) {
-    this.model.languageId = evt.target.value;
-    this._myService.getCategoriesList(this.model.languageId).subscribe(
-      data=>{        
-        this.list=null;
-        this.list1= data['content'];
-        console.log(this.categories);
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
-  }
+}
+
     
 }
   

@@ -37,63 +37,11 @@ export class ArticlesCreateComponent implements OnInit {
 
   /*IMAGE */
   imageError: string;
-  isImageSaved: boolean;
-  cardImageBase64: string;
+    isImageSaved: boolean;
+    cardImageBase64: string;
   
   tagsSelected = [];
   categoriesSelected = [];
-  
-  characters = [
-    'Ant-Man',
-    'Aquaman',
-    'Asterix',
-    'The Atom',
-    'The Avengers',
-    'Batgirl',
-    'Batman',
-    'Batwoman',
-    'Black Canary',
-    'Black Panther',
-    'Captain America',
-    'Captain Marvel',
-    'Catwoman',
-    'Conan the Barbarian',
-    'Daredevil',
-    'The Defenders',
-    'Doc Savage',
-    'Doctor Strange',
-    'Elektra',
-    'Fantastic Four',
-    'Ghost Rider',
-    'Green Arrow',
-    'Green Lantern',
-    'Guardians of the Galaxy',
-    'Hawkeye',
-    'Hellboy',
-    'Incredible Hulk',
-    'Iron Fist',
-    'Iron Man',
-    'Marvelman',
-    'Robin',
-    'The Rocketeer',
-    'The Shadow',
-    'Spider-Man',
-    'Sub-Mariner',
-    'Supergirl',
-    'Superman',
-    'Teenage Mutant Ninja Turtles',
-    'Thor',
-    'The Wasp',
-    'Watchmen',
-    'Wolverine',
-    'Wonder Woman',
-    'X-Men',
-    'Zatanna',
-    'Zatara',
-  ]
-
-  /** https://www.freakyjolly.com/angular-input-file-image-file-upload-to-base64-tutorial-by-example*/
-
   form: FormGroup;
 
   constructor( 
@@ -250,7 +198,7 @@ _handleReaderLoaded(readerEvt) {
                 'Maximum size allowed is ' + max_size / 1000 + 'Mb';
 
             return false;
-        }        
+        }
         const reader = new FileReader();
         reader.onload = (e: any) => {
             const image = new Image();
@@ -281,6 +229,11 @@ _handleReaderLoaded(readerEvt) {
 
         reader.readAsDataURL(fileInput.target.files[0]);
     }
+}
+
+removeImage() {
+    this.cardImageBase64 = null;
+    this.isImageSaved = false;
 }
 
 
