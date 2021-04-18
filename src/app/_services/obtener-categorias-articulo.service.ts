@@ -11,8 +11,8 @@ export class ObtenerCategoriasArticuloService {
 
   constructor(private http: HttpClient) { }
 
-  getCategoriesPorArticulo(article:number){
-    return this.http.get(this.articles+"/article/"+article+"/categories");
+  getCategoriesPorArticulo(articleId:number){
+    return this.http.get(this.articles+"/api/protected/v1/article/"+articleId+"/categories");
   }
 
 }
