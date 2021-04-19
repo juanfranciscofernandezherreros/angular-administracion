@@ -49,10 +49,10 @@
         <label for="input-1">Tags</label>
         <div *ngFor="let tag of tags; let num = index">
           <div *ngIf="tag.hasTag === true">
-            <input type="checkbox" [value]="tag.id" (change)="onCheckboxChange($event,tag.id)" checked/>{{tag.name}}
+            <input type="checkbox" [value]="tag.id" (change)="onCheckTags($event,tag)" checked/>{{tag.name}}
           </div>
           <div *ngIf="tag.hasTag === false">
-            <input type="checkbox" [value]="tag.id" (change)="onCheckboxChange($event,tag.id)"/>{{tag.name}}
+            <input type="checkbox" [value]="tag.id" (change)="onCheckTags($event,tag)"/>{{tag.name}}
           </div>                    
         </div>                
       </div>

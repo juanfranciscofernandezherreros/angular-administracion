@@ -75,7 +75,7 @@ export class ArticlesEditComponent implements OnInit {
 
   getArticleById(id) {
     this.articleViewService.getArticleById(id).subscribe(data => {
-
+        this.cardImageBase64 = data.mainImage;
         this.article = data;
     });
   }
@@ -103,6 +103,7 @@ export class ArticlesEditComponent implements OnInit {
     this.model.description = this.updateArticle.get('description').value;    
     this.model.createdDate = this.updateArticle.get('createdDate').value;    
     this.model.categories = this.categoriesSelected;
+    this.model.tags = this.tagsSelected;
     this.articleEditService.update(this.model)
     .subscribe(
         data => {
@@ -178,6 +179,11 @@ getTagsByArticle(id){
   this.findTagsArticleService.getTagsPorArticulo(id).subscribe(
     data=>{        
       this.tags=data;
+      for(let tag of this.tags) {
+        if(tag.hasTag==true){
+          this.tagsSelected.push(tag);
+        }
+      }
     },
     (error)=>{ 
       console.log("Error");
@@ -194,11 +200,18 @@ onCheckCategories(event,$value){
   }
 }
 
+onCheckTags(event,$value){ 
+  if ( event.target.checked ) {      
+    this.tagsSelected.push($value);
+  }else{
+    const index: number = this.tagsSelected.indexOf($value);
+    this.tagsSelected.splice(index, 1);
+  }
+
     
 }
   
 
   
-  
-  
+}
 
