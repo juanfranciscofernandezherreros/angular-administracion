@@ -36,15 +36,25 @@
        </div>        
        <div class="form-group">
         <label for="input-1">Categorias</label>
-        <div *ngFor="let category of list; let num = index">
+        <div *ngFor="let category of categories; let num = index">
           <div *ngIf="category.hasCategory === true">
-            <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)" checked/>{{category.name}}
+            <input type="checkbox" [value]="category.id" (change)="onCheckCategories($event,category)" checked/>{{category.name}}
           </div>
           <div *ngIf="category.hasCategory === false">
-            <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)"/>{{category.name}}
+            <input type="checkbox" [value]="category.id" (change)="onCheckCategories($event,category)"/>{{category.name}}
           </div>                    
-        </div> 
-               
+        </div>                
+      </div>
+      <div class="form-group">
+        <label for="input-1">Tags</label>
+        <div *ngFor="let tag of tags; let num = index">
+          <div *ngIf="tag.hasTag === true">
+            <input type="checkbox" [value]="tag.id" (change)="onCheckboxChange($event,tag.id)" checked/>{{tag.name}}
+          </div>
+          <div *ngIf="tag.hasTag === false">
+            <input type="checkbox" [value]="tag.id" (change)="onCheckboxChange($event,tag.id)"/>{{tag.name}}
+          </div>                    
+        </div>                
       </div>
        <div class="form-group">        
         <label for="exampleFormControlTextarea1">Descripcion</label>

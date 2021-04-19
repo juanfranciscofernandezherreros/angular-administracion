@@ -50,6 +50,8 @@ import { FilterPipe } from './_pipes/filter.pipe';
 import { TagsEditComponent } from './tags-edit/tags-edit.component';
 import { TagsService } from './_services/tags.service';
 import { TagsViewComponent } from './tags-view/tags-view.component';
+import { FindTagsArticleService } from './_services/find-tags-article.service';
+
 
 @NgModule({
 		imports: [
@@ -106,6 +108,7 @@ import { TagsViewComponent } from './tags-view/tags-view.component';
         AlertService,
 		AuthenticationService,
 		CategoriesListService,
+		FindTagsArticleService,
 		TagsService,
         UserService ,
         {
