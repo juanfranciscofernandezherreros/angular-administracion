@@ -51,6 +51,9 @@ import { TagsEditComponent } from './tags-edit/tags-edit.component';
 import { TagsService } from './_services/tags.service';
 import { TagsViewComponent } from './tags-view/tags-view.component';
 import { FindTagsArticleService } from './_services/find-tags-article.service';
+import { ComentariosCreateComponent } from './comentarios-create/comentarios-create.component';
+import { ComentariosEditComponent } from './comentarios-edit/comentarios-edit.component';
+import { ComentariosViewComponent } from './comentarios-view/comentarios-view.component';
 
 
 @NgModule({
@@ -101,6 +104,9 @@ import { FindTagsArticleService } from './_services/find-tags-article.service';
 			FilterPipe,
 			TagsEditComponent,
 			TagsViewComponent,
+   ComentariosCreateComponent,
+   ComentariosEditComponent,
+   ComentariosViewComponent,
     ],
     providers: [
         AuthGuard,

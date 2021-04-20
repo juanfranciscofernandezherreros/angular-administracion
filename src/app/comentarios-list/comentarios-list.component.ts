@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ObtenerComentariosService} from '../_services/obtener-comentarios.service';
+import {ComentariosListService} from '../_services/comentarios-list.service';
 
 @Component({
   selector: 'app-comentarios-list',
@@ -12,7 +12,7 @@ export class ComentariosListComponent implements OnInit {
   private comentarios:Array<any>;
   private pages:Array<number>;
 
-  constructor(private _myService:ObtenerComentariosService) {}
+  constructor(private _myService:ComentariosListService) {}
 
   ngOnInit() {
     this.getComentarios();

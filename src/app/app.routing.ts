@@ -12,6 +12,9 @@ import { ArticlesCreateComponent } from './articles-create/articles-create.compo
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
 import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
+import { ComentariosCreateComponent } from './comentarios-create/comentarios-create.component';
+import { ComentariosEditComponent } from './comentarios-edit/comentarios-edit.component';
+import { ComentariosViewComponent } from './comentarios-view/comentarios-view.component';
 import { UsersComponent } from './users/users.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { TagsComponent } from './tags/tags.component';
@@ -49,7 +52,10 @@ const routes: Routes = [
     path: 'dashboard/comentarios',
     component: ComentariosComponent,
     children: [
-     { path: '', component: ComentariosListComponent }
+     { path: '', component: ComentariosListComponent },
+     { path: 'create', component: ComentariosCreateComponent },
+     { path: 'edit/:id', component: ComentariosEditComponent },
+     { path: 'view/:id', component: ComentariosViewComponent }
    ]	 
   },
   {
