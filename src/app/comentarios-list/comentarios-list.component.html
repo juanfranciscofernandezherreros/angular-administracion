@@ -19,8 +19,8 @@
                 <tr *ngFor="let comentario of comentarios">
                   <td>{{comentario.id}}</td>
                   <td>{{comentario.contenido}}</td>
-                  <td>{{comentario.articleId}}</td>
-                  <td><a class="btn btn-warning" href="dashboard/comentarios/edit/{{comentario.id}}">Editar</a> <a class="btn btn-danger" (click)="deleteComentario(comentario.id)">Borrar</a> <a class="btn btn-info" href="dashboard/comentarios/view/{{comentario.id}}">Ver</a></td>             
+                  <td>{{comentario.articleId}}</td>                  
+                  <td><a class="btn btn-warning" href="dashboard/comentarios/edit/{{comentario.id}}">Editar</a> <a class="btn btn-danger" (click)="deleteComentario(comentario.id)">Borrar</a> <a class="btn btn-info" href="dashboard/comentarios/view/{{comentario.id}}">Ver</a> <a class="btn btn-light" href="dashboard/comentarios/{{comentario.id}}/answer/article/{{comentario.articleId}}">Crear Respuesta</a></td>             
                 </tr>  
               </tbody>
             </table>

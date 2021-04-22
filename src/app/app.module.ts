@@ -54,6 +54,7 @@ import { FindTagsArticleService } from './_services/find-tags-article.service';
 import { ComentariosCreateComponent } from './comentarios-create/comentarios-create.component';
 import { ComentariosEditComponent } from './comentarios-edit/comentarios-edit.component';
 import { ComentariosViewComponent } from './comentarios-view/comentarios-view.component';
+import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-answer.component';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { ComentariosViewComponent } from './comentarios-view/comentarios-view.co
    ComentariosCreateComponent,
    ComentariosEditComponent,
    ComentariosViewComponent,
+   ComentariosAnswerComponent,
     ],
     providers: [
         AuthGuard,

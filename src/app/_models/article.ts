@@ -3,6 +3,7 @@ import { Tags } from "./tags";
 import { Categories } from "./categories";
 
 export class Article {
+    id:number;
     title:string;
     slug:string;
     description:string;

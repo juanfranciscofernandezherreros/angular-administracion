@@ -15,4 +15,8 @@ export class ArticleViewService {
   getArticleById(articleId:number):Observable<any>{
     return this.http.get(this.articles+"/api/public/v1/article?articleId="+articleId);
   }
+
+  getArticleBySlug(slug:String) : Observable<any>{
+    return this.http.get(this.articles+"/api/public/v1/article?slug="+slug);
+  }
 }

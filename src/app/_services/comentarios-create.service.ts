@@ -16,4 +16,8 @@ export class ComentariosCreateService {
   createComment(comentario: Comentarios):Observable<any>{
     return this.http.post(this.comments+"/api/protected/v1/comment", comentario);
   }
+
+  updateComment(comentario: Comentarios):Observable<any>{
+    return this.http.put(this.comments+"/api/protected/v1/comment", comentario);
+  }
 }

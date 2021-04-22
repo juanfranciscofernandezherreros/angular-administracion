@@ -39,7 +39,7 @@ export class ComentariosEditComponent implements OnInit {
   submit(): void {    
     this.comentario.id=Number(this.route.snapshot.paramMap.get('id'));
     this.comentario.isanswer=false;
-    this.comentario.articleId=Number(this.updateComment.get('articleId').value);
+    this.comentario.articleId=this.comentario.articleId;
     this.comentario.contenido = this.updateComment.get('contenido').value;
     this.comentario.username = this.updateComment.get('username').value;
     this.comentario.email =this.updateComment.get('email').value;
