@@ -33,20 +33,21 @@ export class ComentariosEditComponent implements OnInit {
     articleId: new FormControl(),
     contenido: new FormControl(),
     username: new FormControl(),
+    createdDate: new FormControl(),
     email: new FormControl()
   });
 
   submit(): void {    
     this.comentario.id=Number(this.route.snapshot.paramMap.get('id'));
-    this.comentario.isanswer=false;
+    this.comentario.isanswer=this.comentario.isanswer;
     this.comentario.articleId=this.comentario.articleId;
     this.comentario.contenido = this.updateComment.get('contenido').value;
     this.comentario.username = this.updateComment.get('username').value;
     this.comentario.email =this.updateComment.get('email').value;
+    this.comentario.authorComment=null;
     this.comentario.parentId=0;
-    this.comentario
+    this.comentario.createdDate=this.updateComment.get('createdDate').value;
     this.comentario.level=0;
-    alert(JSON.stringify(this.comentario));
     this.service.editComment(this.comentario)        
     .subscribe(
       data => {

@@ -28,7 +28,6 @@ export class ComentariosCreateComponent implements OnInit {
     this.model.username = this.model.username;
     this.model.email =this.model.email;
     this.model.parentId=0;
-    this.model
     this.model.level=0;
     this.service.createComment(this.model)        
     .subscribe(

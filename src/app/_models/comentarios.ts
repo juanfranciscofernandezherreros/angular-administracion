@@ -10,4 +10,5 @@ export class Comentarios {
     parentId:number;
     isanswer:boolean;
     level: number;
+    createdDate:string;
 }
