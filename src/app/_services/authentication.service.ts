@@ -3,14 +3,14 @@ import { HttpClient, HttpHeaders , HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../_models/index';
 import 'rxjs/add/operator/map'
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
-
-
-  private loginEndpoint:string = 'http://localhost:8094/oauth/token';
+    
+    private loginEndpoint:string = environment.loginEndpoint+'/oauth/token';
 
     constructor(private http: HttpClient) { }
 
@@ -23,7 +23,6 @@ export class AuthenticationService {
     return this.http.post<User>(this.loginEndpoint+"?username="+username+"&password="+password+"&grant_type=password",null , {headers})
             .map(user => {
                 if (user && user.access_token) {
-                    alert(JSON.stringify(user));
                     localStorage.setItem('user', JSON.stringify(user));
                 }
                 return user;
@@ -32,8 +31,8 @@ export class AuthenticationService {
 
     
     logout() {
-        // remove user from local storage to log user out
         localStorage.removeItem('user');
+        
     }
 
 

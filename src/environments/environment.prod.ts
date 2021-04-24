@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  blogs: 'http://174.138.124.201:8888'
+  blogs: 'https://servicio-blog.herokuapp.com',
+  loginEndpoint: 'https://servicio-authentication.herokuapp.com'
 };

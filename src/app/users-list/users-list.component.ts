@@ -8,9 +8,9 @@ import {UserService} from '../_services/user.service';
 })
 export class UsersListComponent implements OnInit {
 
-  private page : number = 0;
-  private users:Array<any>;
-  private pages:Array<number>;
+  page : number = 0;
+  users:Array<any>;
+  pages:Array<number>;
 
   constructor(private _myService:UserService) {}
 

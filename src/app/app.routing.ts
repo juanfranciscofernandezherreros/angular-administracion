@@ -23,8 +23,10 @@ import { TagsListComponent } from './tags-list/tags-list.component';
 import { TagsCreateComponent } from './tags-create/tags-create.component';
 import { TagsEditComponent } from './tags-edit/tags-edit.component';
 import { TagsViewComponent } from './tags-view/tags-view.component';
+import { AdminGuard } from './_guards/index';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/admin', pathMatch: 'full' },
 	{
 	   path: 'admin',
 	   component: AdminComponent
@@ -32,6 +34,7 @@ const routes: Routes = [
   {
      path: 'dashboard/categories',
      component: CategoriesComponent,
+     canActivate: [AdminGuard],
      children: [
       { path: '', component: CategoriesListComponent },
       { path: 'create', component: CategoriesCreateComponent },
@@ -42,6 +45,7 @@ const routes: Routes = [
   {
      path: 'dashboard/articles',
      component: ArticlesComponent,
+     canActivate: [AdminGuard],
      children: [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
@@ -52,6 +56,7 @@ const routes: Routes = [
   {
     path: 'dashboard/comentarios',
     component: ComentariosComponent,
+    canActivate: [AdminGuard],
     children: [
      { path: '', component: ComentariosListComponent },
      { path: 'create', component: ComentariosCreateComponent },
@@ -63,6 +68,7 @@ const routes: Routes = [
   {
     path: 'dashboard/users',
     component: UsersComponent,
+    canActivate: [AdminGuard],
     children: [
     { path: '', component: UsersListComponent }
   ]	 
@@ -70,6 +76,8 @@ const routes: Routes = [
   {
     path: 'dashboard/tags',
     component: TagsComponent,
+    canActivate: [AdminGuard],
+
     children: [
       { path: '', component: TagsListComponent },
       { path: 'create', component: TagsCreateComponent },

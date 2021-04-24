@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
-  blogs: 'http://localhost:8092'
+  blogs: 'http://localhost:8092',
+  loginEndpoint: 'http://localhost:8094'
 };
 
 /*

@@ -10,9 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ComentariosListComponent implements OnInit {
 
-  private page : number = 0;
-  private comentarios:Array<any>;
-  private pages:Array<number>;
+  page : number = 0;
+  comentarios:Array<any>;
+  pages:Array<number>;
 
   constructor(private _myService:ComentariosListService,
               private comentariosDeleteService:ComentariosDeleteService,

@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './alert/alert.component';
 import { AdminGuard} from './_guards/index';
-import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService,CategoriesListService } from './_services/index';
 import { RolesComponent } from './roles/roles.component';
 import { LoginComponent } from './login/login.component';
@@ -119,7 +118,7 @@ import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-ans
         UserService ,
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: JwtInterceptor,
+            useClass: CustomHttpInterceptorService,
             multi: true
         },
 		{

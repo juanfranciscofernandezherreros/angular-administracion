@@ -12,4 +12,8 @@ export class TopbarheaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+    alert("LOGOUT");
+    localStorage.removeItem('user');
+  }
 }

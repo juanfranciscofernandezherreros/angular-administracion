@@ -21,10 +21,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CategoriesListComponent implements OnInit {
 
-  private page : number = 0;
-  private categories:Array<any>;
-  private category:Categories;
-  private pages:Array<number>;
+  page : number = 0;
+  categories:Array<any>;
+  category:Categories;
+  pages:Array<number>;
 
   constructor(private _myService:CategoriesListService,
               private categoriesDeleteService:CategoriesDeleteService,

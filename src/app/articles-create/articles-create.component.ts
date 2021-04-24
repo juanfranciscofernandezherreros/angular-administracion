@@ -17,7 +17,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./articles-create.component.css']
 })
 export class ArticlesCreateComponent implements OnInit {
-  private base64textString:String="";
+  base64textString:String="";
   model: any = {};
   model2: any = {};
   selectedDay: string = '';
@@ -29,8 +29,8 @@ export class ArticlesCreateComponent implements OnInit {
   checkbox: boolean;
   categoriesList: any = {};
   interests = [];
-  private categories:Array<any>;
-  private tags:Array<any>;
+  categories:Array<any>;
+  tags:Array<any>;
   page : number = 0;
   pages: Array<number>;
   username:String;

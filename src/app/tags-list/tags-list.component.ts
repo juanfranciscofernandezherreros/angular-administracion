@@ -10,9 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TagsListComponent implements OnInit {
 
-  private page : number = 0;
-  private tags:Array<any>;
-  private pages:Array<number>;
+   page : number = 0;
+   tags:Array<any>;
+   pages:Array<number>;
 
   constructor(private _myService:TagsListService,
               private _deleteService:TagsDeleteService,

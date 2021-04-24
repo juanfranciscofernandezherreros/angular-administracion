@@ -26,7 +26,6 @@ export class TagsService {
   }
 
   updateTag(tag: Tags): Observable<ApiResponse> {
-    alert("Tag : " + JSON.stringify(tag));
     return this.http.put<ApiResponse>(this.baseUrl+"protected/v1/tag/",tag);
   }
 
