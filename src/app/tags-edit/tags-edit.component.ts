@@ -3,6 +3,7 @@ import {Router,ActivatedRoute} from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import {Tags} from "../_models/tags";
 import {TagsService} from "../_services/tags.service";
+import {TagsUpdateService} from "../_services/tags-update.service";
 import { AlertService } from '../_services/index';
 
 @Component({
@@ -19,6 +20,7 @@ export class TagsEditComponent implements OnInit {
               private activatedRoute: ActivatedRoute, 
               private router: Router,
               private apiService: TagsService,
+              private tagsUpdateService: TagsUpdateService,
               private alertService: AlertService,
               private route: ActivatedRoute
             ) { }
@@ -41,7 +43,7 @@ export class TagsEditComponent implements OnInit {
     this.model.name = this.updateTag.get('name').value;
     this.model.slug = this.updateTag.get('slug').value;   
     this.model.language = this.updateTag.get('language').value;   
-    this.apiService.updateTag(this.model).subscribe(
+    this.tagsUpdateService.updateTag(this.model).subscribe(
       data => {
           this.alertService.success('Tag successful', true);
           this.router.navigate(['/dashboard/tags']);

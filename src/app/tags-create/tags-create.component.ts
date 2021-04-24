@@ -4,7 +4,6 @@ import {TagsListService} from '../_services/tags-list.service';
 import { ArticlesCreateService } from '../_services/articles-create.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/index';
-import { ObtenerIdiomasService } from '../_services/obtener-idiomas.service';
 import { UserService } from '../_services/user.service';
 import { Article } from '../_models/article';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';

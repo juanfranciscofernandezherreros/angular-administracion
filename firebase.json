@@ -1,7 +1,7 @@
 {
   "emulators": {},
   "hosting": {
-    "public": "public",
+    "public": "dist\\api-frontend",
     "ignore": [
       "firebase.json",
       "**/.*",

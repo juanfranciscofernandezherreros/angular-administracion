@@ -25,9 +25,7 @@ export class TagsService {
     return this.http.post<ApiResponse>(this.baseUrl+"protected/v1/tag",user);
   }
 
-  updateTag(tag: Tags): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(this.baseUrl+"protected/v1/tag/",tag);
-  }
+
 
   deleteUser(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseUrl+"protected/v1/tag/"+id);
