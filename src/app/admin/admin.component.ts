@@ -27,7 +27,6 @@ export class AdminComponent implements OnInit {
     }
 
     login() {
-        console.log("Paso 1" + this.model.username + this.model.password);
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(

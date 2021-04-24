@@ -4,7 +4,6 @@ import { FormsModule , ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './alert/alert.component';
-import { AuthGuard} from './_guards/index';
 import { AdminGuard} from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService,CategoriesListService } from './_services/index';
@@ -111,7 +110,6 @@ import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-ans
    ComentariosAnswerComponent,
     ],
     providers: [
-        AuthGuard,
 		AdminGuard,
         AlertService,
 		AuthenticationService,
