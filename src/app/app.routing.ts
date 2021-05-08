@@ -3,6 +3,8 @@ import { AdminComponent } from './admin/admin.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { EuroleagueComponent } from './euroleague/euroleague.component';
+import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoriesCreateComponent } from './categories-create/categories-create.component';
 import { CategoriesEditComponent } from './categories-edit/categories-edit.component';
@@ -84,6 +86,14 @@ const routes: Routes = [
       { path: 'edit/:id', component: TagsEditComponent },
       { path: 'view/:id', component: TagsViewComponent }
     ]	 
+  },
+  {
+    path: 'dashboard/euroleague',
+    component: EuroleagueComponent,
+    canActivate: [AdminGuard],
+    children: [
+     { path: '', component: EuroleagueListTeamsComponent }
+   ]	 
   },
   {
      path: '**',

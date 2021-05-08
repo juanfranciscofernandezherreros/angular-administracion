@@ -53,17 +53,19 @@ import { ComentariosCreateComponent } from './comentarios-create/comentarios-cre
 import { ComentariosEditComponent } from './comentarios-edit/comentarios-edit.component';
 import { ComentariosViewComponent } from './comentarios-view/comentarios-view.component';
 import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-answer.component';
+import { EuroleagueComponent } from './euroleague/euroleague.component';
+import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 
 
 @NgModule({
 		imports: [
 			BrowserModule,
-	    FormsModule,
-		ReactiveFormsModule,
-		HttpClientModule,
-		CKEditorModule,
-	    routing
-	 ],
+			FormsModule,
+			ReactiveFormsModule,
+			HttpClientModule,
+			CKEditorModule,
+			routing
+	 	],
     declarations: [
 			AppComponent,
 			RolesComponent,			
@@ -103,10 +105,12 @@ import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-ans
 			FilterPipe,
 			TagsEditComponent,
 			TagsViewComponent,
-   ComentariosCreateComponent,
-   ComentariosEditComponent,
-   ComentariosViewComponent,
-   ComentariosAnswerComponent,
+			ComentariosCreateComponent,
+			ComentariosEditComponent,
+			ComentariosViewComponent,
+			ComentariosAnswerComponent,
+			EuroleagueComponent,
+   			EuroleagueListTeamsComponent,
     ],
     providers: [
 		AdminGuard,

@@ -4,35 +4,36 @@ import { HttpClient } from '@angular/common/http';
 import {Tags} from "../_models/tags";
 import {Observable} from "rxjs/index";
 import {ApiResponse} from "../_models/api.response";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TagsService {
 
   constructor(private http: HttpClient) { }
-  
-  baseUrl: string = 'http://localhost:8092/api/';
+
+  private articles:string = environment.blogs;
 
   getUsers() : Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl+"public/v1/tags");
+    return this.http.get<ApiResponse>(this.articles+"/api/public/v1/tags");
   }
 
 
   getUserById(id: number):Observable<any> {
-    return this.http.get(this.baseUrl+"public/v1/tag?tagId="+id);
+    return this.http.get(this.articles+"/api/public/v1/tag?tagId="+id);
   }
 
   createUser(user: Tags): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl+"protected/v1/tag",user);
+    return this.http.post<ApiResponse>(this.articles+"/api/protected/v1/tag",user);
   }
 
 
 
   deleteUser(id: number): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(this.baseUrl+"protected/v1/tag/"+id);
+    return this.http.delete<ApiResponse>(this.articles+"/api/protected/v1/tag/"+id);
   }
 
   deleteArticleFromTag(tagId: number , articleId:number):Observable<any> {
-    return this.http.delete(this.baseUrl+"protected/v1/tag/"+tagId+"/article/"+articleId);
+    return this.http.delete(this.articles+"/api/protected/v1/tag/"+tagId+"/article/"+articleId);
   }
 
   
