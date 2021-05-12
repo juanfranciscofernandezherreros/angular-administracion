@@ -10,7 +10,7 @@
               <tr>
                 <th scope="col">Round</th>
                 <th scope="col">Phase</th>
-                <th scope="col">Date</th>
+                <th scope="col">Number match</th>
                 <th scope="col">Win/Lose</th>
                 <th scope="col">Versus</th>
                 <th scope="col">Resultado</th>
@@ -26,7 +26,7 @@
                 <td>{{match.versus}}</td>   
                 <td>{{match.teamPhaseGameScore}}</td> 
 
-                <td><a href="dashboard/euroleague/detailsMatch/gameCode/{{match.gameCode}}/seasoncode/{{match.seassonCode}}" class="btn btn-info">Ver movimientos</a> <a (click)="syncMatch(match.gameCode,match.seassonCode)" class="btn btn-dark">Syncronizar</a></td>            
+                <td><a href="dashboard/euroleague/detailsMatch/gameCode/{{match.gameCode}}/seasoncode/{{match.seassonCode}}" class="btn btn-info">Ver movimientos</a> <a (click)="syncMatch(match.gameCode,match.seassonCode,match.header.Phase,match.header.Date,match.header.Round)" class="btn btn-dark">Syncronizar</a></td>            
               </tr>  
             </tbody>
           </table>

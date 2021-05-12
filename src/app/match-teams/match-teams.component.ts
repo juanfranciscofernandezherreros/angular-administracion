@@ -36,10 +36,10 @@ export class MatchTeamsComponent implements OnInit {
     );
   }
 
-  syncMatch(gameCode:String,seassonCode:String){
-    this._matchTeamsService.getSyncGameCodeSeassonCode(gameCode,seassonCode).subscribe(
+  syncMatch(gameCode:String,seassonCode:String,phase:String,date:String,round:number){
+    this._matchTeamsService.getSyncGameCodeSeassonCode(gameCode,seassonCode,phase,date,round).subscribe(
       data=>{        
-        this.router.navigate(['dashboard/euroleague/detailsMatch/gameCode/'+gameCode+'/seasoncode/'+seassonCode+'/syncronized/'])
+        this.router.navigate(['dashboard/euroleague/detailsMatch/gameCode/'+gameCode+'/seasoncode/'+seassonCode])
       },
       (error)=>{
         console.log("Error");

@@ -1,3 +1,6 @@
+import { Header } from "./header";
+
+
 export class Match {
     id:number;
     live:boolean;
@@ -6,4 +9,5 @@ export class Match {
     codeTeamA:String;
     codeTeamB:String;
     actualQuarter:number;
+    header:Header;
 }
