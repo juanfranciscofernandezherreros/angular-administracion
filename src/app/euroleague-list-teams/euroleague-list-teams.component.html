@@ -1,1 +1,23 @@
-<p>euroleague-list-teams works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">    
+  <div class="form-group">
+
+      <label for="website">YEAR:</label>
+
+      <select formControlName="yearsList" class="form-control">
+
+          <option disabled>Select Website</option>
+
+          <option>Choose option</option>
+
+          <option *ngFor="let web of yearsList">{{web}}</option>
+
+      </select>
+
+      <div *ngIf="f.yearsList.touched && f.yearsList.invalid" class="alert alert-danger">
+          <div *ngIf="f.yearsList.errors.required">Year is required.</div>
+      </div>
+
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+
+</form>

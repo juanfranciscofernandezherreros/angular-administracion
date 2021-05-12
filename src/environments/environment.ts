@@ -4,7 +4,8 @@
 export const environment = {
   production: false,
   blogs: 'http://localhost:8092',
-  loginEndpoint: 'http://localhost:8094'
+  loginEndpoint: 'http://localhost:8094',
+  basketball :'http://localhost:8485'
 };
 
 /*

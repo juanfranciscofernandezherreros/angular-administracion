@@ -55,6 +55,7 @@ import { ComentariosViewComponent } from './comentarios-view/comentarios-view.co
 import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-answer.component';
 import { EuroleagueComponent } from './euroleague/euroleague.component';
 import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
+import { YearsListService } from './_services/years-list.service';
 
 
 @NgModule({
@@ -119,6 +120,7 @@ import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague
 		CategoriesListService,
 		FindTagsArticleService,
 		TagsService,
+		YearsListService,
         UserService ,
         {
             provide: HTTP_INTERCEPTORS,
