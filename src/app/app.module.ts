@@ -56,6 +56,8 @@ import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-ans
 import { EuroleagueComponent } from './euroleague/euroleague.component';
 import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 import { YearsListService } from './_services/years-list.service';
+import { MatchTeamsComponent } from './match-teams/match-teams.component';
+import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 
 
 @NgModule({
@@ -112,6 +114,8 @@ import { YearsListService } from './_services/years-list.service';
 			ComentariosAnswerComponent,
 			EuroleagueComponent,
    			EuroleagueListTeamsComponent,
+      MatchTeamsComponent,
+      PlayByPlayComponent,
     ],
     providers: [
 		AdminGuard,

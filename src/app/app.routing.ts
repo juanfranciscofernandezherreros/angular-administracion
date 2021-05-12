@@ -4,6 +4,7 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { EuroleagueComponent } from './euroleague/euroleague.component';
+import { MatchTeamsComponent } from './match-teams/match-teams.component';
 import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoriesCreateComponent } from './categories-create/categories-create.component';
@@ -22,6 +23,7 @@ import { UsersComponent } from './users/users.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { TagsComponent } from './tags/tags.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
+import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 import { TagsCreateComponent } from './tags-create/tags-create.component';
 import { TagsEditComponent } from './tags-edit/tags-edit.component';
 import { TagsViewComponent } from './tags-view/tags-view.component';
@@ -92,7 +94,9 @@ const routes: Routes = [
     component: EuroleagueComponent,
     canActivate: [AdminGuard],
     children: [
-     { path: '', component: EuroleagueListTeamsComponent }
+     { path: '', component: EuroleagueListTeamsComponent },
+     { path: 'teamCode/:teamCode/seasson/:seasson', component: MatchTeamsComponent },
+     { path: 'detailsMatch/gameCode/:gameCode/seasoncode/:seasson', component: PlayByPlayComponent }
    ]	 
   },
   {

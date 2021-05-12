@@ -44,7 +44,6 @@ export class CategoriesListComponent implements OnInit {
   getCategories(){
     this._myService.getCategories(this.page).subscribe(
       data=>{        
-        console.log(data);
         this.categories=data['content'];
         this.pages = new Array(data['totalPages']);
 
