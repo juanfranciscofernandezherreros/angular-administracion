@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatchesTeamsService} from '../_services/matches-teams.service';
+import {PlayByPlayService} from '../_services/play-by-play.service';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import {Match} from '../_models/match';
 
@@ -16,9 +18,9 @@ export class MatchTeamsComponent implements OnInit {
   id:number;
 
   constructor(private _matchTeamsService:MatchesTeamsService,
+    private _playByPlayService:PlayByPlayService,
     private route: ActivatedRoute,
     private router: Router) { }
-
   ngOnInit(): void {
     var teamCode = this.route.snapshot.paramMap.get('teamCode');
     var seasson = this.route.snapshot.paramMap.get('seasson');
@@ -40,7 +42,7 @@ export class MatchTeamsComponent implements OnInit {
     this._matchTeamsService.getSyncGameCodeSeassonCode(gameCode,seassonCode,phase,date,round).subscribe(
       data=>{        
         this.id = data["id"];
-        this.router.navigate(['dashboard/euroleague/detailsMatch/gameCode/'+gameCode+'/seasoncode/'+seassonCode+'/match/'+this.id])
+        this.router.navigate(['dashboard/euroleague/details/match/'+this.id])
       },
       (error)=>{
         console.log("Error");
@@ -48,4 +50,6 @@ export class MatchTeamsComponent implements OnInit {
     );
   }
 
+
+  
 }

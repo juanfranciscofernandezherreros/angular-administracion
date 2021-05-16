@@ -14,7 +14,6 @@ import { MenuComponent } from './menu/menu.component';
 import { LogoComponent } from './logo/logo.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
-import { RouterModule , Routes } from '@angular/router';
 import { routing }        from './app.routing';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { AdminComponent } from './admin/admin.component';
@@ -28,7 +27,7 @@ import { CategoriesEditComponent } from './categories-edit/categories-edit.compo
 import { CategoriesViewComponent } from './categories-view/categories-view.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
+import { MatTabsModule } from '@angular/material/tabs';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
@@ -57,7 +56,7 @@ import { EuroleagueComponent } from './euroleague/euroleague.component';
 import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 import { YearsListService } from './_services/years-list.service';
 import { MatchTeamsComponent } from './match-teams/match-teams.component';
-import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
+import { PlayByPlayNotSyncronizedComponent } from './play-by-play-not-syncronized/play-by-play-not-syncronized.component';
 
 @NgModule({
 		imports: [
@@ -66,6 +65,7 @@ import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 			ReactiveFormsModule,
 			HttpClientModule,
 			CKEditorModule,
+			MatTabsModule,
 			routing
 	 	],
     declarations: [
@@ -114,6 +114,7 @@ import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 			EuroleagueComponent,
    			EuroleagueListTeamsComponent,
      	 	MatchTeamsComponent,
+        	PlayByPlayNotSyncronizedComponent,
     ],
     providers: [
 		AdminGuard,

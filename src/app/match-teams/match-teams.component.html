@@ -1,44 +1,11 @@
-<div *ngIf="hasSyncronyzed"><a class="btn btn-info">See PlayByPlay Match</a></div>
-<div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Partidos</h5>
-    <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Round</th>
-                <th scope="col">Phase</th>
-                <th scope="col">Number match</th>
-                <th scope="col">Win/Lose</th>
-                <th scope="col">Versus</th>
-                <th scope="col">Resultado</th>
-                <th scope="col">Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let match of matches">
-                <td>{{match.header.Round}}</td> 
-                <td>{{match.header.Phase}}</td> 
-                <td>{{match.header.Date}}</td> 
-                <td>{{match.winLose}}</td>
-                <td>{{match.versus}}</td>   
-                <td>{{match.teamPhaseGameScore}}</td> 
+{{match.id}}
+{{match.gameCode}}
+{{match.gameCode}}
+{{match.TeamA}}
+{{match.FirstQuarter}}
 
-                <td><a (click)="syncMatch(match.gameCode,match.seassonCode,match.header.Phase,match.header.Date,match.header.Round)" class="btn btn-dark">Syncronizar</a></td>            
-              </tr>  
-            </tbody>
-          </table>
-          
-          <ul class="nav nav-pills">
-            <li class="nav-item" *ngFor="let page of pages;let i=index">
-              <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
-            </li>
-          </ul>
-        </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
+{{match.id}}
+{{match.gameCode}}
+{{match.gameCode}}
+{{match.TeamA}}
+{{match.FirstQuarter[0].playinfo}}

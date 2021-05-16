@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">#{{match.gameCode}} {{match.TeamA}} ({{match.CodeTeamA}}) vs {{match.TeamB}} ({{match.CodeTeamB}})</h5>
+    <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">MARKERTIME</th>
+                <th scope="col">POINTS</th>
+                <th scope="col">CODETEAM</th>
+                <th scope="col">PLAYTYPE</th>   
+                <th scope="col">PLAYER</th>
+                <th scope="col">PLAY TYPE</th>
+                <th scope="col">COMMENT</th>
+                <th scope="col">PLAYINFO</th>
+                <th scope="col">Operaciones</th>  
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of array; let i = index">
+                <td>{{match.FirstQuarter[i].MARKERTIME}}</td>
+                <td>{{match.FirstQuarter[i].POINTS_A}} - {{match.FirstQuarter[i].POINTS_B}}</td>
+                <td>{{match.FirstQuarter[i].CODETEAM}}</td>
+                <td>{{match.FirstQuarter[i].PLAYTYPE}}</td>
+                <td>{{match.FirstQuarter[i].PLAYER}} #{{match.FirstQuarter[i].DORSAL}}</td>   
+                <td>{{match.FirstQuarter[i].PLAYTYPE}}</td>   
+                <td>{{match.FirstQuarter[i].COMMENT}}</td>   
+                <td>{{match.FirstQuarter[i].PLAYINFO}}</td>     
+                <td><a class="btn btn-light">Mark as favourite</a></td>             
+              </tr>  
+            </tbody>
+          </table>
+          
+          <ul class="nav nav-pills">
+            <li class="nav-item" *ngFor="let page of pages;let i=index">
+              <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+            </li>
+          </ul>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>

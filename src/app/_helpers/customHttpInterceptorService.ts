@@ -10,6 +10,7 @@ export class CustomHttpInterceptorService implements HttpInterceptor {
       
       request = request.clone({headers: request.headers.set('accept', 'application/json')});
     }
+    
     request = request.clone({headers: request.headers.set('Accept-Language', 'es-ES')});
     request = request.clone({headers: request.headers.set('Content-Type', 'application/json')});
     return next.handle(request); 

@@ -27,7 +27,7 @@ import { TagsCreateComponent } from './tags-create/tags-create.component';
 import { TagsEditComponent } from './tags-edit/tags-edit.component';
 import { TagsViewComponent } from './tags-view/tags-view.component';
 import { AdminGuard } from './_guards/index';
-import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
+import { PlayByPlayNotSyncronizedComponent } from './play-by-play-not-syncronized/play-by-play-not-syncronized.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
@@ -96,7 +96,7 @@ const routes: Routes = [
     children: [
      { path: '', component: EuroleagueListTeamsComponent },
      { path: 'teamCode/:teamCode/seasson/:seasson', component: MatchTeamsComponent },
-     { path: 'detailsMatch/gameCode/:gameCode/seasoncode/:seasson/match/:matchId', component: PlayByPlayComponent }
+     { path: 'details/match/:matchId', component: PlayByPlayNotSyncronizedComponent }
    ]	 
   },
   {
