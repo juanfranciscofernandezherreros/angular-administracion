@@ -13,7 +13,7 @@ export class MatchTeamsComponent implements OnInit {
   matches:Array<any>;
   teamCode:String;
   hasSyncronyzed:boolean = false;
-  match:Match;
+  id:number;
 
   constructor(private _matchTeamsService:MatchesTeamsService,
     private route: ActivatedRoute,
@@ -39,7 +39,8 @@ export class MatchTeamsComponent implements OnInit {
   syncMatch(gameCode:String,seassonCode:String,phase:String,date:String,round:number){
     this._matchTeamsService.getSyncGameCodeSeassonCode(gameCode,seassonCode,phase,date,round).subscribe(
       data=>{        
-        this.router.navigate(['dashboard/euroleague/detailsMatch/gameCode/'+gameCode+'/seasoncode/'+seassonCode])
+        this.id = data["id"];
+        this.router.navigate(['dashboard/euroleague/detailsMatch/gameCode/'+gameCode+'/seasoncode/'+seassonCode+'/match/'+this.id])
       },
       (error)=>{
         console.log("Error");

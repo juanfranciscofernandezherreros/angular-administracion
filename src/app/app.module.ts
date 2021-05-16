@@ -59,7 +59,6 @@ import { YearsListService } from './_services/years-list.service';
 import { MatchTeamsComponent } from './match-teams/match-teams.component';
 import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 
-
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -114,8 +113,7 @@ import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 			ComentariosAnswerComponent,
 			EuroleagueComponent,
    			EuroleagueListTeamsComponent,
-      MatchTeamsComponent,
-      PlayByPlayComponent,
+     	 	MatchTeamsComponent,
     ],
     providers: [
 		AdminGuard,
@@ -125,7 +123,7 @@ import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 		FindTagsArticleService,
 		TagsService,
 		YearsListService,
-        UserService ,
+		UserService ,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: CustomHttpInterceptorService,

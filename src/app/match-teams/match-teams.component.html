@@ -26,7 +26,7 @@
                 <td>{{match.versus}}</td>   
                 <td>{{match.teamPhaseGameScore}}</td> 
 
-                <td><a href="dashboard/euroleague/detailsMatch/gameCode/{{match.gameCode}}/seasoncode/{{match.seassonCode}}" class="btn btn-info">Ver movimientos</a> <a (click)="syncMatch(match.gameCode,match.seassonCode,match.header.Phase,match.header.Date,match.header.Round)" class="btn btn-dark">Syncronizar</a></td>            
+                <td><a (click)="syncMatch(match.gameCode,match.seassonCode,match.header.Phase,match.header.Date,match.header.Round)" class="btn btn-dark">Syncronizar</a></td>            
               </tr>  
             </tbody>
           </table>
