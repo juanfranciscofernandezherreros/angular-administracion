@@ -11,7 +11,7 @@
  */
  import { Match } from './match';
 
- export interface FirstQuarter { 
+ export class FirstQuarter { 
      id?: number;
      type?: number;
      numberofplay?: number;

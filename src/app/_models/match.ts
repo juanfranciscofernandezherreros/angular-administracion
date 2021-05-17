@@ -3,7 +3,7 @@ import { FirstQuarter } from "./firstQuarter";
 
 import {Deserializable} from "./Deserializable";
 
-export class Match implements Deserializable{ 
+export class Match{ 
     id?: number;
     live?: boolean;
     teamA?: string;
@@ -15,10 +15,5 @@ export class Match implements Deserializable{
     date?: string;
     round?: string;
     gameCode?: string;
-    FirstQuarter?: Array<FirstQuarter>;
-
-    deserialize(input: any) {
-        Object.assign(this, input);
-        return this;
-    }
+    firstQuarterDTO?: Array<FirstQuarter>;
 }

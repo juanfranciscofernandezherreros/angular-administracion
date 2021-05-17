@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PlayByPlayService} from '../_services/play-by-play.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Match } from '../_models/match';
+import { MarkAsFavourite } from '../_models/markAsFavourite';
+import { FirstQuarter } from '../_models/firstQuarter';
 
 @Component({
   selector: 'app-play-by-play-not-syncronized.component',
@@ -11,6 +13,9 @@ import { Match } from '../_models/match';
 export class PlayByPlayNotSyncronizedComponent implements OnInit {
   
   match:Match;
+  private markAsFavourite: MarkAsFavourite = new MarkAsFavourite();
+
+  firstQuarter:FirstQuarter;
 
   constructor(private _playByPlayService:PlayByPlayService,
     private route: ActivatedRoute,
@@ -26,13 +31,36 @@ export class PlayByPlayNotSyncronizedComponent implements OnInit {
   getPlayByPlaySyncronyed(matchId: string) {
     this._playByPlayService.getPlayByPlaySyncronized(matchId).subscribe(
        data=>{  
-         this.array = new Array(data.FirstQuarter.length);
          this.match=data;
        },
        (error)=>{
          console.log("Error");
        }
      );
+   }
+
+   markAsCancelFirstQuarter(firstQuarter:FirstQuarter,matchId:number,match:Math){  
+    this.markAsFavourite.firstQuarterDTO=firstQuarter;
+    this._playByPlayService.cancelAsFavourite(this.markAsFavourite,matchId).subscribe(
+      data=>{  
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+
+   }
+   
+   markAsFavouriteFirstQuarter(firstQuarter:FirstQuarter,matchId:number){  
+    this.markAsFavourite.firstQuarterDTO=firstQuarter;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite,matchId).subscribe(
+      data=>{  
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+
    }
 
 }
