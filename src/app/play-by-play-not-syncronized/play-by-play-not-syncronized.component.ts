@@ -25,7 +25,12 @@ export class PlayByPlayNotSyncronizedComponent implements OnInit {
     this.getPlayByPlaySyncronyed(matchId);
   } 
 
-  array = new Array(12);
+  arrayFirstQuarter = new Array(100);
+  arraySecondQuarter = new Array(100);
+  arrayThirdQuarter = new Array(100);
+  arrayForthQuarter = new Array(100);
+  arrayExtraQuarter = new Array(100);
+
   counter = 0;
 
   getPlayByPlaySyncronyed(matchId: string) {
