@@ -1,60 +1,73 @@
 <div class="col-lg-12">
   <div class="card">
     <div class="card-body">
-    <div class="card-title">Editar artículo</div>
-    <form name="form" (ngSubmit)="f.form.valid && editar()" #f="ngForm" novalidate>           
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Titulo</label>
-        <input type="text" name="titulo" [(ngModel)]="model.titulo" #titulo="ngModel" class="form-control" id="titulo">
-      </div>    
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Clave</label>
-        <input type="text" name="clave" [(ngModel)]="model.clave" #clave="ngModel" class="form-control" id="clave" disabled>
-      </div> 
-      <div class="form-group">
-        <label for="input-1">URL SEO</label>
-        <input type="text" value="model.id" name="urlSeo" [(ngModel)]="model.urlSeo" #urlSeo="ngModel" class="form-control" id="input-1" placeholder="Enter Your Name">
-       </div> 
-       <div class="form-group">
-        <label for="input-1">Username</label>
-        <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" class="form-control" id="input-1" placeholder="Enter Your username">
-       </div> 
-       <div class="form-group">
-        <label for="input-1">Seleccionar idioma</label>  
-        <select class="form-control" (change) = "changedata($event)">
-          <option>{{model.languageId }}</option>
-          <option *ngFor="let option of model1.languages.languages" [value]="option.iso2"> {{option.iso2}} </option>
-        </select>  
+      <div class="card-title">Estás editando el artículo #{{article.id}}</div>
+      <form [formGroup]="updateArticle" (ngSubmit)="submit()">             
         <div class="form-group">
-          <label for="input-1">Categorias</label>
-          <div *ngFor="let category of list; let num = index">
-            <div *ngIf="category.hasCategory === true">
-              <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)" checked/>{{category.nameCategoryTranslated}}
-            </div>
-            <div *ngIf="category.hasCategory === false">
-              <input type="checkbox" [value]="category.categoryId" (change)="onCheckboxChange($event,category.id)"/>{{category.nameCategoryTranslated}}
-            </div>                    
-          </div> 
-          <div *ngFor="let category of list1; let num = index">
-              <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event,category.id)"/>{{category.nameCategoryTranslated}}
-          </div>                
+          <label for="exampleFormControlFile1">Name</label>
+          <input type="text" formControlName="title" class="form-control" [(ngModel)]="article.title">
         </div>
-      </div>
+        <div class="form-group">
+          <label for="input-1">SLUG</label>
+          <input type="text" formControlName="slug" class="form-control" [(ngModel)]="article.slug">
+         </div> 
+        <div class="form-group">
+          <label for="input-1">Username</label>
+          <input type="text" formControlName="username" class="form-control" id="input-1" [(ngModel)]="article.user.username">
+         </div>
+         <div class="form-group">
+          <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+          <div class="img-space">  
+              <ng-container *ngIf="isImageSaved; else elseTemplate">
+                  <img [src]="cardImageBase64" />
+              </ng-container>
+              <ng-template #elseTemplate>
+                  <img [src]="article.mainImage"  class="img-responsive">
+              </ng-template>
+          </div>
+         </div>
+         <div class="form-group">
+          <label for="input-1">Fecha de creacion</label>
+          <input type="text" formControlName="createdDate" class="form-control" id="input-1" [(ngModel)]="article.createdDate">
+         </div>
        <div class="form-group">
-        <label for="input-1">Image</label>
-        <input type="file" (change)="showPreview($event)">
-        <img [src]="model.images" *ngIf="model.images">
-      </div>        
+        <label for="input-1">Language</label>
+        <input type="text" formControlName="language" class="form-control" [(ngModel)]="article.language">
+       </div>        
        <div class="form-group">
-        <label for="exampleFormControlTextarea1">Descripcion</label>
-        <textarea name="descripcion1" [(ngModel)]="model.descripcion1" #descripcion1="ngModel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="input-1">Categorias</label>
+        <div *ngFor="let category of categories; let num = index">
+          <div *ngIf="category.hasCategory === true">
+            <input type="checkbox" [value]="category.id" (change)="onCheckCategories($event,category)" checked/>{{category.name}}
+          </div>
+          <div *ngIf="category.hasCategory === false">
+            <input type="checkbox" [value]="category.id" (change)="onCheckCategories($event,category)"/>{{category.name}}
+          </div>                    
+        </div>                
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Descripcion</label>
-        <ckeditor name="content" [(ngModel)]="model.content" #content="ngModel"></ckeditor>
+        <label for="input-1">Tags</label>
+        <div *ngFor="let tag of tags; let num = index">
+          <div *ngIf="tag.hasTag === true">
+            <input type="checkbox" [value]="tag.id" (change)="onCheckTags($event,tag)" checked/>{{tag.name}}
+          </div>
+          <div *ngIf="tag.hasTag === false">
+            <input type="checkbox" [value]="tag.id" (change)="onCheckTags($event,tag)"/>{{tag.name}}
+          </div>                    
+        </div>                
       </div>
-      <button [disabled]="loading" class="btn btn-primary">Editar</button>                                                 
-    </form>
-  </div>
-  </div>
+       <div class="form-group">        
+        <label for="exampleFormControlTextarea1">Descripcion</label>
+        <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="article.description"></textarea>
+      </div>   
+       <div class="form-group">
+        <label for="exampleFormControlTextarea1">CONTENIDO</label>
+        <ckeditor  formControlName="content" [(ngModel)]="article.content" debounce="10000">
+          <p>Hello <strong>world</strong></p>
+          </ckeditor>
+      </div>    
+      <button [disabled]="loading" class="btn btn-primary">Update artículo</button>                                                 
+     </form>  
+    </div>    
+</div>
 </div>

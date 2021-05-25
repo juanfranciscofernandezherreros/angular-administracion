@@ -27,12 +27,11 @@ export class AdminComponent implements OnInit {
     }
 
     login() {
-        console.log("Paso 1" + this.model.username + this.model.password);
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    this.router.navigate(["/dashboard/articles"]);
                 },
                 error => {
                     this.alertService.error(error);

@@ -7,3 +7,7 @@ https://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-e
 https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
 
 https://www.devglan.com/spring-boot/spring-boot-angular-example#/service
+
+https://www.devglan.com/angular/angular-8-crud-example
+
+https://www.techiediaries.com/angular/angular-9-8-crud-example-and-tutorial/

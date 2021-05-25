@@ -1,32 +1,36 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { RolesComponent } from './roles/roles.component';
-import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
-import { LogoComponent } from './logo/logo.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AlertComponent } from './alert/alert.component';
-import { HomeComponent } from './home/home.component';
-import { AdministradorComponent } from './administrador/administrador.component';
-import { AuthGuard } from './_guards/index';
-import { AdminGuard } from './_guards/index';
 import { AdminComponent } from './admin/admin.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { EuroleagueComponent } from './euroleague/euroleague.component';
+import { MatchTeamsComponent } from './match-teams/match-teams.component';
+import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { CategoriesCreateComponent } from './categories-create/categories-create.component';
+import { CategoriesEditComponent } from './categories-edit/categories-edit.component';
+import { CategoriesViewComponent } from './categories-view/categories-view.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticlesCreateComponent } from './articles-create/articles-create.component';
 import { ArticlesEditComponent } from './articles-edit/articles-edit.component';
-import { ArticleTranslateComponent } from './article-translate/article-translate.component';
 import { ArticlesViewComponent } from './articles-view/articles-view.component';
 import { ComentariosListComponent } from './comentarios-list/comentarios-list.component';
+import { ComentariosCreateComponent } from './comentarios-create/comentarios-create.component';
+import { ComentariosAnswerComponent } from './comentarios-answer/comentarios-answer.component';
+import { ComentariosEditComponent } from './comentarios-edit/comentarios-edit.component';
+import { ComentariosViewComponent } from './comentarios-view/comentarios-view.component';
+import { UsersComponent } from './users/users.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { TagsComponent } from './tags/tags.component';
+import { TagsListComponent } from './tags-list/tags-list.component';
+import { TagsCreateComponent } from './tags-create/tags-create.component';
+import { TagsEditComponent } from './tags-edit/tags-edit.component';
+import { TagsViewComponent } from './tags-view/tags-view.component';
+import { AdminGuard } from './_guards/index';
+import { PlayByPlayNotSyncronizedComponent } from './play-by-play-not-syncronized/play-by-play-not-syncronized.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/admin', pathMatch: 'full' },
 	{
 	   path: 'admin',
 	   component: AdminComponent
@@ -34,27 +38,65 @@ const routes: Routes = [
   {
      path: 'dashboard/categories',
      component: CategoriesComponent,
+     canActivate: [AdminGuard],
      children: [
-      { path: '', component: CategoriesListComponent }
+      { path: '', component: CategoriesListComponent },
+      { path: 'create', component: CategoriesCreateComponent },
+      { path: 'edit/:id', component: CategoriesEditComponent },
+      { path: 'view/:id', component: CategoriesViewComponent }
     ]	 
   },
   {
      path: 'dashboard/articles',
      component: ArticlesComponent,
+     canActivate: [AdminGuard],
      children: [
       { path: '', component: ArticlesListComponent },
       { path: 'create', component: ArticlesCreateComponent },
       { path: 'edit/:id', component: ArticlesEditComponent },
-      { path: 'view/:id', component: ArticlesViewComponent },
-      { path: 'translate/:id', component: ArticleTranslateComponent }
-
+      { path: 'view/:id', component: ArticlesViewComponent }
     ]	 
   },
   {
     path: 'dashboard/comentarios',
     component: ComentariosComponent,
+    canActivate: [AdminGuard],
     children: [
-     { path: '', component: ComentariosListComponent }
+     { path: '', component: ComentariosListComponent },
+     { path: 'create', component: ComentariosCreateComponent },
+     { path: ':id/answer/article/:articleId', component:ComentariosAnswerComponent },
+     { path: 'edit/:id', component: ComentariosEditComponent },
+     { path: 'view/:id', component: ComentariosViewComponent }
+   ]	 
+  },
+  {
+    path: 'dashboard/users',
+    component: UsersComponent,
+    canActivate: [AdminGuard],
+    children: [
+    { path: '', component: UsersListComponent }
+  ]	 
+  },
+  {
+    path: 'dashboard/tags',
+    component: TagsComponent,
+    canActivate: [AdminGuard],
+
+    children: [
+      { path: '', component: TagsListComponent },
+      { path: 'create', component: TagsCreateComponent },
+      { path: 'edit/:id', component: TagsEditComponent },
+      { path: 'view/:id', component: TagsViewComponent }
+    ]	 
+  },
+  {
+    path: 'dashboard/euroleague',
+    component: EuroleagueComponent,
+    canActivate: [AdminGuard],
+    children: [
+     { path: '', component: EuroleagueListTeamsComponent },
+     { path: 'teamCode/:teamCode/seasson/:seasson', component: MatchTeamsComponent },
+     { path: 'details/match/:matchId', component: PlayByPlayNotSyncronizedComponent }
    ]	 
   },
   {

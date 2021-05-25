@@ -12,16 +12,20 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Título</th>
+                  <th scope="col">Slug</th>
+                  <th scope="col">Fecha de creación</th>
                   <th scope="col">Operaciones</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let article of articles">
                   <td>{{article.id}}</td>
-                  <td>{{article.title}}</td>   
-                  <td><a class="btn btn-warning" href="dashboard/articles/edit/{{article.id}}">Editar</a> <a class="btn btn-danger" (click)="deleteArticle(article.id)">Borrar</a> <a class="btn btn-light" href="dashboard/articles/translate/{{article.id}}">Traducir</a><a class="btn btn-info" href="dashboard/articles/view/{{article.id}}">Ver</a></td>             
+                  <td>{{article.title}}</td>
+                  <td>{{article.slug}}</td>   
+                  <td>{{article.createdDate}}</td>      
+                  <td><a class="btn btn-warning" href="dashboard/articles/edit/{{article.id}}">Editar</a> <a class="btn btn-danger" (click)="deleteArticle(article.id)">Borrar</a> <a class="btn btn-info" href="dashboard/articles/view/{{article.id}}">Ver</a></td>             
                 </tr>  
               </tbody>
             </table>

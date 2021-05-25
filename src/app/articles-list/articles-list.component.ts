@@ -12,8 +12,7 @@ import {Article} from '../_models/article';
 
 export class ArticlesListComponent implements OnInit {
 
-  articles : Article[];
-  popular : Article[];
+  articles:Article[];
   
   //Paginacion Blogs
   page : number = 0;
@@ -22,6 +21,7 @@ export class ArticlesListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private deleteArticleService: BorrarArticuloService,
     private articleService : ArticlesListService , 
   ) { }
 
@@ -47,5 +47,18 @@ export class ArticlesListComponent implements OnInit {
       }
     );
   }
+  
+  deleteArticle(articleId:number){
+    this.deleteArticleService.deleteArticle(articleId).subscribe(
+      data=>{
+        this.router.navigate(['/dashboard/articles']);        
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+  
 
 }

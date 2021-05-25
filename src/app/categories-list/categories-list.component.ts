@@ -11,6 +11,8 @@ import { MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material';  
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';  
 import {CategoriesListService} from '../_services/categories-list.service';
+import {CategoriesDeleteService} from '../_services/categories-delete.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-categories-list',
@@ -19,11 +21,15 @@ import {CategoriesListService} from '../_services/categories-list.service';
 })
 export class CategoriesListComponent implements OnInit {
 
-  private page : number = 0;
-  private categories:Array<any>;
-  private pages:Array<number>;
+  page : number = 0;
+  categories:Array<any>;
+  category:Categories;
+  pages:Array<number>;
 
-  constructor(private _myService:CategoriesListService) {}
+  constructor(private _myService:CategoriesListService,
+              private categoriesDeleteService:CategoriesDeleteService,
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
     this.getCategories();
@@ -38,10 +44,21 @@ export class CategoriesListComponent implements OnInit {
   getCategories(){
     this._myService.getCategories(this.page).subscribe(
       data=>{        
-        console.log(data);
         this.categories=data['content'];
         this.pages = new Array(data['totalPages']);
 
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  deleteCategory(categoryId:number){
+    this.categoriesDeleteService.deleteCategoryById(categoryId).subscribe(
+      data=>{
+        this.router.navigate(['/dashboard/categories']);        
       },
 
       (error)=>{

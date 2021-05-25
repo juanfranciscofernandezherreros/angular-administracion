@@ -1,0 +1,35 @@
+<!-- Start wrapper-->
+<div id="wrapper">
+    <!--Start sidebar-wrapper-->
+    <app-sidebarswapper></app-sidebarswapper>
+    <!--End sidebar-wrapper-->
+    <app-topbarheader></app-topbarheader>
+    <!--Start topbar header-->
+    <!--End topbar header-->
+  <div class="clearfix"></div>
+      
+    <div class="content-wrapper">
+      <div class="container-fluid">
+  
+        <!--Start Dashboard Content-->
+        <router-outlet></router-outlet>
+        <!--End Dashboard Content-->
+        
+      <!--start overlay-->
+            <div class="overlay toggle-menu"></div>
+          <!--end overlay-->
+          
+      </div>
+      <!-- End container-fluid-->
+      
+      </div><!--End content-wrapper-->
+     <!--Start Back To Top Button-->
+      <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+      <footer class="footer">
+        <div class="container">
+          <div class="text-center">
+            Copyright © 2018 Dashtreme Admin
+          </div>
+        </div>
+      </footer>
+  </div><!--End wrapper-->

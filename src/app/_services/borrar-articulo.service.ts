@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BorrarArticuloService {
 
-  private languages:string = 'http://localhost:8090/api/blogs/v1';
-
+  private articles:string = environment.blogs;
+  
   constructor(private http: HttpClient) { }
 
-  borrarArticuloPorIdentificador(article:number){
-    
-    const headers = {
-      'accept-language': 'es-ES',
-      'Content-type': 'application/json'
-    }
-
-    return this.http.delete(this.languages+"/"+article,{headers});
+  deleteArticle(articleId:number){
+    return this.http.delete(this.articles+"/api/protected/v1/article?id="+articleId);
   }
 }

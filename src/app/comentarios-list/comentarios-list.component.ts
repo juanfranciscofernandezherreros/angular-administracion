@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ObtenerComentariosService} from '../_services/obtener-comentarios.service';
+import {ComentariosListService} from '../_services/comentarios-list.service';
+import {ComentariosDeleteService} from '../_services/comentarios-delete.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-comentarios-list',
@@ -8,11 +10,14 @@ import {ObtenerComentariosService} from '../_services/obtener-comentarios.servic
 })
 export class ComentariosListComponent implements OnInit {
 
-  private page : number = 0;
-  private comentarios:Array<any>;
-  private pages:Array<number>;
+  page : number = 0;
+  comentarios:Array<any>;
+  pages:Array<number>;
 
-  constructor(private _myService:ObtenerComentariosService) {}
+  constructor(private _myService:ComentariosListService,
+              private comentariosDeleteService:ComentariosDeleteService,
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
     this.getComentarios();
@@ -36,5 +41,18 @@ export class ComentariosListComponent implements OnInit {
       }
     );
   }
+
+  deleteComentario(comentarioId:number){
+    this.comentariosDeleteService.deleteComment(comentarioId).subscribe(
+      data=>{
+        this.router.navigate(['/dashboard/comentarios']);        
+      },
+
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+  
 
 }
