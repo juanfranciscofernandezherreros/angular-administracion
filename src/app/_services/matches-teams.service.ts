@@ -19,4 +19,8 @@ export class MatchesTeamsService {
   getSyncGameCodeSeassonCode(gameCode:String,seassonCode:String,phase:String,date:String,round:number){
     return this.http.get(this.basketball+"/api/public/v1/sync/playbyplay?gamecode="+gameCode+"&seasoncode="+seassonCode+"&phase="+phase+"&date="+date+"&round="+round);
   }
+
+  getNotSyncGameCodeSeassonCode(gameCode:String,seassonCode:String){
+    return this.http.get("http://localhost:8444/api/public/v1/playbyplay/download?gamecode=9&seasoncode=2020");
+  }
 }

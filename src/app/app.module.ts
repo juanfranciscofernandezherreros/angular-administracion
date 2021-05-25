@@ -56,8 +56,10 @@ import { EuroleagueComponent } from './euroleague/euroleague.component';
 import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague-list-teams.component';
 import { YearsListService } from './_services/years-list.service';
 import { MatchTeamsComponent } from './match-teams/match-teams.component';
-import { PlayByPlayNotSyncronizedComponent } from './play-by-play-not-syncronized/play-by-play-not-syncronized.component';
-
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
+import { PlayByPlayNotSyncroComponent } from './play-by-play-not-syncro/play-by-play-not-syncro.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -66,6 +68,7 @@ import { PlayByPlayNotSyncronizedComponent } from './play-by-play-not-syncronize
 			HttpClientModule,
 			CKEditorModule,
 			MatTabsModule,
+			CommonModule,	
 			routing
 	 	],
     declarations: [
@@ -114,7 +117,8 @@ import { PlayByPlayNotSyncronizedComponent } from './play-by-play-not-syncronize
 			EuroleagueComponent,
    			EuroleagueListTeamsComponent,
      	 	MatchTeamsComponent,
-        	PlayByPlayNotSyncronizedComponent,
+        PlayByPlayComponent,
+        PlayByPlayNotSyncroComponent,
     ],
     providers: [
 		AdminGuard,

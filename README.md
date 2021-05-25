@@ -11,3 +11,5 @@ https://www.devglan.com/spring-boot/spring-boot-angular-example#/service
 https://www.devglan.com/angular/angular-8-crud-example
 
 https://www.techiediaries.com/angular/angular-9-8-crud-example-and-tutorial/
+
+https://www.remotestack.io/angular-material-tabs-implementation-example-tutorial/

@@ -38,6 +38,10 @@ export class MatchTeamsComponent implements OnInit {
     );
   }
 
+  notSync(gameCode:String,seassonCode:String){
+    this.router.navigate(['dashboard/euroleague/details/notSyncronized'])    
+  }
+
   syncMatch(gameCode:String,seassonCode:String,phase:String,date:String,round:number){
     this._matchTeamsService.getSyncGameCodeSeassonCode(gameCode,seassonCode,phase,date,round).subscribe(
       data=>{        

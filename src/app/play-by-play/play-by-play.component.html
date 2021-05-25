@@ -80,20 +80,19 @@
                   <th scope="col">PLAY TYPE</th>
                   <th scope="col">COMMENT</th>
                   <th scope="col">PLAYINFO</th>
-                  <th scope="col">Operaciones</th>  
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of arrayFirstQuarter; let i = index">
+                <tr *ngFor="let item of arraySecondQuarter; let i = index">
                   <td>{{match.secondQuarterDTO[i].MARKERTIME}}</td>
-                  <td>{{match.secondQuarterDTO[i].POINTS_A}} - {{match.firstQuarterDTO[i].POINTS_B}}</td>
+                  <td>{{match.secondQuarterDTO[i].MARKERTIME}}</td>
+                  <td>{{match.secondQuarterDTO[i].POINTS_A}} - {{match.secondQuarterDTO[i].POINTS_B}}</td>
                   <td>{{match.secondQuarterDTO[i].CODETEAM}}</td>
                   <td>{{match.secondQuarterDTO[i].PLAYTYPE}}</td>
-                  <td>{{match.secondQuarterDTO[i].PLAYER}} #{{match.firstQuarterDTO[i].DORSAL}}</td>   
+                  <td>{{match.secondQuarterDTO[i].PLAYER}} #{{match.secondQuarterDTO[i].DORSAL}}</td>   
                   <td>{{match.secondQuarterDTO[i].PLAYTYPE}}</td>   
                   <td>{{match.secondQuarterDTO[i].COMMENT}}</td>   
                   <td>{{match.secondQuarterDTO[i].PLAYINFO}}</td>     
-                  <td><div *ngIf="match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsCancelFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-info">Delete as favourite</a><a class="btn btn-primary">Add to article</a></div><div *ngIf="!match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsFavouriteFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-dark">Mark as favourite</a></div></td>             
                 </tr>  
               </tbody>
             </table>
@@ -116,34 +115,33 @@
         <div class="card">
           <div class="card-body">
       <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">MARKERTIME</th>
-                  <th scope="col">POINTS</th>
-                  <th scope="col">CODETEAM</th>
-                  <th scope="col">PLAYTYPE</th>   
-                  <th scope="col">PLAYER</th>
-                  <th scope="col">PLAY TYPE</th>
-                  <th scope="col">COMMENT</th>
-                  <th scope="col">PLAYINFO</th>
-                  <th scope="col">Operaciones</th>  
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of arrayFirstQuarter; let i = index">
-                  <td>{{match.thirdQuarterDTO[i].MARKERTIME}}</td>
-                  <td>{{match.thirdQuarterDTO[i].POINTS_A}} - {{match.firstQuarterDTO[i].POINTS_B}}</td>
-                  <td>{{match.thirdQuarterDTO[i].CODETEAM}}</td>
-                  <td>{{match.thirdQuarterDTO[i].PLAYTYPE}}</td>
-                  <td>{{match.thirdQuarterDTO[i].PLAYER}} #{{match.firstQuarterDTO[i].DORSAL}}</td>   
-                  <td>{{match.thirdQuarterDTO[i].PLAYTYPE}}</td>   
-                  <td>{{match.thirdQuarterDTO[i].COMMENT}}</td>   
-                  <td>{{match.thirdQuarterDTO[i].PLAYINFO}}</td>     
-                  <td><div *ngIf="match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsCancelFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-info">Delete as favourite</a><a class="btn btn-primary">Add to article</a></div><div *ngIf="!match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsFavouriteFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-dark">Mark as favourite</a></div></td>             
-                </tr>  
-              </tbody>
-            </table>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">MARKERTIME</th>
+              <th scope="col">POINTS</th>
+              <th scope="col">CODETEAM</th>
+              <th scope="col">PLAYTYPE</th>   
+              <th scope="col">PLAYER</th>
+              <th scope="col">PLAY TYPE</th>
+              <th scope="col">COMMENT</th>
+              <th scope="col">PLAYINFO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of arrayThirdQuarter; let i = index">
+              <td>{{match.thirdQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.thirdQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.thirdQuarterDTO[i].POINTS_A}} - {{match.thirdQuarterDTO[i].POINTS_B}}</td>
+              <td>{{match.thirdQuarterDTO[i].CODETEAM}}</td>
+              <td>{{match.thirdQuarterDTO[i].PLAYTYPE}}</td>
+              <td>{{match.thirdQuarterDTO[i].PLAYER}} #{{match.thirdQuarterDTO[i].DORSAL}}</td>   
+              <td>{{match.thirdQuarterDTO[i].PLAYTYPE}}</td>   
+              <td>{{match.thirdQuarterDTO[i].COMMENT}}</td>   
+              <td>{{match.thirdQuarterDTO[i].PLAYINFO}}</td>     
+            </tr>  
+          </tbody>
+        </table>
             
             <ul class="nav nav-pills">
               <li class="nav-item" *ngFor="let page of pages;let i=index">
@@ -172,22 +170,18 @@
                   <th scope="col">PLAYTYPE</th>   
                   <th scope="col">PLAYER</th>
                   <th scope="col">PLAY TYPE</th>
-                  <th scope="col">COMMENT</th>
                   <th scope="col">PLAYINFO</th>
-                  <th scope="col">Operaciones</th>  
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of arrayFirstQuarter; let i = index">
+                <tr *ngFor="let item of arrayForthQuarter; let i = index">
                   <td>{{match.forthQuarterDTO[i].MARKERTIME}}</td>
-                  <td>{{match.forthQuarterDTO[i].POINTS_A}} - {{match.firstQuarterDTO[i].POINTS_B}}</td>
+                  <td>{{match.forthQuarterDTO[i].POINTS_A}} </td>
                   <td>{{match.forthQuarterDTO[i].CODETEAM}}</td>
                   <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>
-                  <td>{{match.forthQuarterDTO[i].PLAYER}} #{{match.firstQuarterDTO[i].DORSAL}}</td>   
+                  <td>{{match.forthQuarterDTO[i].PLAYER}}</td>   
                   <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>   
-                  <td>{{match.forthQuarterDTO[i].COMMENT}}</td>   
                   <td>{{match.forthQuarterDTO[i].PLAYINFO}}</td>     
-                  <td><div *ngIf="match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsCancelFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-info">Delete as favourite</a><a class="btn btn-primary">Add to article</a></div><div *ngIf="!match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsFavouriteFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-dark">Mark as favourite</a></div></td>             
                 </tr>  
               </tbody>
             </table>
@@ -210,34 +204,30 @@
         <div class="card">
           <div class="card-body">
       <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">MARKERTIME</th>
-                  <th scope="col">POINTS</th>
-                  <th scope="col">CODETEAM</th>
-                  <th scope="col">PLAYTYPE</th>   
-                  <th scope="col">PLAYER</th>
-                  <th scope="col">PLAY TYPE</th>
-                  <th scope="col">COMMENT</th>
-                  <th scope="col">PLAYINFO</th>
-                  <th scope="col">Operaciones</th>  
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of arrayFirstQuarter; let i = index">
-                  <td>{{match.extraTimeDTO[i].MARKERTIME}}</td>
-                  <td>{{match.extraTimeDTO[i].POINTS_A}} - {{match.firstQuarterDTO[i].POINTS_B}}</td>
-                  <td>{{match.extraTimeDTO[i].CODETEAM}}</td>
-                  <td>{{match.extraTimeDTO[i].PLAYTYPE}}</td>
-                  <td>{{match.extraTimeDTO[i].PLAYER}} #{{match.firstQuarterDTO[i].DORSAL}}</td>   
-                  <td>{{match.extraTimeDTO[i].PLAYTYPE}}</td>   
-                  <td>{{match.extraTimeDTO[i].COMMENT}}</td>   
-                  <td>{{match.extraTimeDTO[i].PLAYINFO}}</td>     
-                  <td><div *ngIf="match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsCancelFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-info">Delete as favourite</a><a class="btn btn-primary">Add to article</a></div><div *ngIf="!match.firstQuarterDTO[i].markAsFavourite"><a (click)="markAsFavouriteFirstQuarter(match.firstQuarterDTO[i],match.id)" class="btn btn-dark">Mark as favourite</a></div></td>             
-                </tr>  
-              </tbody>
-            </table>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">MARKERTIME</th>
+              <th scope="col">POINTS</th>
+              <th scope="col">CODETEAM</th>
+              <th scope="col">PLAYTYPE</th>   
+              <th scope="col">PLAYER</th>
+              <th scope="col">PLAY TYPE</th>
+              <th scope="col">PLAYINFO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of arrayExtraQuarter; let i = index">
+              <td>{{match.forthQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.forthQuarterDTO[i].POINTS_A}} </td>
+              <td>{{match.forthQuarterDTO[i].CODETEAM}}</td>
+              <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>
+              <td>{{match.forthQuarterDTO[i].PLAYER}}</td>   
+              <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>   
+              <td>{{match.forthQuarterDTO[i].PLAYINFO}}</td>     
+            </tr>  
+          </tbody>
+        </table>
             
             <ul class="nav nav-pills">
               <li class="nav-item" *ngFor="let page of pages;let i=index">

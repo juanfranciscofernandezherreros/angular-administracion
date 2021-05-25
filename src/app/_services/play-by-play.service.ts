@@ -19,6 +19,10 @@ export class PlayByPlayService {
     return this.http.get(this.basketball+"/api/public/v1/match/"+matchId);    
   }
 
+  getPlayByPlayNotSyncronized(gameCode:String,seassonCode:String): Observable<any>{      
+    return this.http.get(this.basketball+"/api/public/v1/playbyplay/download?gamecode="+gameCode+"&seasoncode="+seassonCode);    
+  }
+
   cancelAsFavourite(markAsFavourite:MarkAsFavourite,matchId:number): Observable<any>{  
     markAsFavourite.firstQuarterDTO.markAsFavourite=false;
     return this.http.post(this.basketball+"/api/public/v1/favourite/playbyplay/"+matchId , markAsFavourite);    

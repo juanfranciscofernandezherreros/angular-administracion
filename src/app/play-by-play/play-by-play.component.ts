@@ -6,12 +6,12 @@ import { MarkAsFavourite } from '../_models/markAsFavourite';
 import { FirstQuarter } from '../_models/firstQuarter';
 
 @Component({
-  selector: 'app-play-by-play-not-syncronized.component',
-  templateUrl: './play-by-play-not-syncronized.component.html',
-  styleUrls: ['./play-by-play-not-syncronized.component.css']
+  selector: 'app-play-by-play',
+  templateUrl: './play-by-play.component.html',
+  styleUrls: ['./play-by-play.component.css']
 })
-export class PlayByPlayNotSyncronizedComponent implements OnInit {
-  
+export class PlayByPlayComponent implements OnInit {
+
   match:Match;
   private markAsFavourite: MarkAsFavourite = new MarkAsFavourite();
 
@@ -20,22 +20,27 @@ export class PlayByPlayNotSyncronizedComponent implements OnInit {
   constructor(private _playByPlayService:PlayByPlayService,
     private route: ActivatedRoute,
     private router: Router) { }
+    
   ngOnInit(): void {
     var matchId = this.route.snapshot.paramMap.get('matchId');
-    this.getPlayByPlaySyncronyed(matchId);
+    this.getPlayByPlaySyncronized(matchId);
   } 
 
-  arrayFirstQuarter = new Array(100);
-  arraySecondQuarter = new Array(100);
-  arrayThirdQuarter = new Array(100);
-  arrayForthQuarter = new Array(100);
-  arrayExtraQuarter = new Array(100);
-
+  arrayFirstQuarter = new Array();
+  arraySecondQuarter = new Array();
+  arrayThirdQuarter = new Array();
+  arrayForthQuarter = new Array();
+  arrayExtraQuarter =new Array();
   counter = 0;
 
-  getPlayByPlaySyncronyed(matchId: string) {
+  getPlayByPlaySyncronized(matchId) {
     this._playByPlayService.getPlayByPlaySyncronized(matchId).subscribe(
        data=>{  
+         this.arrayFirstQuarter = new Array(data.firstQuarterDTO.length);
+         this.arraySecondQuarter = new Array(data.secondQuarterDTO.length);
+         this.arrayThirdQuarter = new Array(data.thirdQuarterDTO.length);
+         this.arrayForthQuarter = new Array(data.forthQuarterDTO.length);
+         this.arrayExtraQuarter = new Array(data.extraTimeDTO.length);
          this.match=data;
        },
        (error)=>{
@@ -67,5 +72,4 @@ export class PlayByPlayNotSyncronizedComponent implements OnInit {
     );
 
    }
-
 }
