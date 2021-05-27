@@ -1,1 +1,244 @@
-NOT PLAY
+<h5 class="card-title">     {{markAsFavourite.matchId}}  #{{gameCode}} {{match.TeamA}} ({{match.CodeTeamA}}) vs {{match.TeamB}} ({{match.CodeTeamB}})</h5>
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <input class="radio" id="forth" name="group" type="radio">
+  <input class="radio" id="extra" name="group" type="radio">
+
+  <div class="tabs">
+  <label class="tab" id="one-tab" for="one">First Quarter</label>
+  <label class="tab" id="two-tab" for="two">Second Quarter</label>
+  <label class="tab" id="three-tab" for="three">Third Quarter</label>
+  <label class="tab" id="forth-tab" for="forth">Forth Quarter</label>
+  <label class="tab" id="extra-tab" for="extra">Extra Time</label>
+
+    </div>
+  <div class="panels">
+  <div class="panel" id="one-panel">    
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+  <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">MARKERTIME</th>
+              <th scope="col">POINTS</th>
+              <th scope="col">CODETEAM</th>
+              <th scope="col">PLAYTYPE</th>   
+              <th scope="col">PLAYER</th>
+              <th scope="col">PLAY TYPE</th>
+              <th scope="col">COMMENT</th>
+              <th scope="col">PLAYINFO</th>
+              <th scope="col">Operaciones</th>  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of arrayFirstQuarter; let i = index">
+              <td>{{match.firstQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.firstQuarterDTO[i].POINTS_A}} - {{match.firstQuarterDTO[i].POINTS_B}}</td>
+              <td>{{match.firstQuarterDTO[i].CODETEAM}}</td>
+              <td>{{match.firstQuarterDTO[i].PLAYTYPE}}</td>
+              <td>{{match.firstQuarterDTO[i].PLAYER}} #{{match.firstQuarterDTO[i].DORSAL}}</td>   
+              <td>{{match.firstQuarterDTO[i].PLAYTYPE}}</td>   
+              <td>{{match.firstQuarterDTO[i].COMMENT}}</td>   
+              <td>{{match.firstQuarterDTO[i].PLAYINFO}}</td>               
+              <td><a (click)="markAsFavouriteFirstQuarter(match.firstQuarterDTO[i],match.header,markAsFavourite.matchId)" class="btn btn-dark">Mark as favourite</a></td>             
+            </tr>  
+          </tbody>
+        </table>
+        
+        <ul class="nav nav-pills">
+          <li class="nav-item" *ngFor="let page of pages;let i=index">
+            <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+          </li>
+        </ul>
+      </div>    
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="panel" id="two-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+      <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">MARKERTIME</th>
+                  <th scope="col">POINTS</th>
+                  <th scope="col">CODETEAM</th>
+                  <th scope="col">PLAYTYPE</th>   
+                  <th scope="col">PLAYER</th>
+                  <th scope="col">PLAY TYPE</th>
+                  <th scope="col">COMMENT</th>
+                  <th scope="col">PLAYINFO</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of arraySecondQuarter; let i = index">
+                  <td>{{match.secondQuarterDTO[i].MARKERTIME}}</td>
+                  <td>{{match.secondQuarterDTO[i].MARKERTIME}}</td>
+                  <td>{{match.secondQuarterDTO[i].POINTS_A}} - {{match.secondQuarterDTO[i].POINTS_B}}</td>
+                  <td>{{match.secondQuarterDTO[i].CODETEAM}}</td>
+                  <td>{{match.secondQuarterDTO[i].PLAYTYPE}}</td>
+                  <td>{{match.secondQuarterDTO[i].PLAYER}} #{{match.secondQuarterDTO[i].DORSAL}}</td>   
+                  <td>{{match.secondQuarterDTO[i].PLAYTYPE}}</td>   
+                  <td>{{match.secondQuarterDTO[i].COMMENT}}</td>   
+                  <td>{{match.secondQuarterDTO[i].PLAYINFO}}</td>     
+                </tr>  
+              </tbody>
+            </table>
+            
+            <ul class="nav nav-pills">
+              <li class="nav-item" *ngFor="let page of pages;let i=index">
+                <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+              </li>
+            </ul>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="three-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">MARKERTIME</th>
+              <th scope="col">POINTS</th>
+              <th scope="col">CODETEAM</th>
+              <th scope="col">PLAYTYPE</th>   
+              <th scope="col">PLAYER</th>
+              <th scope="col">PLAY TYPE</th>
+              <th scope="col">COMMENT</th>
+              <th scope="col">PLAYINFO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of arrayThirdQuarter; let i = index">
+              <td>{{match.thirdQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.thirdQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.thirdQuarterDTO[i].POINTS_A}} - {{match.thirdQuarterDTO[i].POINTS_B}}</td>
+              <td>{{match.thirdQuarterDTO[i].CODETEAM}}</td>
+              <td>{{match.thirdQuarterDTO[i].PLAYTYPE}}</td>
+              <td>{{match.thirdQuarterDTO[i].PLAYER}} #{{match.thirdQuarterDTO[i].DORSAL}}</td>   
+              <td>{{match.thirdQuarterDTO[i].PLAYTYPE}}</td>   
+              <td>{{match.thirdQuarterDTO[i].COMMENT}}</td>   
+              <td>{{match.thirdQuarterDTO[i].PLAYINFO}}</td>     
+            </tr>  
+          </tbody>
+        </table>
+            
+            <ul class="nav nav-pills">
+              <li class="nav-item" *ngFor="let page of pages;let i=index">
+                <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+              </li>
+            </ul>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="forth-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+      <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">MARKERTIME</th>
+                  <th scope="col">POINTS</th>
+                  <th scope="col">CODETEAM</th>
+                  <th scope="col">PLAYTYPE</th>   
+                  <th scope="col">PLAYER</th>
+                  <th scope="col">PLAY TYPE</th>
+                  <th scope="col">PLAYINFO</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of arrayForthQuarter; let i = index">
+                  <td>{{match.forthQuarterDTO[i].MARKERTIME}}</td>
+                  <td>{{match.forthQuarterDTO[i].POINTS_A}} </td>
+                  <td>{{match.forthQuarterDTO[i].CODETEAM}}</td>
+                  <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>
+                  <td>{{match.forthQuarterDTO[i].PLAYER}}</td>   
+                  <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>   
+                  <td>{{match.forthQuarterDTO[i].PLAYINFO}}</td>     
+                </tr>  
+              </tbody>
+            </table>
+            
+            <ul class="nav nav-pills">
+              <li class="nav-item" *ngFor="let page of pages;let i=index">
+                <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+              </li>
+            </ul>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="extra-panel">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">MARKERTIME</th>
+              <th scope="col">POINTS</th>
+              <th scope="col">CODETEAM</th>
+              <th scope="col">PLAYTYPE</th>   
+              <th scope="col">PLAYER</th>
+              <th scope="col">PLAY TYPE</th>
+              <th scope="col">PLAYINFO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of arrayExtraQuarter; let i = index">
+              <td>{{match.forthQuarterDTO[i].MARKERTIME}}</td>
+              <td>{{match.forthQuarterDTO[i].POINTS_A}} </td>
+              <td>{{match.forthQuarterDTO[i].CODETEAM}}</td>
+              <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>
+              <td>{{match.forthQuarterDTO[i].PLAYER}}</td>   
+              <td>{{match.forthQuarterDTO[i].PLAYTYPE}}</td>   
+              <td>{{match.forthQuarterDTO[i].PLAYINFO}}</td>     
+            </tr>  
+          </tbody>
+        </table>
+            
+            <ul class="nav nav-pills">
+              <li class="nav-item" *ngFor="let page of pages;let i=index">
+                <a class="nav-link" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+              </li>
+            </ul>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

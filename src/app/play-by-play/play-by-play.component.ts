@@ -23,6 +23,7 @@ export class PlayByPlayComponent implements OnInit {
     
   ngOnInit(): void {
     var matchId = this.route.snapshot.paramMap.get('matchId');
+
     this.getPlayByPlaySyncronized(matchId);
   } 
 
@@ -33,7 +34,8 @@ export class PlayByPlayComponent implements OnInit {
   arrayExtraQuarter =new Array();
   counter = 0;
 
-  getPlayByPlaySyncronized(matchId) {
+
+   getPlayByPlaySyncronized(matchId) {
     this._playByPlayService.getPlayByPlaySyncronized(matchId).subscribe(
        data=>{  
          this.arrayFirstQuarter = new Array(data.firstQuarterDTO.length);
@@ -63,7 +65,7 @@ export class PlayByPlayComponent implements OnInit {
    
    markAsFavouriteFirstQuarter(firstQuarter:FirstQuarter,matchId:number){  
     this.markAsFavourite.firstQuarterDTO=firstQuarter;
-    this._playByPlayService.markAsFavourite(this.markAsFavourite,matchId).subscribe(
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
       },
       (error)=>{
@@ -72,4 +74,5 @@ export class PlayByPlayComponent implements OnInit {
     );
 
    }
+
 }

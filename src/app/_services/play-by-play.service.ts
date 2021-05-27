@@ -28,9 +28,8 @@ export class PlayByPlayService {
     return this.http.post(this.basketball+"/api/public/v1/favourite/playbyplay/"+matchId , markAsFavourite);    
   }
 
-  markAsFavourite(markAsFavourite:MarkAsFavourite,matchId:number): Observable<any>{  
-    markAsFavourite.firstQuarterDTO.markAsFavourite=true;
-    return this.http.post(this.basketball+"/api/public/v1/favourite/playbyplay/"+matchId , markAsFavourite);    
+  markAsFavourite(markAsFavourite:MarkAsFavourite): Observable<any>{  
+    return this.http.post(this.basketball+"/api/public/v1/favourite/playbyplay" , markAsFavourite);    
   }
 
  

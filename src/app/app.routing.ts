@@ -98,7 +98,7 @@ const routes: Routes = [
      { path: '', component: EuroleagueListTeamsComponent },
      { path: 'teamCode/:teamCode/seasson/:seasson', component: MatchTeamsComponent },
      { path: 'details/match/:matchId', component: PlayByPlayComponent },
-     { path: 'details/notSyncronized', component: PlayByPlayNotSyncroComponent }
+     { path: 'details/notSyncronized/gameCode/:gameCode/seassonCode/:seassonCode', component: PlayByPlayNotSyncroComponent }
    ]	 
   },
   {
