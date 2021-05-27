@@ -4,9 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Match } from '../_models/match';
 import { MarkAsFavourite } from '../_models/markAsFavourite';
 import { FirstQuarter } from '../_models/firstQuarter';
+import { SecondQuarter } from '../_models/secondQuarter';
 import { Header } from '../_models/header';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { StringifyOptions } from 'querystring';
+import { ThirdQuarter } from '../_models/thirdQuarter';
+import { ForthQuarter } from '../_models/forthQuarter';
    @Component({
   selector: 'app-play-by-play-not-syncro',
   templateUrl: './play-by-play-not-syncro.component.html',
@@ -57,14 +60,76 @@ export class PlayByPlayNotSyncroComponent implements OnInit {
      );
    }
 
-   markAsFavouriteFirstQuarter(firstQuarter:FirstQuarter,header:Header,matchId:number){       
+   markAsFavouriteFirstQuarter(firstQuarter:FirstQuarter,header:Header){       
     this.markAsFavourite.firstQuarterDTO=firstQuarter;
     this.markAsFavourite.headerDTO=header;    
-    this.markAsFavourite.matchId=0;
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
     this.markAsFavourite.firstQuarterDTO.markAsFavourite=true;
-    alert(JSON.stringify(this.markAsFavourite));
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+   markAsFavouriteSecondQuarter(thirdQuarter:SecondQuarter,header:Header){       
+    this.markAsFavourite.thirdQuarterDTO=thirdQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.thirdQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+  markAsFavouriteThirdQuarter(thirdQuarter:ThirdQuarter,header:Header){       
+    this.markAsFavourite.thirdQuarterDTO=thirdQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.thirdQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+   markAsFavouriteForthQuarter(forthQuarter:ForthQuarter,header:Header){       
+    this.markAsFavourite.forthQuarterDTO=forthQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.forthQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+  markAsFavouriteExtraTime(forthQuarter:ForthQuarter,header:Header){       
+    this.markAsFavourite.forthQuarterDTO=forthQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.forthQuarterDTO.markAsFavourite=true;
     this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
         this.markAsFavourite=data;
