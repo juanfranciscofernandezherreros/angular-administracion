@@ -1,1 +1,205 @@
 #{{match.header.Round}} | {{match.header.Phase}} | {{match.header.Competition}} | {{match.header.Date}} | {{match.header.TeamA}} ({{match.header.ScoreA}}) VS {{match.header.TeamB}} ({{match.header.ScoreB}}) 
+
+
+<div class="warpper">
+    <input class="radio" id="one" name="group" type="radio" checked>
+    <input class="radio" id="two" name="group" type="radio">
+    <input class="radio" id="three" name="group" type="radio">
+    <input class="radio" id="forth" name="group" type="radio">
+    <input class="radio" id="extra" name="group" type="radio">
+  
+    <div class="tabs">
+    <label class="tab" id="one-tab" for="one">First Quarter</label>
+    <label class="tab" id="two-tab" for="two">Second Quarter</label>
+    <label class="tab" id="three-tab" for="three">Third Quarter</label>
+    <label class="tab" id="forth-tab" for="forth">Forth Quarter</label>
+    <label class="tab" id="extra-tab" for="extra">Extra Time</label>
+  
+      </div>
+    <div class="panels">
+    <div class="panel" id="one-panel">    
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+    <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">MARKERTIME</th>
+                <th scope="col">POINTS</th>
+                <th scope="col">CODETEAM</th>
+                <th scope="col">PLAYTYPE</th>   
+                <th scope="col">PLAYER</th>
+                <th scope="col">PLAYINFO</th>
+                <th scope="col">Operaciones</th>  
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of arrayFirstQuarter; let i = index">
+                <td>{{match.matchDTO.firstQuarterDTO[i].MARKERTIME}}</td>
+                <td>{{match.matchDTO.firstQuarterDTO[i].POINTS_A}} - {{match.matchDTO.firstQuarterDTO[i].POINTS_B}}</td>
+                <td>{{match.matchDTO.firstQuarterDTO[i].CODETEAM}}</td>
+                <td>{{match.matchDTO.firstQuarterDTO[i].PLAYTYPE}}</td>
+                <td>{{match.matchDTO.firstQuarterDTO[i].PLAYER}} #{{match.matchDTO.firstQuarterDTO[i].DORSAL}}</td>   
+                <td>{{match.matchDTO.firstQuarterDTO[i].PLAYINFO}}</td>               
+                <td><a (click)="markAsFavouriteFirstQuarter(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>             
+              </tr>  
+            </tbody>
+          </table>
+        </div>    
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="panel" id="two-panel">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+        <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">MARKERTIME</th>
+                    <th scope="col">POINTS</th>
+                    <th scope="col">CODETEAM</th>
+                    <th scope="col">PLAYTYPE</th>   
+                    <th scope="col">PLAYER</th>
+                    <th scope="col">PLAYINFO</th>
+                    <th scope="col">Operaciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of arraySecondQuarter; let i = index">
+                    <td>{{match.matchDTO.secondQuarterDTO[i].MARKERTIME}}</td>
+                    <td>{{match.matchDTO.secondQuarterDTO[i].POINTS_A}} - {{match.matchDTO.secondQuarterDTO[i].POINTS_B}}</td>
+                    <td>{{match.matchDTO.secondQuarterDTO[i].CODETEAM}}</td>
+                    <td>{{match.matchDTO.secondQuarterDTO[i].PLAYTYPE}}</td>
+                    <td>{{match.matchDTO.secondQuarterDTO[i].PLAYER}} #{{match.matchDTO.secondQuarterDTO[i].DORSAL}}</td>   
+                    <td>{{match.matchDTO.secondQuarterDTO[i].PLAYINFO}}</td>               
+                    <td><a (click)="markAsFavouriteSecondQuarter(match.matchDTO.secondQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>     
+                  </tr>  
+                </tbody>
+              </table>         
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="three-panel">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">MARKERTIME</th>
+                <th scope="col">POINTS</th>
+                <th scope="col">CODETEAM</th>
+                <th scope="col">PLAYTYPE</th>   
+                <th scope="col">PLAYER</th>
+                <th scope="col">PLAYINFO</th>
+                <th scope="col">Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of arrayThirdQuarter; let i = index">
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].MARKERTIME}}</td>
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].POINTS_A}} - {{match.matchDTO.thirdQuarterDTO[i].POINTS_B}}</td>
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].CODETEAM}}</td>
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYTYPE}}</td>
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYER}} #{{match.matchDTO.thirdQuarterDTO[i].DORSAL}}</td>   
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYINFO}}</td>               
+                  <td><a (click)="markAsFavouriteThirdQuarter(match.matchDTO.thirdQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>     
+              </tr>  
+            </tbody>
+          </table>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="forth-panel">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+        <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">MARKERTIME</th>
+                    <th scope="col">POINTS</th>
+                    <th scope="col">CODETEAM</th>
+                    <th scope="col">PLAYTYPE</th>   
+                    <th scope="col">PLAYER</th>
+                    <th scope="col">PLAYINFO</th>
+                    <th scope="col">Operaciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of arrayForthQuarter; let i = index">
+                    <td>{{match.matchDTO.forthQuarterDTO[i].MARKERTIME}}</td>
+                    <td>{{match.matchDTO.forthQuarterDTO[i].POINTS_A}} - {{match.matchDTO.forthQuarterDTO[i].POINTS_B}}</td>
+                    <td>{{match.matchDTO.forthQuarterDTO[i].CODETEAM}}</td>
+                    <td>{{match.matchDTO.forthQuarterDTO[i].PLAYTYPE}}</td>
+                    <td>{{match.matchDTO.forthQuarterDTO[i].PLAYER}} #{{match.matchDTO.forthQuarterDTO[i].DORSAL}}</td>   
+                    <td>{{match.matchDTO.forthQuarterDTO[i].PLAYINFO}}</td>               
+                    <td><a (click)="markAsFavouriteForthQuarter(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>      
+                  </tr>  
+                </tbody>
+              </table>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="extra-panel">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">MARKERTIME</th>
+                <th scope="col">POINTS</th>
+                <th scope="col">CODETEAM</th>
+                <th scope="col">PLAYTYPE</th>   
+                <th scope="col">PLAYER</th>
+                <th scope="col">PLAYINFO</th>
+                <th scope="col">Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of arrayExtraQuarter; let i = index">
+                <td>{{match.matchDTO.extraTimDTO[i].MARKERTIME}}</td>
+                <td>{{match.matchDTO.extraTimDTO[i].POINTS_A}} - {{match.matchDTO.extraTimDTO[i].POINTS_B}}</td>
+                <td>{{match.matchDTO.extraTimDTO[i].CODETEAM}}</td>
+                <td>{{match.matchDTO.extraTimDTO[i].PLAYTYPE}}</td>
+                <td>{{match.matchDTO.extraTimDTO[i].PLAYER}}</td>   
+                <td>{{match.matchDTO.extraTimDTO[i].PLAYINFO}}</td>   
+                <td><a (click)="markAsFavouriteExtraTime(match.matchDTO.extraTimDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>        
+              </tr>  
+            </tbody>
+          </table>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

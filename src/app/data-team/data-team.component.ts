@@ -9,6 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DataTeamComponent implements OnInit {
   match: any;
+
+  arrayFirstQuarter = new Array();
+  arraySecondQuarter = new Array();
+  arrayThirdQuarter = new Array();
+  arrayForthQuarter = new Array();
+  arrayExtraQuarter =new Array();
+  counter = 0;
+
   constructor(private _dataService:DataService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -22,7 +30,12 @@ export class DataTeamComponent implements OnInit {
   getData(gameCode: string, seassonCode: string) {
     this._dataService.dataService(gameCode,seassonCode).subscribe(
        data=>{  
-         this.match=data;
+        this.arrayFirstQuarter = new Array(data.matchDTO.firstQuarterDTO.length);
+        this.arraySecondQuarter = new Array(data.matchDTO.secondQuarterDTO.length);
+        this.arrayThirdQuarter = new Array(data.matchDTO.thirdQuarterDTO.length);
+        this.arrayForthQuarter = new Array(data.matchDTO.forthQuarterDTO.length);
+        this.arrayExtraQuarter = new Array(data.matchDTO.extraTimeDTO.length);
+        this.match=data;
        },
        (error)=>{
          console.log("Error");
