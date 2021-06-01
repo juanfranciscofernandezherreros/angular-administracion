@@ -25,7 +25,7 @@
                 <td>{{match.winLose}}</td>
                 <td>{{match.versus}}</td>   
                 <td>{{match.teamPhaseGameScore}}</td> 
-                <td><a (click)="notSync(match.gameCode,match.seassonCode)" class="btn btn-dark">No syncronizar</a><a (click)="syncMatch(match.gameCode,match.seassonCode,match.header.Phase,match.header.Date,match.header.Round)" class="btn btn-dark">Syncronizar</a></td>            
+                <td><a (click)="syncMatch(match.gameCode,match.seassonCode)" class="btn btn-dark">Syncronizar</a></td>            
               </tr>  
             </tbody>
           </table>

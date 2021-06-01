@@ -21,6 +21,7 @@ export class MatchTeamsComponent implements OnInit {
     private _playByPlayService:PlayByPlayService,
     private route: ActivatedRoute,
     private router: Router) { }
+    
   ngOnInit(): void {
     var teamCode = this.route.snapshot.paramMap.get('teamCode');
     var seasson = this.route.snapshot.paramMap.get('seasson');
@@ -38,20 +39,8 @@ export class MatchTeamsComponent implements OnInit {
     );
   }
 
-  notSync(gameCode:String,seassonCode:String){
+  syncMatch(gameCode:String,seassonCode:String){
     this.router.navigate(['dashboard/euroleague/details/notSyncronized/gameCode/'+gameCode+'/seassonCode/'+seassonCode])    
-  }
-
-  syncMatch(gameCode:String,seassonCode:String,phase:String,date:String,round:number){
-    this._matchTeamsService.getSyncGameCodeSeassonCode(gameCode,seassonCode,phase,date,round).subscribe(
-      data=>{        
-        this.id = data["id"];
-        this.router.navigate(['dashboard/euroleague/details/match/'+this.id])
-      },
-      (error)=>{
-        console.log("Error");
-      }
-    );
   }
 
 

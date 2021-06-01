@@ -60,6 +60,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 import { PlayByPlayNotSyncroComponent } from './play-by-play-not-syncro/play-by-play-not-syncro.component';
+import { DataService} from './_services/data.service';
+import { DataTeamComponent } from './data-team/data-team.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -119,6 +121,7 @@ import { PlayByPlayNotSyncroComponent } from './play-by-play-not-syncro/play-by-
      	 	MatchTeamsComponent,
         PlayByPlayComponent,
         PlayByPlayNotSyncroComponent,
+        DataTeamComponent,
     ],
     providers: [
 		AdminGuard,

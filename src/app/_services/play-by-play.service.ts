@@ -20,7 +20,7 @@ export class PlayByPlayService {
   }
 
   getPlayByPlayNotSyncronized(gameCode:String,seassonCode:String): Observable<any>{      
-    return this.http.get(this.basketball+"/api/public/v1/playbyplay/download?gamecode="+gameCode+"&seasoncode="+seassonCode);    
+    return this.http.get(this.basketball+"/api/public/v1/data?gamecode="+gameCode+"&seasoncode="+seassonCode);    
   }
 
   cancelAsFavourite(markAsFavourite:MarkAsFavourite,matchId:number): Observable<any>{  

@@ -33,32 +33,9 @@ export class PlayByPlayNotSyncroComponent implements OnInit {
   ngOnInit(): void {
     var gameCode = this.route.snapshot.paramMap.get('gameCode');
     var seassonCode = this.route.snapshot.paramMap.get('seassonCode');
-    this.getPlayByPlayNotSyncronized(gameCode,seassonCode);
+    alert(gameCode);
+    alert(seassonCode);
   } 
-
-  arrayFirstQuarter = new Array();
-  arraySecondQuarter = new Array();
-  arrayThirdQuarter = new Array();
-  arrayForthQuarter = new Array();
-  arrayExtraQuarter =new Array();
-  counter = 0;
-
- 
-  getPlayByPlayNotSyncronized(gameCode:String,seassonCode:String) {
-    this._playByPlayService.getPlayByPlayNotSyncronized(gameCode,seassonCode).subscribe(
-       data=>{  
-         this.arrayFirstQuarter = new Array(data.firstQuarterDTO.length);
-         this.arraySecondQuarter = new Array(data.secondQuarterDTO.length);
-         this.arrayThirdQuarter = new Array(data.thirdQuarterDTO.length);
-         this.arrayForthQuarter = new Array(data.forthQuarterDTO.length);
-         this.arrayExtraQuarter = new Array(data.extraTimeDTO.length);
-         this.match=data;
-       },
-       (error)=>{
-         console.log("Error");
-       }
-     );
-   }
 
    markAsFavouriteFirstQuarter(firstQuarter:FirstQuarter,header:Header){       
     this.markAsFavourite.firstQuarterDTO=firstQuarter;
@@ -66,6 +43,22 @@ export class PlayByPlayNotSyncroComponent implements OnInit {
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
     this.markAsFavourite.firstQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+   cancelAsFirstQuarter(firstQuarter:FirstQuarter,header:Header){       
+    this.markAsFavourite.firstQuarterDTO=firstQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.firstQuarterDTO.markAsFavourite=false;
     this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
         this.markAsFavourite=data;
@@ -92,12 +85,44 @@ export class PlayByPlayNotSyncroComponent implements OnInit {
     );
    }
 
+   cancelAsSecondQuarter(thirdQuarter:SecondQuarter,header:Header){       
+    this.markAsFavourite.thirdQuarterDTO=thirdQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.thirdQuarterDTO.markAsFavourite=false;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
   markAsFavouriteThirdQuarter(thirdQuarter:ThirdQuarter,header:Header){       
     this.markAsFavourite.thirdQuarterDTO=thirdQuarter;
     this.markAsFavourite.headerDTO=header;    
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
     this.markAsFavourite.thirdQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  cancelAsThirdQuarter(thirdQuarter:ThirdQuarter,header:Header){       
+    this.markAsFavourite.thirdQuarterDTO=thirdQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.thirdQuarterDTO.markAsFavourite=false;
     this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
         this.markAsFavourite=data;
@@ -124,12 +149,44 @@ export class PlayByPlayNotSyncroComponent implements OnInit {
     );
    }
 
+  cancelAsForthQuarter(forthQuarter:ForthQuarter,header:Header){       
+    this.markAsFavourite.forthQuarterDTO=forthQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.forthQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
   markAsFavouriteExtraTime(forthQuarter:ForthQuarter,header:Header){       
     this.markAsFavourite.forthQuarterDTO=forthQuarter;
     this.markAsFavourite.headerDTO=header;    
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
     this.markAsFavourite.forthQuarterDTO.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+   cancelAsExtraTime(forthQuarter:ForthQuarter,header:Header){       
+    this.markAsFavourite.forthQuarterDTO=forthQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.forthQuarterDTO.markAsFavourite=false;
     this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
         this.markAsFavourite=data;
