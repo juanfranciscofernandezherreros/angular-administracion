@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../_services/data.service';
+import { PlayByPlayService } from '../_services/play-by-play.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MarkAsFavourite } from '../_models/markAsFavourite';
+import { FirstQuarter } from '../_models/firstQuarter';
+import { SecondQuarter } from '../_models/secondQuarter';
+import { ThirdQuarter } from '../_models/thirdQuarter';
+import { ForthQuarter } from '../_models/forthQuarter';
+import { Header } from '../_models/header';
+import { PlayByPlay } from '../_models/playByPlay';
 
 @Component({
   selector: 'app-data-team',
@@ -10,6 +18,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DataTeamComponent implements OnInit {
   match: any;
 
+  private markAsFavourite: MarkAsFavourite = new MarkAsFavourite();
+
+  firstQuarter:FirstQuarter;
+  gameCode:String;
+  seassonCode:String;
+  header:Header;
+  matchId:number;
+
   arrayFirstQuarter = new Array();
   arraySecondQuarter = new Array();
   arrayThirdQuarter = new Array();
@@ -18,6 +34,7 @@ export class DataTeamComponent implements OnInit {
   counter = 0;
 
   constructor(private _dataService:DataService,
+    private _playByPlayService:PlayByPlayService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -41,6 +58,37 @@ export class DataTeamComponent implements OnInit {
          console.log("Error");
        }
      );
+   }
+
+   markPlayByPlayAsFavourite(firstQuarter:FirstQuarter,header:Header,actualQuarter:String){       
+    this.markAsFavourite.quarterDTo=firstQuarter;
+    this.markAsFavourite.actualQuarter=actualQuarter;
+    this.markAsFavourite.headerDTO=header;    
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.quarterDTo.markAsFavourite=true;
+    this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+   }
+
+   cancelAsQuarter(numberOfPlay:String,actualQuarter:String){       
+    this.markAsFavourite.quarterDTo.NUMBEROFPLAY=numberOfPlay;
+    this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
+    this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this._playByPlayService.deleteAsFavourite(this.markAsFavourite).subscribe(
+      data=>{  
+        this.markAsFavourite=data;
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
    }
 
 }

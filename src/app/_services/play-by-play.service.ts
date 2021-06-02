@@ -19,17 +19,21 @@ export class PlayByPlayService {
     return this.http.get(this.basketball+"/api/public/v1/match/"+matchId);    
   }
 
-  getPlayByPlayNotSyncronized(gameCode:String,seassonCode:String): Observable<any>{      
+  getPlayByPlayNotSyncronized(gameCode:String,seassonCode:String): Observable<any>{       
     return this.http.get(this.basketball+"/api/public/v1/data?gamecode="+gameCode+"&seasoncode="+seassonCode);    
   }
 
   cancelAsFavourite(markAsFavourite:MarkAsFavourite,matchId:number): Observable<any>{  
-    markAsFavourite.firstQuarterDTO.markAsFavourite=false;
     return this.http.post(this.basketball+"/api/public/v1/favourite/playbyplay/"+matchId , markAsFavourite);    
   }
 
   markAsFavourite(markAsFavourite:MarkAsFavourite): Observable<any>{  
     return this.http.post(this.basketball+"/api/public/v1/favourite/playbyplay" , markAsFavourite);    
+  }
+
+  deleteAsFavourite(markAsFavourite:MarkAsFavourite): Observable<any>{  
+    alert(JSON.stringify(markAsFavourite));
+    return this.http.delete(this.basketball+"/api/public/v1/favourite/playbyplay?numberofplay="+markAsFavourite.quarterDTo.NUMBEROFPLAY+"&gamecode="+markAsFavourite.gameCode+"&seasoncode="+markAsFavourite.seassonCode);    
   }
 
  

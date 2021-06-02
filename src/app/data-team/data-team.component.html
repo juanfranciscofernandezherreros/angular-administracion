@@ -26,6 +26,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th scope="col">NUMBER OF PLAY</th>
                 <th scope="col">MARKERTIME</th>
                 <th scope="col">POINTS</th>
                 <th scope="col">CODETEAM</th>
@@ -37,13 +38,14 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of arrayFirstQuarter; let i = index">
+                <td>{{match.matchDTO.firstQuarterDTO[i].NUMBEROFPLAY}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].MARKERTIME}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].POINTS_A}} - {{match.matchDTO.firstQuarterDTO[i].POINTS_B}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].CODETEAM}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYTYPE}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYER}} #{{match.matchDTO.firstQuarterDTO[i].DORSAL}}</td>   
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYINFO}}</td>               
-                <td><a (click)="markAsFavouriteFirstQuarter(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>             
+                <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.firstQuarterDTO[i].NUMBEROFPLAY,1)" class="btn btn-dark">Delete as favourite</a></td>             
               </tr>  
             </tbody>
           </table>
@@ -62,6 +64,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
+                    <th scope="col">NUMBER OF PLAY</th>
                     <th scope="col">MARKERTIME</th>
                     <th scope="col">POINTS</th>
                     <th scope="col">CODETEAM</th>
@@ -73,13 +76,14 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of arraySecondQuarter; let i = index">
+                    <td>{{match.matchDTO.secondQuarterDTO[i].NUMBEROFPLAY}}</td>
                     <td>{{match.matchDTO.secondQuarterDTO[i].MARKERTIME}}</td>
                     <td>{{match.matchDTO.secondQuarterDTO[i].POINTS_A}} - {{match.matchDTO.secondQuarterDTO[i].POINTS_B}}</td>
                     <td>{{match.matchDTO.secondQuarterDTO[i].CODETEAM}}</td>
                     <td>{{match.matchDTO.secondQuarterDTO[i].PLAYTYPE}}</td>
                     <td>{{match.matchDTO.secondQuarterDTO[i].PLAYER}} #{{match.matchDTO.secondQuarterDTO[i].DORSAL}}</td>   
                     <td>{{match.matchDTO.secondQuarterDTO[i].PLAYINFO}}</td>               
-                    <td><a (click)="markAsFavouriteSecondQuarter(match.matchDTO.secondQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>     
+                    <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.secondQuarterDTO[i],2)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.secondQuarterDTO[i].NUMBEROFPLAY,2)" class="btn btn-dark">Delete as favourite</a></td>             
                   </tr>  
                 </tbody>
               </table>         
@@ -99,6 +103,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th scope="col">NUMBER OF PLAY</th>
                 <th scope="col">MARKERTIME</th>
                 <th scope="col">POINTS</th>
                 <th scope="col">CODETEAM</th>
@@ -110,14 +115,15 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of arrayThirdQuarter; let i = index">
+                  <td>{{match.matchDTO.thirdQuarterDTO[i].NUMBEROFPLAY}}</td>
                   <td>{{match.matchDTO.thirdQuarterDTO[i].MARKERTIME}}</td>
                   <td>{{match.matchDTO.thirdQuarterDTO[i].POINTS_A}} - {{match.matchDTO.thirdQuarterDTO[i].POINTS_B}}</td>
                   <td>{{match.matchDTO.thirdQuarterDTO[i].CODETEAM}}</td>
                   <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYTYPE}}</td>
                   <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYER}} #{{match.matchDTO.thirdQuarterDTO[i].DORSAL}}</td>   
                   <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYINFO}}</td>               
-                  <td><a (click)="markAsFavouriteThirdQuarter(match.matchDTO.thirdQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>     
-              </tr>  
+                  <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.thirdQuarterDTO[i],match.matchDTO.header,3)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.thirdQuarterDTO[i].NUMBEROFPLAY,3)" class="btn btn-dark">Delete as favourite</a></td>             
+                </tr>  
             </tbody>
           </table>
             </div>
@@ -136,6 +142,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
+                    <th scope="col">NUMBER OF PLAY</th>
                     <th scope="col">MARKERTIME</th>
                     <th scope="col">POINTS</th>
                     <th scope="col">CODETEAM</th>
@@ -147,13 +154,14 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of arrayForthQuarter; let i = index">
+                    <td>{{match.matchDTO.forthQuarterDTO[i].NUMBEROFPLAY}}</td>
                     <td>{{match.matchDTO.forthQuarterDTO[i].MARKERTIME}}</td>
                     <td>{{match.matchDTO.forthQuarterDTO[i].POINTS_A}} - {{match.matchDTO.forthQuarterDTO[i].POINTS_B}}</td>
                     <td>{{match.matchDTO.forthQuarterDTO[i].CODETEAM}}</td>
                     <td>{{match.matchDTO.forthQuarterDTO[i].PLAYTYPE}}</td>
                     <td>{{match.matchDTO.forthQuarterDTO[i].PLAYER}} #{{match.matchDTO.forthQuarterDTO[i].DORSAL}}</td>   
                     <td>{{match.matchDTO.forthQuarterDTO[i].PLAYINFO}}</td>               
-                    <td><a (click)="markAsFavouriteForthQuarter(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>      
+                    <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header,4)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.forthQuarterDTO[i].NUMBEROFPLAY,4)" class="btn btn-dark">Delete as favourite</a></td>             
                   </tr>  
                 </tbody>
               </table>
@@ -173,6 +181,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th scope="col">NUMBER OF PLAY</th>
                 <th scope="col">MARKERTIME</th>
                 <th scope="col">POINTS</th>
                 <th scope="col">CODETEAM</th>
@@ -184,13 +193,14 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of arrayExtraQuarter; let i = index">
-                <td>{{match.matchDTO.extraTimDTO[i].MARKERTIME}}</td>
-                <td>{{match.matchDTO.extraTimDTO[i].POINTS_A}} - {{match.matchDTO.extraTimDTO[i].POINTS_B}}</td>
-                <td>{{match.matchDTO.extraTimDTO[i].CODETEAM}}</td>
-                <td>{{match.matchDTO.extraTimDTO[i].PLAYTYPE}}</td>
-                <td>{{match.matchDTO.extraTimDTO[i].PLAYER}}</td>   
-                <td>{{match.matchDTO.extraTimDTO[i].PLAYINFO}}</td>   
-                <td><a (click)="markAsFavouriteExtraTime(match.matchDTO.extraTimDTO[i],match.matchDTO.header)" class="btn btn-dark">Mark as favourite</a></td>        
+                <td>{{match.matchDTO.extraTimeDTO[i].NUMBEROFPLAY}}</td>
+                <td>{{match.matchDTO.extraTimeDTO[i].MARKERTIME}}</td>
+                <td>{{match.matchDTO.extraTimeDTO[i].POINTS_A}} - {{match.matchDTO.extraTimeDTO[i].POINTS_B}}</td>
+                <td>{{match.matchDTO.extraTimeDTO[i].CODETEAM}}</td>
+                <td>{{match.matchDTO.extraTimeDTO[i].PLAYTYPE}}</td>
+                <td>{{match.matchDTO.extraTimeDTO[i].PLAYER}}</td>   
+                <td>{{match.matchDTO.extraTimeDTO[i].PLAYINFO}}</td>   
+                <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.extraTimeDTO[i],match.matchDTO.header,5)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.extraTimeDTO[i],5)" class="btn btn-dark">Delete as favourite</a></td>             
               </tr>  
             </tbody>
           </table>
