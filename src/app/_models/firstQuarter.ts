@@ -14,7 +14,7 @@
  export class FirstQuarter { 
      id?: number;
      type?: number;
-     NUMBEROFPLAY?: String;
+     numberofplay?: String;
      codeteam?: string;
      playerId?: string;
      playtype?: string;

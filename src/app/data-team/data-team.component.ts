@@ -69,7 +69,6 @@ export class DataTeamComponent implements OnInit {
     this.markAsFavourite.quarterDTo.markAsFavourite=true;
     this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
-        this.markAsFavourite=data;
       },
       (error)=>{
         console.log("Error");
@@ -78,12 +77,11 @@ export class DataTeamComponent implements OnInit {
    }
 
    cancelAsQuarter(numberOfPlay:String,actualQuarter:String){       
-    this.markAsFavourite.quarterDTo.NUMBEROFPLAY=numberOfPlay;
+    this.markAsFavourite.quarterDTo.numberofplay=numberOfPlay;
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
     this._playByPlayService.deleteAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
-        this.markAsFavourite=data;
       },
       (error)=>{
         console.log("Error");

@@ -32,8 +32,7 @@ export class PlayByPlayService {
   }
 
   deleteAsFavourite(markAsFavourite:MarkAsFavourite): Observable<any>{  
-    alert(JSON.stringify(markAsFavourite));
-    return this.http.delete(this.basketball+"/api/public/v1/favourite/playbyplay?numberofplay="+markAsFavourite.quarterDTo.NUMBEROFPLAY+"&gamecode="+markAsFavourite.gameCode+"&seasoncode="+markAsFavourite.seassonCode);    
+    return this.http.delete(this.basketball+"/api/public/v1/favourite/playbyplay?numberofplay="+markAsFavourite.quarterDTo.numberofplay+"&gamecode="+markAsFavourite.gameCode+"&seasoncode="+markAsFavourite.seassonCode);    
   }
 
  
