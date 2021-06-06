@@ -28,6 +28,7 @@ import { TagsEditComponent } from './tags-edit/tags-edit.component';
 import { TagsViewComponent } from './tags-view/tags-view.component';
 import { AdminGuard } from './_guards/index';
 import { DataTeamComponent } from './data-team/data-team.component';
+import { PlayByPlayArticleAddComponent } from './play-by-play-article-add/play-by-play-article-add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin', pathMatch: 'full' },
@@ -95,8 +96,10 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
      { path: '', component: EuroleagueListTeamsComponent },
+     { path: 'article/playByplay/gameCode/:gameCode/seassonCode/:seassonCode/index/:index/actualQuarter', component: PlayByPlayArticleAddComponent },
      { path: 'teamCode/:teamCode/seasson/:seasson', component: MatchTeamsComponent },
-     { path: 'details/notSyncronized/gameCode/:gameCode/seassonCode/:seassonCode', component: DataTeamComponent }
+     { path: 'details/notSyncronized/gameCode/:gameCode/seassonCode/:seassonCode', component: DataTeamComponent },
+     { path: 'teamCode/:teamCode/seasson/:seasson', component: MatchTeamsComponent },
    ]	 
   },
   {

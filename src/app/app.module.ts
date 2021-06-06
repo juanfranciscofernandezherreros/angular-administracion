@@ -62,6 +62,7 @@ import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 import { PlayByPlayNotSyncroComponent } from './play-by-play-not-syncro/play-by-play-not-syncro.component';
 import { DataService} from './_services/data.service';
 import { DataTeamComponent } from './data-team/data-team.component';
+import { PlayByPlayArticleAddComponent } from './play-by-play-article-add/play-by-play-article-add.component';
 @NgModule({
 		imports: [
 			BrowserModule,
@@ -122,6 +123,7 @@ import { DataTeamComponent } from './data-team/data-team.component';
         PlayByPlayComponent,
         PlayByPlayNotSyncroComponent,
         DataTeamComponent,
+        PlayByPlayArticleAddComponent,
     ],
     providers: [
 		AdminGuard,

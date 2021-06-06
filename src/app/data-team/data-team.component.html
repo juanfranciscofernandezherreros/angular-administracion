@@ -46,7 +46,11 @@
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYTYPE}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYER}} #{{match.matchDTO.firstQuarterDTO[i].DORSAL}}</td>   
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYINFO}}</td>               
-                <td><div *ngIf="match.matchDTO.firstQuarterDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.firstQuarterDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1,i,match._id)" class="btn btn-primary">Delete as favourite</a></div></td>             
+                <td><div *ngIf="match.matchDTO.firstQuarterDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1,i,match._id)" class="btn btn-dark">Mark as favourite</a></div>
+                  <div *ngIf="match.matchDTO.firstQuarterDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1,i,match._id)" class="btn btn-primary">Delete as favourite</a>
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Add to article</button>
+                  </div>                  
+              </td>             
               </tr>  
             </tbody>
           </table>
@@ -84,7 +88,7 @@
                     <td>{{match.matchDTO.secondQuarterDTO[i].PLAYTYPE}}</td>
                     <td>{{match.matchDTO.secondQuarterDTO[i].PLAYER}} #{{match.matchDTO.secondQuarterDTO[i].DORSAL}}</td>   
                     <td>{{match.matchDTO.secondQuarterDTO[i].PLAYINFO}}</td>               
-                    <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.secondQuarterDTO[i],2)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.secondQuarterDTO[i].NUMBEROFPLAY,2)" class="btn btn-dark">Delete as favourite</a></td>             
+                    <td><div *ngIf="match.matchDTO.secondQuarterDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.secondQuarterDTO[i],match.matchDTO.header,2,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.secondQuarterDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.secondQuarterDTO[i],match.matchDTO.header,2,i,match._id)" class="btn btn-primary">Delete as favourite</a></div></td>             
                   </tr>  
                 </tbody>
               </table>         
@@ -123,7 +127,7 @@
                   <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYTYPE}}</td>
                   <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYER}} #{{match.matchDTO.thirdQuarterDTO[i].DORSAL}}</td>   
                   <td>{{match.matchDTO.thirdQuarterDTO[i].PLAYINFO}}</td>               
-                  <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.thirdQuarterDTO[i],match.matchDTO.header,3)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.thirdQuarterDTO[i].NUMBEROFPLAY,3)" class="btn btn-dark">Delete as favourite</a></td>             
+                  <td><div *ngIf="match.matchDTO.thirdQuarterDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.thirdQuarterDTO[i],match.matchDTO.header,3,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.thirdQuarterDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.thirdQuarterDTO[i],match.matchDTO.header,3,i,match._id)" class="btn btn-primary">Delete as favourite</a></div></td>             
                 </tr>  
             </tbody>
           </table>
@@ -162,7 +166,7 @@
                     <td>{{match.matchDTO.forthQuarterDTO[i].PLAYTYPE}}</td>
                     <td>{{match.matchDTO.forthQuarterDTO[i].PLAYER}} #{{match.matchDTO.forthQuarterDTO[i].DORSAL}}</td>   
                     <td>{{match.matchDTO.forthQuarterDTO[i].PLAYINFO}}</td>               
-                    <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header,4)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.forthQuarterDTO[i].NUMBEROFPLAY,4)" class="btn btn-dark">Delete as favourite</a></td>             
+                    <td><div *ngIf="match.matchDTO.forthQuarterDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header,4,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.forthQuarterDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header,4,i,match._id)" class="btn btn-primary">Delete as favourite</a><a (click)="markPlayByPlayAsFavourite(match.matchDTO.forthQuarterDTO[i],match.matchDTO.header,4,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.forthQuarterDTO[i].markAsFavourite==true"><a class="btn btn-primary">Add to article</a></div></td>             
                   </tr>  
                 </tbody>
               </table>
@@ -201,7 +205,7 @@
                 <td>{{match.matchDTO.extraTimeDTO[i].PLAYTYPE}}</td>
                 <td>{{match.matchDTO.extraTimeDTO[i].PLAYER}}</td>   
                 <td>{{match.matchDTO.extraTimeDTO[i].PLAYINFO}}</td>   
-                <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.extraTimeDTO[i],match.matchDTO.header,5)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.extraTimeDTO[i],5)" class="btn btn-dark">Delete as favourite</a></td>             
+                <td><div *ngIf="match.matchDTO.extraTimeDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.extraTimeDTO[i],match.matchDTO.header,5,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.extraTimeDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.extraTimeDTO[i],match.matchDTO.header,5,i,match._id)" class="btn btn-warning">Delete as favourite</a></div></td>             
               </tr>  
             </tbody>
           </table>
@@ -214,3 +218,33 @@
     </div>
     </div>
   </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+  <div class="container">
+    <div class="row custom-wrapper">
+       <div class="col-md-12">
+          <!-- Form starts -->
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="group-gap">
+             <div class="d-block my-3">
+                <div class="mb-3">
+                   <select class="custom-select" (change)="changeCity($event)" formControlName="cityName">
+                      <option value="">Choose your city</option>
+                      <option *ngFor="let city of articles" [ngValue]="city">{{city.title}}</option>
+                   </select>
+                   <!-- error block -->
+                   <div class="invalid-feedback" *ngIf="isSubmitted && cityName.errors?.required">
+                      <sup>*</sup>Please enter your city name
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+          </form><!-- Form ends -->
+       </div>
+    </div>
+ </div>
+
+</div>

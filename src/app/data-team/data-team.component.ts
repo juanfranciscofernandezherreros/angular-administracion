@@ -9,6 +9,9 @@ import { ThirdQuarter } from '../_models/thirdQuarter';
 import { ForthQuarter } from '../_models/forthQuarter';
 import { Header } from '../_models/header';
 import { PlayByPlay } from '../_models/playByPlay';
+import {ArticlesListService} from '../_services/articles-list.service';
+import {Article} from '../_models/article';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 
 @Component({
   selector: 'app-data-team',
@@ -16,10 +19,9 @@ import { PlayByPlay } from '../_models/playByPlay';
   styleUrls: ['./data-team.component.css']
 })
 export class DataTeamComponent implements OnInit {
+  isSubmitted = false;
   match: any;
-
   private markAsFavourite: MarkAsFavourite = new MarkAsFavourite();
-
   firstQuarter:FirstQuarter;
   gameCode:String;
   seassonCode:String;
@@ -33,15 +35,29 @@ export class DataTeamComponent implements OnInit {
   arrayExtraQuarter =new Array();
   counter = 0;
 
+  articles:Article[];
+  
+  //Paginacion Blogs
+  page : number = 0;
+  pages:Array<number>;
+
+  private contactForm:FormGroup;
+  private firstName:FormControl;
+
   constructor(private _dataService:DataService,
     private _playByPlayService:PlayByPlayService,
+    public fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private articleService : ArticlesListService , 
+    private router: Router) { 
+      
+  }
 
   ngOnInit(): void {
     var gameCode = this.route.snapshot.paramMap.get('gameCode');
     var seassonCode = this.route.snapshot.paramMap.get('seassonCode');
     this.getData(gameCode,seassonCode);
+    this.getArticles();   
   }
 
   getData(gameCode: string, seassonCode: string) {
@@ -95,5 +111,49 @@ export class DataTeamComponent implements OnInit {
       }
     );
    }
+
+   getArticles(){
+    this.articleService.getArticles(this.page).subscribe(      
+      data=>{      
+        this.articles=data['content'];
+        this.pages = new Array(data['totalPages']);       
+      },
+      (error)=>{
+        console.log("Error");
+      }
+    );
+  }
+
+  
+  
+  /*########### Form ###########*/
+  registrationForm = this.fb.group({
+    cityName: ['', [Validators.required]]
+  })
+
+
+  // Choose city using select dropdown
+  changeCity(e) {
+    console.log(e.value)
+    this.cityName.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
+  // Getter method to access formcontrols
+  get cityName() {
+    return this.registrationForm.get('cityName');
+  }
+
+  /*########### Template Driven Form ###########*/
+  onSubmit() {
+    this.isSubmitted = true;
+    if (!this.registrationForm.valid) {
+      return false;
+    } else {
+      alert(JSON.stringify(this.registrationForm.value.cityName.id));
+    }
+
+  }
 
 }

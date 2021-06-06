@@ -17,4 +17,6 @@ export class ArticlesListService {
   getArticles(page:number){
     return this.http.get(this.articles+"/api/public/v1/articles?page="+page);
   }
+
+  
 }
