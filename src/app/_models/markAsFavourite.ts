@@ -8,4 +8,6 @@ export class MarkAsFavourite {
    headerDTO:Header;
    gameCode:String;
    seassonCode:String;
+   index:number;
+   _id:String;
 }

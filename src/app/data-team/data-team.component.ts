@@ -60,13 +60,15 @@ export class DataTeamComponent implements OnInit {
      );
    }
 
-   markPlayByPlayAsFavourite(firstQuarter:FirstQuarter,header:Header,actualQuarter:String){       
+   markPlayByPlayAsFavourite(firstQuarter:FirstQuarter,header:Header,actualQuarter:String,index:number,idMatchMongo:String){       
     this.markAsFavourite.quarterDTo=firstQuarter;
     this.markAsFavourite.actualQuarter=actualQuarter;
     this.markAsFavourite.headerDTO=header;    
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
     this.markAsFavourite.quarterDTo.markAsFavourite=true;
+    this.markAsFavourite.index=index;
+    this.markAsFavourite._id=idMatchMongo;
     this._playByPlayService.markAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
       },
@@ -76,10 +78,15 @@ export class DataTeamComponent implements OnInit {
     );
    }
 
-   cancelAsQuarter(numberOfPlay:String,actualQuarter:String){       
-    this.markAsFavourite.quarterDTo.numberofplay=numberOfPlay;
+   cancelAsFavourite(firstQuarter:FirstQuarter,header:Header,actualQuarter:String,index:number,idMatchMongo:String){       
+    this.markAsFavourite.quarterDTo=firstQuarter;
+    this.markAsFavourite.actualQuarter=actualQuarter;
+    this.markAsFavourite.headerDTO=header;    
     this.markAsFavourite.gameCode=this.route.snapshot.paramMap.get('gameCode');
     this.markAsFavourite.seassonCode=this.route.snapshot.paramMap.get('seassonCode');
+    this.markAsFavourite.quarterDTo.markAsFavourite=true;
+    this.markAsFavourite.index=index;
+    this.markAsFavourite._id=idMatchMongo;
     this._playByPlayService.deleteAsFavourite(this.markAsFavourite).subscribe(
       data=>{  
       },

@@ -1,6 +1,7 @@
 #{{match.header.Round}} | {{match.header.Phase}} | {{match.header.Competition}} | {{match.header.Date}} | {{match.header.TeamA}} ({{match.header.ScoreA}}) VS {{match.header.TeamB}} ({{match.header.ScoreB}}) 
 
 
+
 <div class="warpper">
     <input class="radio" id="one" name="group" type="radio" checked>
     <input class="radio" id="two" name="group" type="radio">
@@ -45,7 +46,7 @@
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYTYPE}}</td>
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYER}} #{{match.matchDTO.firstQuarterDTO[i].DORSAL}}</td>   
                 <td>{{match.matchDTO.firstQuarterDTO[i].PLAYINFO}}</td>               
-                <td><a (click)="markPlayByPlayAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1)" class="btn btn-dark">Mark as favourite</a><a (click)="cancelAsQuarter(match.matchDTO.firstQuarterDTO[i].NUMBEROFPLAY,1)" class="btn btn-dark">Delete as favourite</a></td>             
+                <td><div *ngIf="match.matchDTO.firstQuarterDTO[i].markAsFavourite==false"><a (click)="markPlayByPlayAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1,i,match._id)" class="btn btn-dark">Mark as favourite</a></div><div *ngIf="match.matchDTO.firstQuarterDTO[i].markAsFavourite==true"><a (click)="cancelAsFavourite(match.matchDTO.firstQuarterDTO[i],match.matchDTO.header,1,i,match._id)" class="btn btn-primary">Delete as favourite</a></div></td>             
               </tr>  
             </tbody>
           </table>
