@@ -57,10 +57,8 @@ import { EuroleagueListTeamsComponent } from './euroleague-list-teams/euroleague
 import { YearsListService } from './_services/years-list.service';
 import { MatchTeamsComponent } from './match-teams/match-teams.component';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayByPlayComponent } from './play-by-play/play-by-play.component';
 import { PlayByPlayNotSyncroComponent } from './play-by-play-not-syncro/play-by-play-not-syncro.component';
-import { DataService} from './_services/data.service';
 import { DataTeamComponent } from './data-team/data-team.component';
 import { PlayByPlayArticleAddComponent } from './play-by-play-article-add/play-by-play-article-add.component';
 @NgModule({

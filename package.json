@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~11.2.8",
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
+    "@ckeditor/ckeditor5-angular": "^2.0.1",
+    "@ckeditor/ckeditor5-build-classic": "^28.0.0",
     "@ngtools/webpack": "^11.2.10",
     "angular-6-datatable": "^0.8.0",
     "angular-custom-checkbox": "^2.0.1",

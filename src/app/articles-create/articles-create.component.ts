@@ -7,15 +7,14 @@ import { AlertService } from '../_services/index';
 import { UserService } from '../_services/user.service';
 import { Article } from '../_models/article';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
-import { User } from '../_models';
-import { title } from 'process';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-articles-create', 
   templateUrl: './articles-create.component.html',
   styleUrls: ['./articles-create.component.css']
 })
 export class ArticlesCreateComponent implements OnInit {
+  public Editor = ClassicEditor;
   base64textString:String="";
   model: any = {};
   model2: any = {};
